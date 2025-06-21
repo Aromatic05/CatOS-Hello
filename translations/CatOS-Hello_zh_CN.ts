@@ -128,6 +128,16 @@
         <translation>在Distrowatch.com支持我们</translation>
     </message>
     <message>
+        <location filename="../GeneralNewsTab.cpp" line="27"/>
+        <source>Install CatOS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GeneralNewsTab.cpp" line="28"/>
+        <source>Install CatOS (Online)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../GeneralNewsTab.cpp" line="21"/>
         <source>Visit ArchLinuxCN Wiki</source>
         <translation>访问Arch中文Wiki</translation>
@@ -164,49 +174,59 @@
         <translation>主窗口</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="23"/>
+        <location filename="../mainwindow.cpp" line="27"/>
         <source>Welcome to CatOS!</source>
         <translation>欢迎使用CatOS!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="30"/>
+        <location filename="../mainwindow.cpp" line="34"/>
         <source>General News</source>
         <translation>总体</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="31"/>
+        <location filename="../mainwindow.cpp" line="35"/>
         <source>Post-Install Guide</source>
         <translation>安装后指南</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="32"/>
+        <location filename="../mainwindow.cpp" line="36"/>
         <source>Assistant</source>
         <translation>助手</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="33"/>
+        <location filename="../mainwindow.cpp" line="37"/>
         <source>Tips</source>
         <translation>小建议</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="34"/>
+        <location filename="../mainwindow.cpp" line="38"/>
         <source>Install More Apps</source>
         <translation>安装更多应用程序</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="44"/>
+        <location filename="../mainwindow.cpp" line="48"/>
         <source>Software News</source>
         <translation>软件新闻</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="45"/>
+        <location filename="../mainwindow.cpp" line="49"/>
         <source>View Update Logs</source>
         <translation>更新日志</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="46"/>
+        <location filename="../mainwindow.cpp" line="50"/>
         <source>Stop Showing</source>
         <translation>不再显示此程序</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="90"/>
+        <source>Success</source>
+        <translation type="unfinished">成功</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="90"/>
+        <source>This window will no longer be displayed at startup. You can run catos-hello in the terminal to open it again.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Update Software</source>
@@ -217,7 +237,7 @@
         <translation type="vanished">改变主题</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="47"/>
+        <location filename="../mainwindow.cpp" line="51"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -296,49 +316,59 @@
 <context>
     <name>PostInstallGuideTab</name>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="10"/>
+        <location filename="../PostInstallGuideTab.cpp" line="11"/>
         <source>You can get help from these manuals.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="14"/>
+        <location filename="../PostInstallGuideTab.cpp" line="15"/>
         <source>Correspondence between package managers</source>
         <translation>各软件包管理器命令对应关系</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="15"/>
+        <location filename="../PostInstallGuideTab.cpp" line="16"/>
         <source>Troubleshooting Log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="16"/>
+        <location filename="../PostInstallGuideTab.cpp" line="17"/>
         <source>Nvidia Driver Installer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="17"/>
+        <location filename="../PostInstallGuideTab.cpp" line="18"/>
         <source>Modify Mirror List</source>
         <translation>编辑镜像列表</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="18"/>
+        <location filename="../PostInstallGuideTab.cpp" line="19"/>
         <source>Choose CatOS Wallpaper</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="19"/>
+        <location filename="../PostInstallGuideTab.cpp" line="20"/>
         <source>Update Native &amp; AUR Packages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="20"/>
+        <location filename="../PostInstallGuideTab.cpp" line="21"/>
         <source>Enable Automatic Package Cache Cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="21"/>
+        <location filename="../PostInstallGuideTab.cpp" line="22"/>
         <source>Update Native Packages</source>
         <translation>更新软件包</translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="23"/>
+        <source>Driver Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="55"/>
+        <source>Install and configure drivers</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

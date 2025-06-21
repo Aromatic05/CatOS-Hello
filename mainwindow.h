@@ -20,6 +20,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void onSoftwareNewsButtonClicked();
+    void onViewLogsButtonClicked();
+    void onNoShowButtonClicked();
+    void onExitButtonClicked();
+
 private:
     Ui::MainWindow *ui;
 

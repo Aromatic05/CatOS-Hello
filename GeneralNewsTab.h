@@ -32,6 +32,8 @@ private slots:
     void onSupportButtonClicked();
     void onMirrorButtonClicked();
     void onRepoButtonClicked();
+    void onInstallCatOSButtonClicked();
+    void onInstallCatOSNetButtonClicked();
 
 private:
     void loadLanguages(); // 加载语言和地区
@@ -50,6 +52,8 @@ private:
     QPushButton *applyButton;
     QPushButton *mirrorButton;
     QPushButton *repoButton;
+    QPushButton *installCatOSButton;
+    QPushButton *installCatOSNetButton;
 
     MirrorListWindow *mirrorWindow{};
     RepoListWindow *repoWindow{};

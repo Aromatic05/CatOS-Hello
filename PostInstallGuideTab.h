@@ -26,9 +26,11 @@ private:
     QPushButton *updateAURButton;
     QPushButton *packageCleanButton;
     QPushButton *updateButton;
+    QPushButton *driverConfigButton;
 
 private slots:
     void onPacmanButtonClicked();
+    void onDriverConfigButtonClicked();
 };
 
 #endif // POSTINSTALLGUIDETAB_H

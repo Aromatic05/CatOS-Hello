@@ -24,6 +24,8 @@ GeneralNewsTab::GeneralNewsTab(QWidget *parent)
     applyButton = new QPushButton(tr("Apply"));
     mirrorButton = new QPushButton(tr("Modify Mirror List"));
     repoButton = new QPushButton(tr("Modify Repo List"));
+    installCatOSButton = new QPushButton(tr("Install CatOS"));
+    installCatOSNetButton = new QPushButton(tr("Install CatOS (Online)"));
 
     // 加载语言
     loadLanguages();
@@ -37,6 +39,8 @@ GeneralNewsTab::GeneralNewsTab(QWidget *parent)
     connect(mirrorButton, SIGNAL(clicked()), this, SLOT(onMirrorButtonClicked()));
     connect(repoButton, SIGNAL(clicked()), this, SLOT(onRepoButtonClicked()));
     connect(supportButton, SIGNAL(clicked()), this, SLOT(onSupportButtonClicked()));
+    connect(installCatOSButton, SIGNAL(clicked()), this, SLOT(onInstallCatOSButtonClicked()));
+    connect(installCatOSNetButton, SIGNAL(clicked()), this, SLOT(onInstallCatOSNetButtonClicked()));
 
     // 布局
     gridLayout->addWidget(languageComboBox, 0, 0);
@@ -48,6 +52,8 @@ GeneralNewsTab::GeneralNewsTab(QWidget *parent)
     gridLayout->addWidget(mirrorButton, 3, 0);
     gridLayout->addWidget(repoButton, 3, 1);
     gridLayout->addWidget(supportButton, 4, 0);
+    gridLayout->addWidget(installCatOSButton, 5, 0);
+    gridLayout->addWidget(installCatOSNetButton, 5, 1);
 
     layout->addWidget(generalNewsLabel, 0);
     layout->addLayout(gridLayout);
@@ -136,4 +142,14 @@ void GeneralNewsTab::onRepoButtonClicked()
 {
     QScopedPointer repoWindow(new RepoListWindow(this));
     repoWindow->exec();
+}
+
+void GeneralNewsTab::onInstallCatOSButtonClicked()
+{
+    QProcess::startDetached("calamares_polkit");
+}
+
+void GeneralNewsTab::onInstallCatOSNetButtonClicked()
+{
+    QProcess::startDetached("calamares_polkit", {"--config", "/usr/share/calamares-advanced"});
 }

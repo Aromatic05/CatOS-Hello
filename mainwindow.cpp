@@ -6,6 +6,10 @@
 #include <QHBoxLayout>
 #include <QTabWidget>
 #include <QSpacerItem>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QSettings>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -51,6 +55,11 @@ MainWindow::MainWindow(QWidget *parent)
     buttonLayout->addWidget(noShowButton);
     buttonLayout->addWidget(exitButton);
 
+    connect(softwareNewsButton, &QPushButton::clicked, this, &MainWindow::onSoftwareNewsButtonClicked);
+    connect(viewLogsButton, &QPushButton::clicked, this, &MainWindow::onViewLogsButtonClicked);
+    connect(noShowButton, &QPushButton::clicked, this, &MainWindow::onNoShowButtonClicked);
+    connect(exitButton, &QPushButton::clicked, this, &MainWindow::onExitButtonClicked);
+
     // 将按钮布局添加到主布局
     mainLayout->addLayout(buttonLayout);
 
@@ -62,4 +71,26 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::onSoftwareNewsButtonClicked()
+{
+    QDesktopServices::openUrl(QUrl("https://www.catos.info/log"));
+}
+
+void MainWindow::onViewLogsButtonClicked()
+{
+    QDesktopServices::openUrl(QUrl("https://www.catos.info/log"));
+}
+
+void MainWindow::onNoShowButtonClicked()
+{
+    QSettings settings("CatOS-Hello", "General");
+    settings.setValue("show_on_startup", false);
+    QMessageBox::information(this, tr("Success"), tr("This window will no longer be displayed at startup. You can run catos-hello in the terminal to open it again."));
+}
+
+void MainWindow::onExitButtonClicked()
+{
+    QApplication::quit();
 }
