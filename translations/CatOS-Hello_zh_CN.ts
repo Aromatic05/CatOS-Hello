@@ -68,19 +68,19 @@
         <location filename="../AssistantTab.cpp" line="23"/>
         <location filename="../AssistantTab.cpp" line="163"/>
         <source>Unlock pacman database</source>
-        <translation type="unfinished"></translation>
+        <translation>解锁数据库</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="24"/>
         <location filename="../AssistantTab.cpp" line="172"/>
         <source>List failed systemd services</source>
-        <translation type="unfinished"></translation>
+        <translation>列出失败的服务</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="25"/>
         <location filename="../AssistantTab.cpp" line="181"/>
         <source>View pacman log</source>
-        <translation type="unfinished"></translation>
+        <translation>查看pacman日志</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="130"/>
@@ -130,12 +130,12 @@
     <message>
         <location filename="../GeneralNewsTab.cpp" line="27"/>
         <source>Install CatOS</source>
-        <translation type="unfinished"></translation>
+        <translation>安装CatOS</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="28"/>
         <source>Install CatOS (Online)</source>
-        <translation type="unfinished"></translation>
+        <translation>安装CatOS(联网)</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="21"/>
@@ -163,7 +163,7 @@
     <message>
         <location filename="../InstallAppsTab.cpp" line="8"/>
         <source>Expand your software collection.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -221,12 +221,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="90"/>
         <source>Success</source>
-        <translation type="unfinished">成功</translation>
+        <translation>成功</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="90"/>
         <source>This window will no longer be displayed at startup. You can run catos-hello in the terminal to open it again.</source>
-        <translation type="unfinished"></translation>
+        <translation>该窗口不会在启动时再次展示，你可以手动运行</translation>
     </message>
     <message>
         <source>Update Software</source>
@@ -363,12 +363,12 @@
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="23"/>
         <source>Driver Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>驱动安装配置</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="55"/>
         <source>Install and configure drivers</source>
-        <translation type="unfinished"></translation>
+        <translation>驱动安装配置</translation>
     </message>
 </context>
 <context>
@@ -435,17 +435,17 @@
     <message>
         <location filename="../RepoListWindow.cpp" line="211"/>
         <source>Failed to create backup file</source>
-        <translation type="unfinished"></translation>
+        <translation>创建备份文件失败</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="217"/>
         <source>Failed to save configuration file</source>
-        <translation type="unfinished"></translation>
+        <translation>保存配置文件失败</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="223"/>
         <source>Success</source>
-        <translation type="unfinished">成功</translation>
+        <translation>成功</translation>
     </message>
     <message>
         <source>Fail to Create Temp File</source>
