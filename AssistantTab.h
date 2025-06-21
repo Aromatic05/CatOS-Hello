@@ -29,6 +29,9 @@ private slots:
     void onCleanAURButtonClicked();
     void onUninstallButtonClicked();
     void onReinstallButtonClicked();
+    void onUnlockButtonClicked();
+    void onListFailedServicesClicked();
+    void onViewPacmanLogClicked();
 
 private:
     QLabel *assistantLabel;
@@ -47,6 +50,9 @@ private:
     QPushButton *cleanAURButton;
     QPushButton *uninstallAURButton;
     QPushButton *reinstallAURButton;
+    QPushButton *unlockButton;
+    QPushButton *listFailedServicesButton;
+    QPushButton *viewPacmanLogButton;
 };
 
 #endif // ASSISTANTTAB_H

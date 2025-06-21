@@ -20,13 +20,13 @@
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="15"/>
-        <location filename="../AssistantTab.cpp" line="69"/>
+        <location filename="../AssistantTab.cpp" line="78"/>
         <source>Update Native Packages</source>
         <translation>更新软件包</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="16"/>
-        <location filename="../AssistantTab.cpp" line="77"/>
+        <location filename="../AssistantTab.cpp" line="86"/>
         <source>Update Native Packages &amp;&amp; AUR Packages</source>
         <translation>更新软件包和AUR软件</translation>
     </message>
@@ -37,7 +37,7 @@
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="18"/>
-        <location filename="../AssistantTab.cpp" line="114"/>
+        <location filename="../AssistantTab.cpp" line="122"/>
         <source>Clean up all local packages caches</source>
         <translation>清除所有软件包缓存</translation>
     </message>
@@ -48,24 +48,42 @@
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="20"/>
-        <location filename="../AssistantTab.cpp" line="130"/>
+        <location filename="../AssistantTab.cpp" line="138"/>
         <source>Clean up all local packages and AUR caches</source>
         <translation>清除所有软件包和AUR缓存</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="21"/>
-        <location filename="../AssistantTab.cpp" line="138"/>
+        <location filename="../AssistantTab.cpp" line="146"/>
         <source>Uninstall unused packages</source>
         <translation>卸载无用软件包</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="22"/>
-        <location filename="../AssistantTab.cpp" line="146"/>
+        <location filename="../AssistantTab.cpp" line="154"/>
         <source>Reinstall all packages</source>
         <translation>重新安装所有包</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="122"/>
+        <location filename="../AssistantTab.cpp" line="23"/>
+        <location filename="../AssistantTab.cpp" line="163"/>
+        <source>Unlock pacman database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AssistantTab.cpp" line="24"/>
+        <location filename="../AssistantTab.cpp" line="172"/>
+        <source>List failed systemd services</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AssistantTab.cpp" line="25"/>
+        <location filename="../AssistantTab.cpp" line="181"/>
+        <source>View pacman log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AssistantTab.cpp" line="130"/>
         <source>Clean local packages caches, except for the most recent three</source>
         <translation>清除软件包缓存, 保留最近3个版本</translation>
     </message>
@@ -326,99 +344,109 @@
 <context>
     <name>RepoListWindow</name>
     <message>
-        <location filename="../RepoListWindow.cpp" line="31"/>
-        <location filename="../RepoListWindow.cpp" line="242"/>
+        <location filename="../RepoListWindow.cpp" line="33"/>
+        <location filename="../RepoListWindow.cpp" line="267"/>
         <source>Add Repo</source>
         <translation>添加仓库</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="32"/>
+        <location filename="../RepoListWindow.cpp" line="34"/>
         <source>Delete Repo</source>
         <translation>删除仓库</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="33"/>
+        <location filename="../RepoListWindow.cpp" line="35"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="47"/>
+        <location filename="../RepoListWindow.cpp" line="49"/>
         <source>Repo Name:</source>
         <translation>仓库名称：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="48"/>
+        <location filename="../RepoListWindow.cpp" line="50"/>
         <source>Include Path:</source>
         <translation>Include路径：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="49"/>
+        <location filename="../RepoListWindow.cpp" line="51"/>
         <source>Mirror Server:</source>
         <translation>镜像服务器：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="50"/>
+        <location filename="../RepoListWindow.cpp" line="52"/>
         <source>SigLevel:</source>
         <translation>签名等级：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="75"/>
-        <location filename="../RepoListWindow.cpp" line="164"/>
-        <location filename="../RepoListWindow.cpp" line="201"/>
-        <location filename="../RepoListWindow.cpp" line="246"/>
+        <location filename="../RepoListWindow.cpp" line="77"/>
+        <location filename="../RepoListWindow.cpp" line="211"/>
+        <location filename="../RepoListWindow.cpp" line="217"/>
+        <location filename="../RepoListWindow.cpp" line="271"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="75"/>
+        <location filename="../RepoListWindow.cpp" line="77"/>
         <source>Fail to open configuration file</source>
         <translation>加载配置文件失败</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="158"/>
-        <location filename="../RepoListWindow.cpp" line="264"/>
+        <location filename="../RepoListWindow.cpp" line="205"/>
         <source>Note</source>
         <translation>注意</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="158"/>
+        <location filename="../RepoListWindow.cpp" line="205"/>
         <source>No Change to Save</source>
         <translation>没有需要保存的更改</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="164"/>
+        <location filename="../RepoListWindow.cpp" line="211"/>
+        <source>Failed to create backup file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="217"/>
+        <source>Failed to save configuration file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="223"/>
+        <source>Success</source>
+        <translation type="unfinished">成功</translation>
+    </message>
+    <message>
         <source>Fail to Create Temp File</source>
-        <translation>创建临时文件失败</translation>
+        <translation type="vanished">创建临时文件失败</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="199"/>
         <source>Sucess</source>
-        <translation>成功</translation>
+        <translation type="vanished">成功</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="199"/>
+        <location filename="../RepoListWindow.cpp" line="223"/>
         <source>Configuration has been updated</source>
         <translation>配置文件已更新</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="201"/>
         <source>Fail to save:</source>
-        <translation>保存失败：</translation>
+        <translation type="vanished">保存失败：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="242"/>
+        <location filename="../RepoListWindow.cpp" line="267"/>
         <source>Enter the Repo name:</source>
         <translation>输入仓库名称：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="246"/>
+        <location filename="../RepoListWindow.cpp" line="271"/>
         <source>Repo name contains invalid chars</source>
         <translation>仓库名称含有非法字符</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="264"/>
         <source>Repo has been changed, please save the change.</source>
-        <translation>仓库已删除，请保存更改.</translation>
+        <translation type="vanished">仓库已删除，请保存更改.</translation>
     </message>
 </context>
 <context>

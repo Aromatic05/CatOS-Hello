@@ -34,6 +34,9 @@ private:
     void loadConfig();                   // 加载配置文件
     bool hasChanges() const;             // 检查是否有未保存的修改
     void saveConfig();                   // 保存配置文件
+    bool backupConfigFile();
+    bool writeConfigFile();
+    void updateWindowTitle();            // 更新窗口标题
 
     // UI 控件
     QListWidget *repoList{};
@@ -46,6 +49,7 @@ private:
     QList<Repo> repos;                   // 当前仓库列表
     QList<Repo> origRepos;               // 原始仓库列表
     QStringList nonRepoLines;            // 非仓库段配置内容
+    QString baseWindowTitle;             // 基础窗口标题
 
 private slots:
     void onRepoSelected(int row);        // 仓库选择事件

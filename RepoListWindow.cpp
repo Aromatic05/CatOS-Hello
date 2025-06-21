@@ -18,6 +18,8 @@
 RepoListWindow::RepoListWindow(QWidget *parent) : QDialog(parent) {
     setupUI();
     loadConfig();
+    baseWindowTitle = windowTitle(); // 保存基础标题
+    updateWindowTitle();
 }
 
 void RepoListWindow::setupUI() {
@@ -86,54 +88,64 @@ void RepoListWindow::loadConfig() {
 
     Repo currentRepo;
     bool inRepoSection = false;
-    QString currentSection;
 
-    for (int i = 0; i < originalFileLines.size(); ++i) {
-        QString line = originalFileLines[i];
+    auto saveCurrentRepo = [&]() {
+        if (inRepoSection && !currentRepo.name.isEmpty()) {
+            currentRepo.servers = currentRepo.origServers; // 同步服务器列表
+            origRepos.append(currentRepo);
+        }
+    };
+
+    for (const QString &line : originalFileLines) {
         QString trimmed = line.trimmed();
 
-        if (trimmed.startsWith('[')) {
-            if (inRepoSection) {
-                // 保存上一个仓库的原始数据
-                origRepos.append(currentRepo);
-                currentRepo = Repo();
-            }
+        if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
+            saveCurrentRepo(); // 保存上一个仓库
 
-            currentSection = trimmed.mid(1, trimmed.indexOf(']') - 1);
-            if (currentSection != "options") {
-                currentRepo.origName = currentSection;
-                currentRepo.name = currentSection;
-                inRepoSection = true;
-                continue; // 关键修改：跳过仓库起始行，不加入 nonRepoLines
+            QString sectionName = trimmed.mid(1, trimmed.length() - 2);
+            if (sectionName == "options") {
+                inRepoSection = false;
+                nonRepoLines.append(line);
             } else {
-                nonRepoLines.append(line); // [options] 段保留
+                inRepoSection = true;
+                currentRepo = Repo(); // 开始新的仓库
+                currentRepo.name = sectionName;
+                currentRepo.origName = sectionName;
             }
         } else if (inRepoSection) {
-            // 解析仓库配置字段
-            if (trimmed.startsWith("Include")) {
-                currentRepo.origInclude = trimmed.section('=', 1).trimmed();
-                currentRepo.include = currentRepo.origInclude;
-            } else if (trimmed.startsWith("Server")) {
+            if (trimmed.isEmpty() || trimmed.startsWith('#')) {
+                continue; // 跳过仓库块内的空行和注释
+            }
+
+            if (trimmed.contains('=')) {
+                QString key = trimmed.section('=', 0, 0).trimmed();
                 QString value = trimmed.section('=', 1).trimmed();
-                currentRepo.origServers.append(value);
-                currentRepo.servers = currentRepo.origServers;  // 同步数据
-            } else if (trimmed.startsWith("SigLevel")) {
-                currentRepo.origSigLevel = trimmed.section('=', 1).trimmed();
-                currentRepo.sigLevel = currentRepo.origSigLevel;
+
+                if (key == "Include") {
+                    currentRepo.include = value;
+                    currentRepo.origInclude = value;
+                } else if (key == "Server") {
+                    currentRepo.origServers.append(value);
+                } else if (key == "SigLevel") {
+                    currentRepo.sigLevel = value;
+                    currentRepo.origSigLevel = value;
+                }
             }
         } else {
-            nonRepoLines.append(line); // 非仓库内容保留
+            nonRepoLines.append(line);
         }
     }
 
-    if (inRepoSection) origRepos.append(currentRepo);
-    repos = origRepos;
+    saveCurrentRepo(); // 保存文件中的最后一个仓库
 
-    // 更新仓库列表显示
+    repos = origRepos; // 初始时，工作副本与原始副本相同
+
+    // 更新UI列表
     repoList->clear();
     for (const Repo &repo : repos) {
         repoList->addItem(repo.name);
     }
+    updateWindowTitle(); // 更新标题
 }
 
 bool RepoListWindow::hasChanges() const {
@@ -153,22 +165,24 @@ bool RepoListWindow::hasChanges() const {
     return false;
 }
 
-void RepoListWindow::saveConfig() {
-    if (!hasChanges()) {
-        QMessageBox::information(this, tr("Note"), tr("No Change to Save"));
-        return;
+bool RepoListWindow::backupConfigFile() {
+    QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss");
+    QString backupFile = QString("/etc/pacman.conf.bak_%1").arg(timestamp);
+
+    QProcess process;
+    process.start("pkexec", {"cp", "/etc/pacman.conf", backupFile});
+    return process.waitForFinished() && process.exitCode() == 0;
+}
+
+bool RepoListWindow::writeConfigFile() {
+    QFile file("/etc/pacman.conf");
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        return false;
     }
 
-    QTemporaryFile tempFile;
-    if (!tempFile.open()) {
-        QMessageBox::critical(this, tr("Error"), tr("Fail to Create Temp File"));
-        return;
-    }
-
-    QTextStream out(&tempFile);
+    QTextStream out(&file);
     out << nonRepoLines.join('\n') << '\n'; // 写入非仓库段
 
-    // 完全重新生成所有仓库配置
     for (const Repo &repo : repos) {
         out << "[" << repo.name << "]\n";
         if (!repo.sigLevel.isEmpty())
@@ -176,30 +190,37 @@ void RepoListWindow::saveConfig() {
         if (!repo.include.isEmpty())
             out << "Include = " << repo.include << '\n';
 
-        // 强制遍历 servers 列表
         for (const QString &server : repo.servers) {
             out << "Server = " << server << '\n';
         }
-        out << '\n';  // 段间分隔
+        out << '\n'; // 段间分隔
     }
 
-    tempFile.close();
+    file.close();
+    return true;
+}
 
-    QProcess process;
-    QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss");
-    QString backupFile = QString("/etc/pacman.conf.bak_%1").arg(timestamp);
-
-    process.start("pkexec", {"sh", "-c",
-                             QString("cp -f /etc/pacman.conf %1 && mv %2 /etc/pacman.conf")
-                                 .arg(backupFile)
-                                 .arg(tempFile.fileName())});
-
-    if (process.waitForFinished() && process.exitCode() == 0) {
-        origRepos = repos;
-        QMessageBox::information(this, tr("Sucess"), tr("Configuration has been updated"));
-    } else {
-        QMessageBox::critical(this, tr("Error"), tr("Fail to save:") + process.errorString());
+void RepoListWindow::saveConfig() {
+    if (!hasChanges()) {
+        QMessageBox::information(this, tr("Note"), tr("No Change to Save"));
+        return;
     }
+
+    // 创建备份文件
+    if (!backupConfigFile()) {
+        QMessageBox::critical(this, tr("Error"), tr("Failed to create backup file"));
+        return;
+    }
+
+    // 保存新配置
+    if (!writeConfigFile()) {
+        QMessageBox::critical(this, tr("Error"), tr("Failed to save configuration file"));
+        return;
+    }
+
+    origRepos = repos; // 更新原始数据
+    updateWindowTitle(); // 更新标题
+    QMessageBox::information(this, tr("Success"), tr("Configuration has been updated"));
 }
 
 void RepoListWindow::onRepoSelected(int row) {
@@ -220,21 +241,25 @@ void RepoListWindow::onRepoNameEdited(const QString &text) {
 
     repos[row].name = text;
     repoList->item(row)->setText(text);
+    updateWindowTitle();
 }
 
 void RepoListWindow::onIncludeEdited(const QString &text) {
     int row = repoList->currentRow();
     if (row >= 0) repos[row].include = text;
+    updateWindowTitle();
 }
 
 void RepoListWindow::onServersEdited() {
     int row = repoList->currentRow();
     if (row >= 0) repos[row].servers = serversEdit->toPlainText().split('\n', Qt::SkipEmptyParts);
+    updateWindowTitle();
 }
 
 void RepoListWindow::onSigLevelChanged(int index) {
     int row = repoList->currentRow();
     if (row >= 0) repos[row].sigLevel = sigLevelCombo->itemText(index);
+    updateWindowTitle();
 }
 
 void RepoListWindow::addRepo() {
@@ -253,6 +278,7 @@ void RepoListWindow::addRepo() {
     repos.append(newRepo);
     repoList->addItem(name);
     repoList->setCurrentRow(repos.size() - 1);
+    updateWindowTitle();
 }
 
 void RepoListWindow::deleteRepo() {
@@ -261,5 +287,13 @@ void RepoListWindow::deleteRepo() {
 
     repos.removeAt(row);
     delete repoList->takeItem(row);
-    QMessageBox::information(this, tr("Note"), tr("Repo has been changed, please save the change."));
+    updateWindowTitle();
+}
+
+void RepoListWindow::updateWindowTitle() {
+    if (hasChanges()) {
+        setWindowTitle(baseWindowTitle + " *");
+    } else {
+        setWindowTitle(baseWindowTitle);
+    }
 }

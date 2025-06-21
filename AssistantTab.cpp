@@ -20,6 +20,9 @@ AssistantTab::AssistantTab(QWidget *parent)
     cleanAURButton = new QPushButton(tr("Clean up all local packages and AUR caches"));
     uninstallButton = new QPushButton(tr("Uninstall unused packages"));
     reinstallButton = new QPushButton(tr("Reinstall all packages"));
+    unlockButton = new QPushButton(tr("Unlock pacman database"));
+    listFailedServicesButton = new QPushButton(tr("List failed systemd services"));
+    viewPacmanLogButton = new QPushButton(tr("View pacman log"));
 
     // 连接信号和槽
     connect(mirrorButton, SIGNAL(clicked()), this, SLOT(onMirrorButtonClicked()));
@@ -32,6 +35,9 @@ AssistantTab::AssistantTab(QWidget *parent)
     connect(cleanAURButton, SIGNAL(clicked()), this, SLOT(onCleanAURButtonClicked()));
     connect(uninstallButton, SIGNAL(clicked()), this, SLOT(onUninstallButtonClicked()));
     connect(reinstallButton, SIGNAL(clicked()), this, SLOT(onReinstallButtonClicked()));
+    connect(unlockButton, SIGNAL(clicked()), this, SLOT(onUnlockButtonClicked()));
+    connect(listFailedServicesButton, SIGNAL(clicked()), this, SLOT(onListFailedServicesClicked()));
+    connect(viewPacmanLogButton, SIGNAL(clicked()), this, SLOT(onViewPacmanLogClicked()));
 
     // 添加控件到布局
     gridLayout->addWidget(mirrorButton, 0, 0);
@@ -44,6 +50,9 @@ AssistantTab::AssistantTab(QWidget *parent)
     gridLayout->addWidget(uninstallButton, 3, 1);
     gridLayout->addWidget(reinstallButton, 4, 0);
     gridLayout->addWidget(resetButton, 4, 1);
+    gridLayout->addWidget(unlockButton, 5, 0);
+    gridLayout->addWidget(listFailedServicesButton, 5, 1);
+    gridLayout->addWidget(viewPacmanLogButton, 6, 0);
     layout->addWidget(assistantLabel, 0);
     layout->addLayout(gridLayout);
     layout->addWidget(new QLabel("", this)); // 空白标签
@@ -97,7 +106,6 @@ void AssistantTab::onResetButtonClicked() {
     stream << "sudo rm -rf /etc/pacman.d/gnupg\n";
     stream << "sudo pacman-key --init\n";
     stream << "sudo pacman-key --populate archlinux\n";
-    stream << "sudo pacman-key --refresh-keys\n";
     stream << "echo 'Keyring reset completed.'\n";
     stream.flush();
     scriptFile.close();
@@ -144,6 +152,33 @@ void AssistantTab::onUninstallButtonClicked() {
 void AssistantTab::onReinstallButtonClicked() {
     QString command = "pacman -Qqn | sudo pacman --overwrite=* -S -";
     QString prompt = tr("Reinstall all packages");
+    QStringList args;
+    args << "--prompt" << prompt << command;
+    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+}
+
+void AssistantTab::onUnlockButtonClicked()
+{
+    QString command = "sudo rm /var/lib/pacman/db.lck";
+    QString prompt = tr("Unlock pacman database");
+    QStringList args;
+    args << "--prompt" << prompt << command;
+    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+}
+
+void AssistantTab::onListFailedServicesClicked()
+{
+    QString command = "systemctl --failed";
+    QString prompt = tr("List failed systemd services");
+    QStringList args;
+    args << "--prompt" << prompt << command;
+    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+}
+
+void AssistantTab::onViewPacmanLogClicked()
+{
+    QString command = "less /var/log/pacman.log";
+    QString prompt = tr("View pacman log");
     QStringList args;
     args << "--prompt" << prompt << command;
     QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
