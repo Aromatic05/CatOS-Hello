@@ -14,9 +14,7 @@ PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
     gridLayout = new QGridLayout;
     pacmanButton = new QPushButton(tr("Correspondence between package managers"), this);
     logButton = new QPushButton(tr("Troubleshooting Log"), this);
-    nvidiaButton = new QPushButton(tr("Nvidia Driver Installer"), this);
     mirrorButton = new QPushButton(tr("Modify Mirror List"), this);
-    chooseButton = new QPushButton(tr("Choose CatOS Wallpaper"), this);
     updateAURButton = new QPushButton(tr("Update Native & AUR Packages"), this);
     packageCleanButton = new QPushButton(tr("Enable Automatic Package Cache Cleanup"), this);
     updateButton = new QPushButton(tr("Update Native Packages"), this);
@@ -28,13 +26,11 @@ PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
     // 添加控件到布局
     gridLayout->addWidget(mirrorButton, 0, 0);
     gridLayout->addWidget(pacmanButton, 0, 1);
-    gridLayout->addWidget(chooseButton, 1, 0);
     gridLayout->addWidget(updateButton, 1, 1);
     gridLayout->addWidget(updateAURButton, 2, 0);
     gridLayout->addWidget(packageCleanButton, 2, 1);
+    gridLayout->addWidget(driverConfigButton, 3, 0);
     gridLayout->addWidget(logButton, 3, 1);
-    gridLayout->addWidget(nvidiaButton, 3, 0);
-    gridLayout->addWidget(driverConfigButton, 4, 0);
 
     layout->addWidget(postInstallGuideLabel, 0);
     layout->addLayout(gridLayout);
@@ -55,5 +51,5 @@ void PostInstallGuideTab::onDriverConfigButtonClicked()
     QString prompt = tr("Install and configure drivers");
     QStringList args;
     args << "--prompt" << prompt << command;
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }

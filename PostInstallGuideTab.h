@@ -20,7 +20,6 @@ private:
     QGridLayout *gridLayout;
     QPushButton *pacmanButton;
     QPushButton *logButton;
-    QPushButton *nvidiaButton;
     QPushButton *mirrorButton;
     QPushButton *chooseButton;
     QPushButton *updateAURButton;

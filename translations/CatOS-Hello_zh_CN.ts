@@ -103,57 +103,76 @@
 <context>
     <name>GeneralNewsTab</name>
     <message>
-        <location filename="../GeneralNewsTab.cpp" line="13"/>
+        <location filename="../GeneralNewsTab.cpp" line="15"/>
         <source>General News</source>
         <translation>总体</translation>
     </message>
     <message>
-        <location filename="../GeneralNewsTab.cpp" line="18"/>
+        <location filename="../GeneralNewsTab.cpp" line="20"/>
         <source>Visit Website</source>
         <translation>访问官网</translation>
     </message>
     <message>
-        <location filename="../GeneralNewsTab.cpp" line="19"/>
+        <location filename="../GeneralNewsTab.cpp" line="21"/>
         <source>Visit ArchLinux Website</source>
         <translation>访问ArchLinux官网</translation>
     </message>
     <message>
-        <location filename="../GeneralNewsTab.cpp" line="20"/>
+        <location filename="../GeneralNewsTab.cpp" line="22"/>
         <source>Visit ArchLinux Wiki</source>
         <translation>访问Arch Wiki</translation>
     </message>
     <message>
-        <location filename="../GeneralNewsTab.cpp" line="22"/>
+        <location filename="../GeneralNewsTab.cpp" line="24"/>
         <source>Support us on Distrowatch.com</source>
         <translation>在Distrowatch.com支持我们</translation>
     </message>
     <message>
-        <location filename="../GeneralNewsTab.cpp" line="27"/>
+        <location filename="../GeneralNewsTab.cpp" line="31"/>
         <source>Install CatOS</source>
         <translation>安装CatOS</translation>
     </message>
     <message>
-        <location filename="../GeneralNewsTab.cpp" line="28"/>
-        <source>Install CatOS (Online)</source>
-        <translation>安装CatOS(联网)</translation>
+        <location filename="../GeneralNewsTab.cpp" line="32"/>
+        <source>Install CatOS Net Install</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GeneralNewsTab.cpp" line="21"/>
+        <location filename="../GeneralNewsTab.cpp" line="33"/>
+        <source>Get Install Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GeneralNewsTab.cpp" line="180"/>
+        <source>Error</source>
+        <translation type="unfinished">错误</translation>
+    </message>
+    <message>
+        <location filename="../GeneralNewsTab.cpp" line="180"/>
+        <source>Failed to copy calamares logs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Install CatOS (Online)</source>
+        <translation type="vanished">安装CatOS(联网)</translation>
+    </message>
+    <message>
+        <location filename="../GeneralNewsTab.cpp" line="23"/>
         <source>Visit ArchLinuxCN Wiki</source>
         <translation>访问Arch中文Wiki</translation>
     </message>
     <message>
-        <location filename="../GeneralNewsTab.cpp" line="24"/>
+        <location filename="../GeneralNewsTab.cpp" line="26"/>
         <source>Apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="../GeneralNewsTab.cpp" line="25"/>
+        <location filename="../GeneralNewsTab.cpp" line="27"/>
         <source>Modify Mirror List</source>
         <translation>编辑镜像列表</translation>
     </message>
     <message>
-        <location filename="../GeneralNewsTab.cpp" line="26"/>
+        <location filename="../GeneralNewsTab.cpp" line="28"/>
         <source>Modify Repo List</source>
         <translation>编辑仓库列表</translation>
     </message>
@@ -245,72 +264,129 @@
 <context>
     <name>MirrorListWindow</name>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="13"/>
+        <location filename="../MirrorListWindow.cpp" line="14"/>
         <source>Mirror List</source>
         <translation>镜像列表</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="102"/>
-        <location filename="../MirrorListWindow.cpp" line="144"/>
-        <location filename="../MirrorListWindow.cpp" line="166"/>
-        <location filename="../MirrorListWindow.cpp" line="184"/>
-        <location filename="../MirrorListWindow.cpp" line="201"/>
-        <location filename="../MirrorListWindow.cpp" line="226"/>
-        <location filename="../MirrorListWindow.cpp" line="245"/>
+        <location filename="../MirrorListWindow.cpp" line="21"/>
+        <location filename="../MirrorListWindow.cpp" line="122"/>
+        <source>Loading mirror list...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MirrorListWindow.cpp" line="115"/>
+        <source>Failed to load mirror list. Click to retry.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MirrorListWindow.cpp" line="127"/>
+        <location filename="../MirrorListWindow.cpp" line="179"/>
+        <location filename="../MirrorListWindow.cpp" line="211"/>
+        <location filename="../MirrorListWindow.cpp" line="231"/>
         <location filename="../MirrorListWindow.cpp" line="251"/>
+        <location filename="../MirrorListWindow.cpp" line="283"/>
+        <location filename="../MirrorListWindow.cpp" line="300"/>
+        <location filename="../MirrorListWindow.cpp" line="307"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="102"/>
+        <location filename="../MirrorListWindow.cpp" line="127"/>
         <source>Failed to load mirror list: </source>
         <translation>镜像列表加载失败: </translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="123"/>
+        <location filename="../MirrorListWindow.cpp" line="137"/>
+        <source>Missing Tool</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MirrorListWindow.cpp" line="138"/>
+        <source>rate-mirrors is not installed. Please install it first:
+
+sudo pacman -S rate-mirrors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MirrorListWindow.cpp" line="155"/>
         <source>Save to &quot;/etc/pacman.d/mirrorlist&quot;</source>
         <translation>保存到&quot;/etc/pacman.d/mirrorlist&quot;</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="144"/>
-        <location filename="../MirrorListWindow.cpp" line="226"/>
+        <location filename="../MirrorListWindow.cpp" line="179"/>
+        <location filename="../MirrorListWindow.cpp" line="283"/>
         <source>Failed to create temporary file.</source>
         <translation>创建临时文件失败.</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="166"/>
+        <location filename="../MirrorListWindow.cpp" line="194"/>
+        <source>Testing mirror speeds...
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MirrorListWindow.cpp" line="210"/>
+        <source>Error: rate-mirrors command failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MirrorListWindow.cpp" line="211"/>
         <source>rate-mirrors command failed.</source>
         <translation>rate-mirrors运行失败.</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="184"/>
+        <location filename="../MirrorListWindow.cpp" line="213"/>
+        <source>Done! Select the fastest mirrors above.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MirrorListWindow.cpp" line="231"/>
         <source>Failed to start rate-mirrors command.</source>
         <translation>rate-mirrors运行失败.</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="201"/>
-        <source>Failed to find QPlainTextEdit.</source>
-        <translation>QPlainTextEdit没有找到.</translation>
+        <location filename="../MirrorListWindow.cpp" line="251"/>
+        <source>Failed to find mirror text.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="245"/>
+        <location filename="../MirrorListWindow.cpp" line="270"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MirrorListWindow.cpp" line="270"/>
+        <source>No valid mirror servers found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MirrorListWindow.cpp" line="312"/>
+        <source>Mirror list updated successfully with %1 mirrors.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to find QPlainTextEdit.</source>
+        <translation type="vanished">QPlainTextEdit没有找到.</translation>
+    </message>
+    <message>
+        <location filename="../MirrorListWindow.cpp" line="300"/>
         <source>Failed to run pkexec command.</source>
         <translation>pkexec运行失败.</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="251"/>
+        <location filename="../MirrorListWindow.cpp" line="307"/>
         <source>Failed to update mirror list: </source>
         <translation>更新镜像列表失败: </translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="255"/>
+        <location filename="../MirrorListWindow.cpp" line="311"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="255"/>
         <source>Mirror list updated successfully.</source>
-        <translation>镜像列表更新成功.</translation>
+        <translation type="vanished">镜像列表更新成功.</translation>
     </message>
 </context>
 <context>
@@ -332,41 +408,31 @@
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="17"/>
-        <source>Nvidia Driver Installer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../PostInstallGuideTab.cpp" line="18"/>
         <source>Modify Mirror List</source>
         <translation>编辑镜像列表</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="19"/>
-        <source>Choose CatOS Wallpaper</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../PostInstallGuideTab.cpp" line="20"/>
+        <location filename="../PostInstallGuideTab.cpp" line="18"/>
         <source>Update Native &amp; AUR Packages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="21"/>
+        <location filename="../PostInstallGuideTab.cpp" line="19"/>
         <source>Enable Automatic Package Cache Cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="22"/>
+        <location filename="../PostInstallGuideTab.cpp" line="20"/>
         <source>Update Native Packages</source>
         <translation>更新软件包</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="23"/>
+        <location filename="../PostInstallGuideTab.cpp" line="21"/>
         <source>Driver Configuration</source>
         <translation>驱动安装配置</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="55"/>
+        <location filename="../PostInstallGuideTab.cpp" line="51"/>
         <source>Install and configure drivers</source>
         <translation>驱动安装配置</translation>
     </message>
@@ -374,76 +440,105 @@
 <context>
     <name>RepoListWindow</name>
     <message>
-        <location filename="../RepoListWindow.cpp" line="33"/>
-        <location filename="../RepoListWindow.cpp" line="267"/>
+        <location filename="../RepoListWindow.cpp" line="22"/>
+        <source>Repository Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="38"/>
+        <location filename="../RepoListWindow.cpp" line="392"/>
         <source>Add Repo</source>
         <translation>添加仓库</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="34"/>
+        <location filename="../RepoListWindow.cpp" line="39"/>
         <source>Delete Repo</source>
         <translation>删除仓库</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="35"/>
+        <location filename="../RepoListWindow.cpp" line="40"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="49"/>
+        <location filename="../RepoListWindow.cpp" line="54"/>
         <source>Repo Name:</source>
         <translation>仓库名称：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="50"/>
+        <location filename="../RepoListWindow.cpp" line="55"/>
         <source>Include Path:</source>
         <translation>Include路径：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="51"/>
+        <location filename="../RepoListWindow.cpp" line="56"/>
         <source>Mirror Server:</source>
         <translation>镜像服务器：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="52"/>
+        <location filename="../RepoListWindow.cpp" line="57"/>
         <source>SigLevel:</source>
         <translation>签名等级：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="77"/>
-        <location filename="../RepoListWindow.cpp" line="211"/>
-        <location filename="../RepoListWindow.cpp" line="217"/>
-        <location filename="../RepoListWindow.cpp" line="271"/>
+        <location filename="../RepoListWindow.cpp" line="134"/>
+        <location filename="../RepoListWindow.cpp" line="325"/>
+        <location filename="../RepoListWindow.cpp" line="331"/>
+        <location filename="../RepoListWindow.cpp" line="396"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="77"/>
-        <source>Fail to open configuration file</source>
-        <translation>加载配置文件失败</translation>
+        <location filename="../RepoListWindow.cpp" line="135"/>
+        <source>Failed to open configuration file: %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="205"/>
+        <location filename="../RepoListWindow.cpp" line="211"/>
+        <source> (empty)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="348"/>
+        <source>Configuration has been updated. %1 repositories saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="428"/>
+        <source>Unsaved Changes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="429"/>
+        <source>You have unsaved changes. Do you want to save before closing?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fail to open configuration file</source>
+        <translation type="vanished">加载配置文件失败</translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="319"/>
         <source>Note</source>
         <translation>注意</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="205"/>
+        <location filename="../RepoListWindow.cpp" line="319"/>
         <source>No Change to Save</source>
         <translation>没有需要保存的更改</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="211"/>
+        <location filename="../RepoListWindow.cpp" line="325"/>
         <source>Failed to create backup file</source>
         <translation>创建备份文件失败</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="217"/>
+        <location filename="../RepoListWindow.cpp" line="331"/>
         <source>Failed to save configuration file</source>
         <translation>保存配置文件失败</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="223"/>
+        <location filename="../RepoListWindow.cpp" line="347"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
@@ -456,21 +551,20 @@
         <translation type="vanished">成功</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="223"/>
         <source>Configuration has been updated</source>
-        <translation>配置文件已更新</translation>
+        <translation type="vanished">配置文件已更新</translation>
     </message>
     <message>
         <source>Fail to save:</source>
         <translation type="vanished">保存失败：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="267"/>
+        <location filename="../RepoListWindow.cpp" line="392"/>
         <source>Enter the Repo name:</source>
         <translation>输入仓库名称：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="271"/>
+        <location filename="../RepoListWindow.cpp" line="396"/>
         <source>Repo name contains invalid chars</source>
         <translation>仓库名称含有非法字符</translation>
     </message>
