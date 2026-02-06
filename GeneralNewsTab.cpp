@@ -5,10 +5,12 @@
 #include <QPushButton>
 #include <QMessageBox>
 #include <QSettings>
+#include <QFile>
 
 GeneralNewsTab::GeneralNewsTab(QWidget *parent)
     : QWidget(parent)
 {
+    bool inLiveCd = isLiveCd();
     layout = new QVBoxLayout(this);
     generalNewsLabel = new QLabel(tr("General News"), this);
     generalNewsLabel->setSizePolicy(generalNewsLabel->sizePolicy().horizontalPolicy(), QSizePolicy::Fixed);
@@ -24,8 +26,12 @@ GeneralNewsTab::GeneralNewsTab(QWidget *parent)
     applyButton = new QPushButton(tr("Apply"));
     mirrorButton = new QPushButton(tr("Modify Mirror List"));
     repoButton = new QPushButton(tr("Modify Repo List"));
-    installCatOSButton = new QPushButton(tr("Install CatOS"));
-    installCatOSNetButton = new QPushButton(tr("Install CatOS (Online)"));
+
+    if (inLiveCd) {
+        installCatOSButton = new QPushButton(tr("Install CatOS"));
+        installCatOSNetButton = new QPushButton(tr("Install CatOS Net Install"));
+        getLogButton = new QPushButton(tr("Get Install Log"));
+    }
 
     // 加载语言
     loadLanguages();
@@ -39,9 +45,11 @@ GeneralNewsTab::GeneralNewsTab(QWidget *parent)
     connect(mirrorButton, SIGNAL(clicked()), this, SLOT(onMirrorButtonClicked()));
     connect(repoButton, SIGNAL(clicked()), this, SLOT(onRepoButtonClicked()));
     connect(supportButton, SIGNAL(clicked()), this, SLOT(onSupportButtonClicked()));
-    connect(installCatOSButton, SIGNAL(clicked()), this, SLOT(onInstallCatOSButtonClicked()));
-    connect(installCatOSNetButton, SIGNAL(clicked()), this, SLOT(onInstallCatOSNetButtonClicked()));
-
+    if (inLiveCd) {
+        connect(installCatOSButton, SIGNAL(clicked()), this, SLOT(onInstallCatOSButtonClicked()));
+        connect(installCatOSNetButton, SIGNAL(clicked()), this, SLOT(onInstallCatOSNetButtonClicked()));
+        connect(getLogButton, SIGNAL(clicked()), this, SLOT(onGetLogButtonClicked()));
+    }
     // 布局
     gridLayout->addWidget(languageComboBox, 0, 0);
     gridLayout->addWidget(applyButton, 0, 1);
@@ -52,8 +60,11 @@ GeneralNewsTab::GeneralNewsTab(QWidget *parent)
     gridLayout->addWidget(mirrorButton, 3, 0);
     gridLayout->addWidget(repoButton, 3, 1);
     gridLayout->addWidget(supportButton, 4, 0);
-    gridLayout->addWidget(installCatOSButton, 5, 0);
-    gridLayout->addWidget(installCatOSNetButton, 5, 1);
+    if (inLiveCd) {
+        gridLayout->addWidget(installCatOSButton, 5, 0);
+        gridLayout->addWidget(installCatOSNetButton, 5, 1);
+        gridLayout->addWidget(getLogButton, 6, 0);
+    }
 
     layout->addWidget(generalNewsLabel, 0);
     layout->addLayout(gridLayout);
@@ -89,7 +100,10 @@ void GeneralNewsTab::applyLanguageChange(const QString &langCode)
     restartApplication(langCode);
 }
 
-
+bool GeneralNewsTab::isLiveCd() const
+{
+    return QFile::exists("/bin/calamares");
+}
 
 void GeneralNewsTab::restartApplication(const QString &langCode)
 {
@@ -152,4 +166,17 @@ void GeneralNewsTab::onInstallCatOSButtonClicked()
 void GeneralNewsTab::onInstallCatOSNetButtonClicked()
 {
     QProcess::startDetached("calamares_polkit", {"--config", "/usr/share/calamares-advanced"});
+}
+
+void GeneralNewsTab::onGetLogButtonClicked()
+{
+    const QString destDir = QStringLiteral("/tmp/calamares-log");
+    const QString copyCmd = QStringLiteral("rm -rf %1 && cp -r /root/.cache/calamares %1").arg(destDir);
+
+    const int copyExit = QProcess::execute("pkexec", {"bash", "-c", copyCmd});
+    if (copyExit == 0) {
+        QProcess::startDetached("bash", {"-c", QStringLiteral("kate %1/*").arg(destDir)});
+    } else {
+        QMessageBox::critical(this, tr("Error"), tr("Failed to copy calamares logs"));
+    }
 }

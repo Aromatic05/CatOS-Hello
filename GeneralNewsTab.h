@@ -34,11 +34,13 @@ private slots:
     void onRepoButtonClicked();
     void onInstallCatOSButtonClicked();
     void onInstallCatOSNetButtonClicked();
+    void onGetLogButtonClicked();
 
 private:
     void loadLanguages(); // 加载语言和地区
     void applyLanguageChange(const QString &langCode); // 应用语言更改
     void restartApplication(const QString &langCode); // 重启程序
+    bool isLiveCd() const; // 检测Live CD环境
 
     QLabel *generalNewsLabel;
     QVBoxLayout *layout;
@@ -54,6 +56,7 @@ private:
     QPushButton *repoButton;
     QPushButton *installCatOSButton;
     QPushButton *installCatOSNetButton;
+    QPushButton *getLogButton;
 
     MirrorListWindow *mirrorWindow{};
     RepoListWindow *repoWindow{};

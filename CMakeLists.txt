@@ -41,7 +41,7 @@ set(TS_FILES
 
 # 添加 lupdate 作为构建前的目标
 add_custom_target(update_translations
-    COMMAND /usr/lib/qt6/bin/lupdate ${PROJECT_SOURCES} -ts ${TS_FILES}
+    COMMAND lupdate ${PROJECT_SOURCES} -ts ${TS_FILES}
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 
