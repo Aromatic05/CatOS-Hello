@@ -16,11 +16,15 @@ struct Repo {
     QString include;        // 当前 Include 路径
     QStringList servers;    // 当前镜像服务器列表
     QString sigLevel;       // 当前签名验证级别
+    QStringList comments;   // 仓库块内的注释行
+    QMap<QString, QString> extraOptions; // 其他选项（Usage, Architecture 等）
 
     QString origName;       // 原始仓库名称
     QString origInclude;   // 原始 Include 路径
     QStringList origServers; // 原始镜像服务器列表
     QString origSigLevel;  // 原始签名验证级别
+    QStringList origComments; // 原始注释行
+    QMap<QString, QString> origExtraOptions; // 原始其他选项
 };
 
 class RepoListWindow : public QDialog {
@@ -28,6 +32,9 @@ class RepoListWindow : public QDialog {
 
 public:
     explicit RepoListWindow(QWidget *parent = nullptr);
+
+protected:
+    void closeEvent(QCloseEvent *event) override; // 关闭事件处理
 
 private:
     void setupUI();                      // 初始化 UI
@@ -37,6 +44,10 @@ private:
     bool backupConfigFile();
     bool writeConfigFile();
     void updateWindowTitle();            // 更新窗口标题
+    
+    // 辅助解析函数
+    bool parseKeyValue(const QString &line, QString &key, QString &value);
+    void parseRepoLine(Repo &repo, const QString &line);
 
     // UI 控件
     QListWidget *repoList{};

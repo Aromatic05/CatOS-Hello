@@ -14,8 +14,13 @@
 #include <QPushButton>
 #include <QInputDialog>
 #include <QDateTime>
+#include <QCloseEvent>
+#include <QDebug>
+#include <QRegularExpression>
 
 RepoListWindow::RepoListWindow(QWidget *parent) : QDialog(parent) {
+    setWindowTitle(tr("Repository Configuration"));
+    resize(800, 500);
     setupUI();
     loadConfig();
     baseWindowTitle = windowTitle(); // 保存基础标题
@@ -29,7 +34,7 @@ void RepoListWindow::setupUI() {
     includeEdit = new QLineEdit(this);
     serversEdit = new QPlainTextEdit(this);
     sigLevelCombo = new QComboBox(this);
-    sigLevelCombo->addItems({"Never", "Optional", "Required"});
+    sigLevelCombo->addItems({"Never", "Optional", "Required", "Optional TrustAll", "Required TrustedOnly", "Optional TrustedOnly"});
     QPushButton *addRepoBtn = new QPushButton(tr("Add Repo"), this);
     QPushButton *deleteRepoBtn = new QPushButton(tr("Delete Repo"), this);
     QPushButton *saveBtn = new QPushButton(tr("Save"), this);
@@ -71,10 +76,63 @@ void RepoListWindow::setupUI() {
     connect(saveBtn, &QPushButton::clicked, this, &RepoListWindow::saveConfig);
 }
 
+bool RepoListWindow::parseKeyValue(const QString &line, QString &key, QString &value) {
+    // 使用正则表达式更健壮地解析键值对
+    static QRegularExpression keyValueRegex(R"(^\s*([A-Za-z][A-Za-z0-9]*)\s*=\s*(.*)$)");
+    QRegularExpressionMatch match = keyValueRegex.match(line);
+    
+    if (match.hasMatch()) {
+        key = match.captured(1).trimmed();
+        value = match.captured(2).trimmed();
+        return true;
+    }
+    return false;
+}
+
+void RepoListWindow::parseRepoLine(Repo &repo, const QString &line) {
+    QString trimmed = line.trimmed();
+    
+    // 保留注释
+    if (trimmed.startsWith('#')) {
+        repo.origComments.append(line);
+        repo.comments = repo.origComments;
+        return;
+    }
+    
+    // 跳过空行
+    if (trimmed.isEmpty()) {
+        return;
+    }
+    
+    QString key, value;
+    if (!parseKeyValue(line, key, value)) {
+        qWarning() << "Failed to parse line in repo" << repo.name << ":" << line;
+        return;
+    }
+    
+    // 解析已知的键
+    if (key == "Include") {
+        repo.include = value;
+        repo.origInclude = value;
+    } else if (key == "Server") {
+        repo.origServers.append(value);
+        repo.servers = repo.origServers;
+    } else if (key == "SigLevel") {
+        repo.sigLevel = value;
+        repo.origSigLevel = value;
+    } else {
+        // 保存未知的选项
+        repo.extraOptions[key] = value;
+        repo.origExtraOptions[key] = value;
+        qDebug() << "Unknown repo option:" << key << "=" << value;
+    }
+}
+
 void RepoListWindow::loadConfig() {
     QFile file("/etc/pacman.conf");
-    if (!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::critical(this, tr("Error"), tr("Fail to open configuration file"));
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QMessageBox::critical(this, tr("Error"), 
+            tr("Failed to open configuration file: %1").arg(file.errorString()));
         return;
     }
 
@@ -88,64 +146,75 @@ void RepoListWindow::loadConfig() {
 
     Repo currentRepo;
     bool inRepoSection = false;
+    int lineNumber = 0;
+    QStringList parseErrors;
 
+    // Lambda 保存当前仓库
     auto saveCurrentRepo = [&]() {
         if (inRepoSection && !currentRepo.name.isEmpty()) {
-            currentRepo.servers = currentRepo.origServers; // 同步服务器列表
+            // 同步工作副本
+            currentRepo.servers = currentRepo.origServers;
+            currentRepo.comments = currentRepo.origComments;
+            currentRepo.extraOptions = currentRepo.origExtraOptions;
             origRepos.append(currentRepo);
+            qDebug() << "Loaded repo:" << currentRepo.name 
+                     << "with" << currentRepo.origServers.size() << "servers";
         }
     };
 
+    // 解析每一行
     for (const QString &line : originalFileLines) {
+        lineNumber++;
         QString trimmed = line.trimmed();
 
-        if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
+        // 检测段标记 [section]
+        static QRegularExpression sectionRegex(R"(^\[([^\]]+)\]$)");
+        QRegularExpressionMatch sectionMatch = sectionRegex.match(trimmed);
+        
+        if (sectionMatch.hasMatch()) {
             saveCurrentRepo(); // 保存上一个仓库
 
-            QString sectionName = trimmed.mid(1, trimmed.length() - 2);
+            QString sectionName = sectionMatch.captured(1).trimmed();
+            
             if (sectionName == "options") {
+                // options 段不是仓库
                 inRepoSection = false;
                 nonRepoLines.append(line);
             } else {
+                // 开始新的仓库段
                 inRepoSection = true;
-                currentRepo = Repo(); // 开始新的仓库
+                currentRepo = Repo();
                 currentRepo.name = sectionName;
                 currentRepo.origName = sectionName;
+                qDebug() << "Found repo section:" << sectionName << "at line" << lineNumber;
             }
         } else if (inRepoSection) {
-            if (trimmed.isEmpty() || trimmed.startsWith('#')) {
-                continue; // 跳过仓库块内的空行和注释
-            }
-
-            if (trimmed.contains('=')) {
-                QString key = trimmed.section('=', 0, 0).trimmed();
-                QString value = trimmed.section('=', 1).trimmed();
-
-                if (key == "Include") {
-                    currentRepo.include = value;
-                    currentRepo.origInclude = value;
-                } else if (key == "Server") {
-                    currentRepo.origServers.append(value);
-                } else if (key == "SigLevel") {
-                    currentRepo.sigLevel = value;
-                    currentRepo.origSigLevel = value;
-                }
-            }
+            // 在仓库段内，解析配置行
+            parseRepoLine(currentRepo, line);
         } else {
+            // 非仓库段的内容
             nonRepoLines.append(line);
         }
     }
 
-    saveCurrentRepo(); // 保存文件中的最后一个仓库
+    // 保存最后一个仓库
+    saveCurrentRepo();
 
-    repos = origRepos; // 初始时，工作副本与原始副本相同
+    // 初始化工作副本
+    repos = origRepos;
 
-    // 更新UI列表
+    // 更新UI
     repoList->clear();
     for (const Repo &repo : repos) {
-        repoList->addItem(repo.name);
+        QString displayName = repo.name;
+        if (repo.servers.isEmpty() && repo.include.isEmpty()) {
+            displayName += tr(" (empty)");
+        }
+        repoList->addItem(displayName);
     }
-    updateWindowTitle(); // 更新标题
+    
+    qDebug() << "Loaded" << repos.size() << "repositories";
+    updateWindowTitle();
 }
 
 bool RepoListWindow::hasChanges() const {
@@ -158,7 +227,9 @@ bool RepoListWindow::hasChanges() const {
         if (curr.name != orig.origName ||
             curr.include != orig.origInclude ||
             curr.servers != orig.origServers ||
-            curr.sigLevel != orig.origSigLevel) {
+            curr.sigLevel != orig.origSigLevel ||
+            curr.comments != orig.origComments ||
+            curr.extraOptions != orig.origExtraOptions) {
             return true;
         }
     }
@@ -171,32 +242,75 @@ bool RepoListWindow::backupConfigFile() {
 
     QProcess process;
     process.start("pkexec", {"cp", "/etc/pacman.conf", backupFile});
-    return process.waitForFinished() && process.exitCode() == 0;
+    bool success = process.waitForFinished() && process.exitCode() == 0;
+    
+    if (success) {
+        qDebug() << "Backup created:" << backupFile;
+    }
+    
+    return success;
 }
 
 bool RepoListWindow::writeConfigFile() {
-    QFile file("/etc/pacman.conf");
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    // 先写入临时文件
+    QString tempFilePath = "/tmp/pacman.conf.tmp";
+    QFile tempFile(tempFilePath);
+    if (!tempFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qWarning() << "Failed to open temp file:" << tempFile.errorString();
         return false;
     }
 
-    QTextStream out(&file);
-    out << nonRepoLines.join('\n') << '\n'; // 写入非仓库段
+    QTextStream out(&tempFile);
+    
+    // 写入非仓库段
+    out << nonRepoLines.join('\n') << '\n';
 
+    // 写入每个仓库
     for (const Repo &repo : repos) {
+        // 仓库段标记
         out << "[" << repo.name << "]\n";
-        if (!repo.sigLevel.isEmpty())
+        
+        // 写入注释（如果有）
+        if (!repo.comments.isEmpty()) {
+            for (const QString &comment : repo.comments) {
+                out << comment << '\n';
+            }
+        }
+        
+        // 写入签名级别
+        if (!repo.sigLevel.isEmpty()) {
             out << "SigLevel = " << repo.sigLevel << '\n';
-        if (!repo.include.isEmpty())
+        }
+        
+        // 写入 Include 路径
+        if (!repo.include.isEmpty()) {
             out << "Include = " << repo.include << '\n';
+        }
+        
+        // 写入额外选项
+        for (auto it = repo.extraOptions.constBegin(); it != repo.extraOptions.constEnd(); ++it) {
+            out << it.key() << " = " << it.value() << '\n';
+        }
 
+        // 写入服务器列表
         for (const QString &server : repo.servers) {
             out << "Server = " << server << '\n';
         }
+        
         out << '\n'; // 段间分隔
     }
 
-    file.close();
+    tempFile.close();
+
+    // 使用 pkexec 复制到系统位置
+    QProcess process;
+    process.start("pkexec", {"cp", tempFilePath, "/etc/pacman.conf"});
+    if (!process.waitForFinished() || process.exitCode() != 0) {
+        qWarning() << "Failed to copy config file:" << process.errorString();
+        return false;
+    }
+
+    qDebug() << "Configuration saved successfully";
     return true;
 }
 
@@ -218,9 +332,20 @@ void RepoListWindow::saveConfig() {
         return;
     }
 
-    origRepos = repos; // 更新原始数据
+    // 更新原始数据：同步所有 orig* 字段
+    for (int i = 0; i < repos.size(); ++i) {
+        repos[i].origName = repos[i].name;
+        repos[i].origInclude = repos[i].include;
+        repos[i].origServers = repos[i].servers;
+        repos[i].origSigLevel = repos[i].sigLevel;
+        repos[i].origComments = repos[i].comments;
+        repos[i].origExtraOptions = repos[i].extraOptions;
+    }
+    origRepos = repos;
+    
     updateWindowTitle(); // 更新标题
-    QMessageBox::information(this, tr("Success"), tr("Configuration has been updated"));
+    QMessageBox::information(this, tr("Success"), 
+        tr("Configuration has been updated. %1 repositories saved.").arg(repos.size()));
 }
 
 void RepoListWindow::onRepoSelected(int row) {
@@ -295,5 +420,29 @@ void RepoListWindow::updateWindowTitle() {
         setWindowTitle(baseWindowTitle + " *");
     } else {
         setWindowTitle(baseWindowTitle);
+    }
+}
+void RepoListWindow::closeEvent(QCloseEvent *event) {
+    if (hasChanges()) {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, tr("Unsaved Changes"),
+                                       tr("You have unsaved changes. Do you want to save before closing?"),
+                                       QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        
+        if (reply == QMessageBox::Save) {
+            saveConfig();
+            if (hasChanges()) {
+                // 保存失败，不关闭
+                event->ignore();
+            } else {
+                event->accept();
+            }
+        } else if (reply == QMessageBox::Discard) {
+            event->accept();
+        } else {
+            event->ignore();
+        }
+    } else {
+        event->accept();
     }
 }
