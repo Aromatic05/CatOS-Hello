@@ -76,5 +76,10 @@ target_sources(CatOS-Hello PRIVATE ${CatOS-Hello_RESOURCES})
 # 链接 Qt 库
 target_link_libraries(CatOS-Hello PRIVATE Qt6::Widgets Qt6::Network)
 
-# 打开详细编译信息
-# set(CMAKE_VERBOSE_MAKEFILE ON)
+# 测试支持
+option(BUILD_TESTS "Build tests" OFF)
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
+

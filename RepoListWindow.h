@@ -33,6 +33,10 @@ class RepoListWindow : public QDialog {
 public:
     explicit RepoListWindow(QWidget *parent = nullptr);
 
+    // 解析辅助函数（静态方法，可在测试中直接调用）
+    static bool parseKeyValue(const QString &line, QString &key, QString &value);
+    static void parseRepoLine(Repo &repo, const QString &line);
+
 protected:
     void closeEvent(QCloseEvent *event) override; // 关闭事件处理
 
@@ -44,10 +48,6 @@ private:
     bool backupConfigFile();
     bool writeConfigFile();
     void updateWindowTitle();            // 更新窗口标题
-    
-    // 辅助解析函数
-    bool parseKeyValue(const QString &line, QString &key, QString &value);
-    void parseRepoLine(Repo &repo, const QString &line);
 
     // UI 控件
     QListWidget *repoList{};
