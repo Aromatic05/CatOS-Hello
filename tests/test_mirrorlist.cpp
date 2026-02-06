@@ -3,7 +3,6 @@
 #include <QSignalSpy>
 #include <QEventLoop>
 #include <QTimer>
-#include "../MirrorListWindow.h"
 
 class TestMirrorListWindow : public QObject
 {
