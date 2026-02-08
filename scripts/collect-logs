@@ -46,8 +46,6 @@ try_cmd() {
 
 log "Creating temporary workspace: $TMPDIR"
 
-mkdir -p "$TMPDIR/var-log"
-
 try_cmd uname.txt uname -a || true
 try_cmd os-release.txt cat /etc/os-release || true
 try_cmd lsb-release.txt lsb_release -a || true
@@ -66,19 +64,10 @@ try_cmd pacman-explicit.txt pacman -Qe || true
 try_cmd pacman-all.txt pacman -Q || true
 try_cmd journalctl.txt journalctl -b --no-pager || true
 
-# Collect /var/log (try without sudo, then with sudo)
-if cp -a /var/log/* "$TMPDIR/var-log/" 2>/dev/null; then
-    log "Copied /var/log/"
-else
-    if command -v sudo >/dev/null 2>&1; then
-        log "Attempting sudo copy of /var/log/"
-        sudo cp -a /var/log/* "$TMPDIR/var-log/" || log "sudo copy /var/log failed"
-    else
-        log "/var/log copy skipped (no sudo)"
-    fi
-fi
+# Do NOT copy entire /var/log (can be very large). Collect only specific small log files if present.
+# Collect pacman log and calamares cache if available (try sudo if needed)
+try_cmd pacman.log cat /var/log/pacman.log || true
 
-# Try to include calamares logs (root cache)
 if [ -d /root/.cache/calamares ]; then
     if cp -r /root/.cache/calamares "$TMPDIR/" 2>/dev/null; then
         log "Copied calamares cache"

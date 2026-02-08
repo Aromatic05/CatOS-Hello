@@ -218,9 +218,8 @@
         <translation>小建议</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="39"/>
         <source>Install More Apps</source>
-        <translation>安装更多应用程序</translation>
+        <translation type="vanished">安装更多应用程序</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="49"/>
@@ -270,98 +269,98 @@
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="21"/>
-        <location filename="../MirrorListWindow.cpp" line="122"/>
+        <location filename="../MirrorListWindow.cpp" line="125"/>
         <source>Loading mirror list...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="115"/>
+        <location filename="../MirrorListWindow.cpp" line="118"/>
         <source>Failed to load mirror list. Click to retry.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="127"/>
-        <location filename="../MirrorListWindow.cpp" line="179"/>
-        <location filename="../MirrorListWindow.cpp" line="211"/>
-        <location filename="../MirrorListWindow.cpp" line="231"/>
-        <location filename="../MirrorListWindow.cpp" line="251"/>
-        <location filename="../MirrorListWindow.cpp" line="283"/>
-        <location filename="../MirrorListWindow.cpp" line="300"/>
-        <location filename="../MirrorListWindow.cpp" line="307"/>
+        <location filename="../MirrorListWindow.cpp" line="130"/>
+        <location filename="../MirrorListWindow.cpp" line="185"/>
+        <location filename="../MirrorListWindow.cpp" line="217"/>
+        <location filename="../MirrorListWindow.cpp" line="238"/>
+        <location filename="../MirrorListWindow.cpp" line="261"/>
+        <location filename="../MirrorListWindow.cpp" line="295"/>
+        <location filename="../MirrorListWindow.cpp" line="313"/>
+        <location filename="../MirrorListWindow.cpp" line="321"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="127"/>
+        <location filename="../MirrorListWindow.cpp" line="130"/>
         <source>Failed to load mirror list: </source>
         <translation>镜像列表加载失败: </translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="137"/>
+        <location filename="../MirrorListWindow.cpp" line="141"/>
         <source>Missing Tool</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="138"/>
+        <location filename="../MirrorListWindow.cpp" line="142"/>
         <source>rate-mirrors is not installed. Please install it first:
 
 sudo pacman -S rate-mirrors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="155"/>
+        <location filename="../MirrorListWindow.cpp" line="159"/>
         <source>Save to &quot;/etc/pacman.d/mirrorlist&quot;</source>
         <translation>保存到&quot;/etc/pacman.d/mirrorlist&quot;</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="179"/>
-        <location filename="../MirrorListWindow.cpp" line="283"/>
+        <location filename="../MirrorListWindow.cpp" line="185"/>
+        <location filename="../MirrorListWindow.cpp" line="295"/>
         <source>Failed to create temporary file.</source>
         <translation>创建临时文件失败.</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="194"/>
+        <location filename="../MirrorListWindow.cpp" line="200"/>
         <source>Testing mirror speeds...
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="210"/>
+        <location filename="../MirrorListWindow.cpp" line="216"/>
         <source>Error: rate-mirrors command failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="211"/>
+        <location filename="../MirrorListWindow.cpp" line="217"/>
         <source>rate-mirrors command failed.</source>
         <translation>rate-mirrors运行失败.</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="213"/>
+        <location filename="../MirrorListWindow.cpp" line="219"/>
         <source>Done! Select the fastest mirrors above.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="231"/>
+        <location filename="../MirrorListWindow.cpp" line="238"/>
         <source>Failed to start rate-mirrors command.</source>
         <translation>rate-mirrors运行失败.</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="251"/>
+        <location filename="../MirrorListWindow.cpp" line="261"/>
         <source>Failed to find mirror text.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="270"/>
+        <location filename="../MirrorListWindow.cpp" line="281"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="270"/>
+        <location filename="../MirrorListWindow.cpp" line="281"/>
         <source>No valid mirror servers found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="312"/>
+        <location filename="../MirrorListWindow.cpp" line="327"/>
         <source>Mirror list updated successfully with %1 mirrors.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -370,17 +369,17 @@ sudo pacman -S rate-mirrors</source>
         <translation type="vanished">QPlainTextEdit没有找到.</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="300"/>
+        <location filename="../MirrorListWindow.cpp" line="313"/>
         <source>Failed to run pkexec command.</source>
         <translation>pkexec运行失败.</translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="307"/>
+        <location filename="../MirrorListWindow.cpp" line="321"/>
         <source>Failed to update mirror list: </source>
         <translation>更新镜像列表失败: </translation>
     </message>
     <message>
-        <location filename="../MirrorListWindow.cpp" line="311"/>
+        <location filename="../MirrorListWindow.cpp" line="326"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
@@ -392,47 +391,139 @@ sudo pacman -S rate-mirrors</source>
 <context>
     <name>PostInstallGuideTab</name>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="12"/>
+        <location filename="../PostInstallGuideTab.cpp" line="15"/>
         <source>You can get help from these manuals.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="16"/>
+        <location filename="../PostInstallGuideTab.cpp" line="19"/>
         <source>Correspondence between package managers</source>
         <translation>各软件包管理器命令对应关系</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="17"/>
+        <location filename="../PostInstallGuideTab.cpp" line="20"/>
         <source>Troubleshooting Log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="18"/>
+        <location filename="../PostInstallGuideTab.cpp" line="21"/>
         <source>Modify Mirror List</source>
         <translation>编辑镜像列表</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="19"/>
+        <location filename="../PostInstallGuideTab.cpp" line="22"/>
+        <location filename="../PostInstallGuideTab.cpp" line="84"/>
+        <source>Collect Logs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="23"/>
+        <location filename="../PostInstallGuideTab.cpp" line="95"/>
+        <source>Vacuum Journal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="24"/>
+        <location filename="../PostInstallGuideTab.cpp" line="123"/>
+        <source>Clear Temporary Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="25"/>
         <source>Update Native &amp; AUR Packages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="20"/>
-        <source>Enable Automatic Package Cache Cleanup</source>
+        <location filename="../PostInstallGuideTab.cpp" line="77"/>
+        <location filename="../PostInstallGuideTab.cpp" line="86"/>
+        <location filename="../PostInstallGuideTab.cpp" line="104"/>
+        <location filename="../PostInstallGuideTab.cpp" line="114"/>
+        <source>Error</source>
+        <translation type="unfinished">错误</translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="77"/>
+        <source>collect-logs not found at /usr/bin/collect-logs.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="21"/>
+        <location filename="../PostInstallGuideTab.cpp" line="84"/>
+        <source>collect-logs started. It will place an archive on your Desktop when finished.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="86"/>
+        <source>Failed to start collect-logs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="95"/>
+        <source>Enter vacuum time (e.g. 2weeks, 30days):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="104"/>
+        <source>pkexec failed to run journalctl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="110"/>
+        <location filename="../PostInstallGuideTab.cpp" line="147"/>
+        <source>Success</source>
+        <translation type="unfinished">成功</translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="110"/>
+        <source>journalctl vacuum completed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="114"/>
+        <source>journalctl vacuum failed: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="124"/>
+        <source>This will clear your ~/.cache and attempt to clear /tmp and /var/tmp. Continue?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="142"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="142"/>
+        <source>Failed to run pkexec to clear /tmp. It may require manual cleanup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="147"/>
+        <source>Temporary files cleared.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="151"/>
+        <source>Partial Success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="151"/>
+        <source>User cache cleared; system tmp cleanup reported: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="26"/>
         <source>Update Native Packages</source>
         <translation>更新软件包</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="22"/>
+        <location filename="../PostInstallGuideTab.cpp" line="27"/>
         <source>Driver Configuration</source>
         <translation>驱动安装配置</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="54"/>
+        <location filename="../PostInstallGuideTab.cpp" line="64"/>
         <source>Install and configure drivers</source>
         <translation>驱动安装配置</translation>
     </message>
@@ -446,7 +537,7 @@ sudo pacman -S rate-mirrors</source>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="38"/>
-        <location filename="../RepoListWindow.cpp" line="392"/>
+        <location filename="../RepoListWindow.cpp" line="400"/>
         <source>Add Repo</source>
         <translation>添加仓库</translation>
     </message>
@@ -481,35 +572,35 @@ sudo pacman -S rate-mirrors</source>
         <translation>签名等级：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="134"/>
-        <location filename="../RepoListWindow.cpp" line="325"/>
-        <location filename="../RepoListWindow.cpp" line="331"/>
-        <location filename="../RepoListWindow.cpp" line="396"/>
+        <location filename="../RepoListWindow.cpp" line="136"/>
+        <location filename="../RepoListWindow.cpp" line="332"/>
+        <location filename="../RepoListWindow.cpp" line="338"/>
+        <location filename="../RepoListWindow.cpp" line="405"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="135"/>
+        <location filename="../RepoListWindow.cpp" line="137"/>
         <source>Failed to open configuration file: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="211"/>
+        <location filename="../RepoListWindow.cpp" line="213"/>
         <source> (empty)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="348"/>
+        <location filename="../RepoListWindow.cpp" line="355"/>
         <source>Configuration has been updated. %1 repositories saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="428"/>
+        <location filename="../RepoListWindow.cpp" line="439"/>
         <source>Unsaved Changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="429"/>
+        <location filename="../RepoListWindow.cpp" line="440"/>
         <source>You have unsaved changes. Do you want to save before closing?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -518,27 +609,27 @@ sudo pacman -S rate-mirrors</source>
         <translation type="vanished">加载配置文件失败</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="319"/>
+        <location filename="../RepoListWindow.cpp" line="326"/>
         <source>Note</source>
         <translation>注意</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="319"/>
+        <location filename="../RepoListWindow.cpp" line="326"/>
         <source>No Change to Save</source>
         <translation>没有需要保存的更改</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="325"/>
+        <location filename="../RepoListWindow.cpp" line="332"/>
         <source>Failed to create backup file</source>
         <translation>创建备份文件失败</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="331"/>
+        <location filename="../RepoListWindow.cpp" line="338"/>
         <source>Failed to save configuration file</source>
         <translation>保存配置文件失败</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="347"/>
+        <location filename="../RepoListWindow.cpp" line="354"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
@@ -559,12 +650,12 @@ sudo pacman -S rate-mirrors</source>
         <translation type="vanished">保存失败：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="392"/>
+        <location filename="../RepoListWindow.cpp" line="400"/>
         <source>Enter the Repo name:</source>
         <translation>输入仓库名称：</translation>
     </message>
     <message>
-        <location filename="../RepoListWindow.cpp" line="396"/>
+        <location filename="../RepoListWindow.cpp" line="405"/>
         <source>Repo name contains invalid chars</source>
         <translation>仓库名称含有非法字符</translation>
     </message>

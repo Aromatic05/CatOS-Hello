@@ -21,6 +21,9 @@ private:
     QPushButton *pacmanButton;
     QPushButton *logButton;
     QPushButton *mirrorButton;
+    QPushButton *collectLogsButton;
+    QPushButton *vacuumJournalButton;
+    QPushButton *clearTempButton;
     QPushButton *chooseButton;
     QPushButton *updateAURButton;
     QPushButton *packageCleanButton;
@@ -30,6 +33,9 @@ private:
 private slots:
     void onPacmanButtonClicked();
     void onDriverConfigButtonClicked();
+    void onCollectLogsClicked();
+    void onVacuumJournalClicked();
+    void onClearTempClicked();
 };
 
 #endif // POSTINSTALLGUIDETAB_H

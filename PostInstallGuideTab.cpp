@@ -3,6 +3,9 @@
 #include <QDesktopServices>
 #include <QProcess>
 #include <QDebug>
+#include <QInputDialog>
+#include <QMessageBox>
+#include <QDir>
 
 PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
     : QWidget(parent)
@@ -16,20 +19,27 @@ PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
     pacmanButton = new QPushButton(tr("Correspondence between package managers"), this);
     logButton = new QPushButton(tr("Troubleshooting Log"), this);
     mirrorButton = new QPushButton(tr("Modify Mirror List"), this);
+    collectLogsButton = new QPushButton(tr("Collect Logs"), this);
+    vacuumJournalButton = new QPushButton(tr("Vacuum Journal"), this);
+    clearTempButton = new QPushButton(tr("Clear Temporary Files"), this);
     updateAURButton = new QPushButton(tr("Update Native & AUR Packages"), this);
-    packageCleanButton = new QPushButton(tr("Enable Automatic Package Cache Cleanup"), this);
     updateButton = new QPushButton(tr("Update Native Packages"), this);
     driverConfigButton = new QPushButton(tr("Driver Configuration"), this);
 
     connect(pacmanButton, SIGNAL(clicked()), this, SLOT(onPacmanButtonClicked()));
     connect(driverConfigButton, SIGNAL(clicked()), this, SLOT(onDriverConfigButtonClicked()));
+    connect(collectLogsButton, &QPushButton::clicked, this, &PostInstallGuideTab::onCollectLogsClicked);
+    connect(vacuumJournalButton, &QPushButton::clicked, this, &PostInstallGuideTab::onVacuumJournalClicked);
+    connect(clearTempButton, &QPushButton::clicked, this, &PostInstallGuideTab::onClearTempClicked);
 
     // 添加控件到布局
     gridLayout->addWidget(mirrorButton, 0, 0);
     gridLayout->addWidget(pacmanButton, 0, 1);
+    gridLayout->addWidget(collectLogsButton, 0, 2);
     gridLayout->addWidget(updateButton, 1, 1);
     gridLayout->addWidget(updateAURButton, 2, 0);
-    gridLayout->addWidget(packageCleanButton, 2, 1);
+    gridLayout->addWidget(vacuumJournalButton, 1, 0);
+    gridLayout->addWidget(clearTempButton, 1, 2);
     gridLayout->addWidget(driverConfigButton, 3, 0);
     gridLayout->addWidget(logButton, 3, 1);
 
@@ -55,4 +65,92 @@ void PostInstallGuideTab::onDriverConfigButtonClicked()
     QStringList args;
     args << "--prompt" << prompt << command;
     QProcess::startDetached("RunInTerminal", args);
+}
+
+void PostInstallGuideTab::onCollectLogsClicked()
+{
+    qInfo() << "PostInstallGuideTab: collect logs requested";
+
+    // Only use system-installed binary
+    const QString program = "/usr/bin/collect-logs";
+    if (!QFile::exists(program)) {
+        QMessageBox::critical(this, tr("Error"), tr("collect-logs not found at /usr/bin/collect-logs."));
+        qWarning() << "PostInstallGuideTab: collect-logs not found at" << program;
+        return;
+    }
+
+    // Run via pkexec to get root privileges for collecting protected logs
+    bool started = QProcess::startDetached("pkexec", {program});
+    if (started) {
+        QMessageBox::information(this, tr("Collect Logs"), tr("collect-logs started with elevated privileges. It will place an archive on your Desktop when finished."));
+    } else {
+        QMessageBox::critical(this, tr("Error"), tr("Failed to start collect-logs with pkexec."));
+        qWarning() << "PostInstallGuideTab: failed to start pkexec" << program;
+    }
+}
+
+void PostInstallGuideTab::onVacuumJournalClicked()
+{
+    qInfo() << "PostInstallGuideTab: vacuum journal requested";
+    bool ok;
+    QString defaultVal = QStringLiteral("2weeks");
+    QString timeStr = QInputDialog::getText(this, tr("Vacuum Journal"), tr("Enter vacuum time (e.g. 2weeks, 30days):"), QLineEdit::Normal, defaultVal, &ok);
+    if (!ok || timeStr.isEmpty()) return;
+
+    QStringList args;
+    args << "journalctl" << QString("--vacuum-time=%1").arg(timeStr);
+
+    QProcess process;
+    process.start("pkexec", args);
+    if (!process.waitForFinished()) {
+        QMessageBox::critical(this, tr("Error"), tr("pkexec failed to run journalctl"));
+        qWarning() << "PostInstallGuideTab: pkexec journalctl failed to start";
+        return;
+    }
+
+    if (process.exitCode() == 0) {
+        QMessageBox::information(this, tr("Success"), tr("journalctl vacuum completed."));
+        qInfo() << "PostInstallGuideTab: journal vacuum completed";
+    } else {
+        QString err = process.readAllStandardError();
+        QMessageBox::critical(this, tr("Error"), tr("journalctl vacuum failed: ") + err);
+        qWarning() << "PostInstallGuideTab: journalctl vacuum failed:" << err;
+    }
+}
+
+void PostInstallGuideTab::onClearTempClicked()
+{
+    qInfo() << "PostInstallGuideTab: clear temporary files requested";
+
+    QMessageBox::StandardButton reply = QMessageBox::question(this, tr("Clear Temporary Files"),
+                                                              tr("This will clear your ~/.cache and attempt to clear /tmp and /var/tmp. Continue?"),
+                                                              QMessageBox::Yes | QMessageBox::No);
+    if (reply != QMessageBox::Yes) return;
+
+    // Clear user cache (no sudo)
+    QString homeCache = QDir::homePath() + "/.cache";
+    QProcess proc;
+    if (QFile::exists(homeCache)) {
+        proc.start("bash", {"-c", QString("rm -rf '%1'/*").arg(homeCache)});
+        proc.waitForFinished();
+        qInfo() << "PostInstallGuideTab: cleared" << homeCache << "exit" << proc.exitCode();
+    }
+
+    // Clear /tmp and /var/tmp using pkexec
+    QString cmd = "rm -rf /tmp/* /var/tmp/*";
+    QProcess proc2;
+    proc2.start("pkexec", {"bash", "-c", cmd});
+    if (!proc2.waitForFinished()) {
+        QMessageBox::warning(this, tr("Warning"), tr("Failed to run pkexec to clear /tmp. It may require manual cleanup."));
+        return;
+    }
+
+    if (proc2.exitCode() == 0) {
+        QMessageBox::information(this, tr("Success"), tr("Temporary files cleared."));
+        qInfo() << "PostInstallGuideTab: cleared /tmp and /var/tmp";
+    } else {
+        QString err = proc2.readAllStandardError();
+        QMessageBox::warning(this, tr("Partial Success"), tr("User cache cleared; system tmp cleanup reported: ") + err);
+        qWarning() << "PostInstallGuideTab: tmp clear error:" << err;
+    }
 }
