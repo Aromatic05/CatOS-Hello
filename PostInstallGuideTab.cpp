@@ -72,9 +72,9 @@ void PostInstallGuideTab::onCollectLogsClicked()
     qInfo() << "PostInstallGuideTab: collect logs requested";
 
     // Only use system-installed binary
-    const QString program = "/usr/bin/collect-logs";
+    const QString program = "/usr/bin/CollectLogs";
     if (!QFile::exists(program)) {
-        QMessageBox::critical(this, tr("Error"), tr("collect-logs not found at /usr/bin/collect-logs."));
+        QMessageBox::critical(this, tr("Error"), tr("collect-logs not found at /usr/bin/CollectLogs."));
         qWarning() << "PostInstallGuideTab: collect-logs not found at" << program;
         return;
     }

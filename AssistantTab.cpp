@@ -82,7 +82,7 @@ void AssistantTab::onUpdateButtonClicked() {
     QString prompt = tr("Update Native Packages");
     QStringList args;
     args << "--prompt" << prompt << command;
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }
 
 void AssistantTab::onUpdateAURButtonClicked() {
@@ -91,7 +91,7 @@ void AssistantTab::onUpdateAURButtonClicked() {
     QString prompt = tr("Update Native Packages && AUR Packages");
     QStringList args;
     args << "--prompt" << prompt << command;
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }
 
 void AssistantTab::onResetButtonClicked() {
@@ -121,7 +121,7 @@ void AssistantTab::onResetButtonClicked() {
     QStringList args;
     args << "--prompt" << "Reset Arch Keyring" << scriptFilePath;
 
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }
 
 void AssistantTab::onCleanButtonClicked() {
@@ -130,7 +130,7 @@ void AssistantTab::onCleanButtonClicked() {
     QString prompt = tr("Clean up all local packages caches");
     QStringList args;
     args << "--prompt" << prompt << command;
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }
 
 void AssistantTab::onReduceButtonClicked() {
@@ -139,7 +139,7 @@ void AssistantTab::onReduceButtonClicked() {
     QString prompt = tr("Clean local packages caches, except for the most recent three");
     QStringList args;
     args << "--prompt" << prompt << command;
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }
 
 void AssistantTab::onCleanAURButtonClicked() {
@@ -148,7 +148,7 @@ void AssistantTab::onCleanAURButtonClicked() {
     QString prompt = tr("Clean up all local packages and AUR caches");
     QStringList args;
     args << "--prompt" << prompt << command;
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }
 
 void AssistantTab::onUninstallButtonClicked() {
@@ -157,7 +157,7 @@ void AssistantTab::onUninstallButtonClicked() {
     QString prompt = tr("Uninstall unused packages");
     QStringList args;
     args << "--prompt" << prompt << command;
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }
 
 void AssistantTab::onReinstallButtonClicked() {
@@ -166,7 +166,7 @@ void AssistantTab::onReinstallButtonClicked() {
     QString prompt = tr("Reinstall all packages");
     QStringList args;
     args << "--prompt" << prompt << command;
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }
 
 void AssistantTab::onUnlockButtonClicked()
@@ -176,7 +176,7 @@ void AssistantTab::onUnlockButtonClicked()
     QString prompt = tr("Unlock pacman database");
     QStringList args;
     args << "--prompt" << prompt << command;
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }
 
 void AssistantTab::onListFailedServicesClicked()
@@ -186,7 +186,7 @@ void AssistantTab::onListFailedServicesClicked()
     QString prompt = tr("List failed systemd services");
     QStringList args;
     args << "--prompt" << prompt << command;
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }
 
 void AssistantTab::onViewPacmanLogClicked()
@@ -196,5 +196,5 @@ void AssistantTab::onViewPacmanLogClicked()
     QString prompt = tr("View pacman log");
     QStringList args;
     args << "--prompt" << prompt << command;
-    QProcess::startDetached("/home/aromatic/Application/RunInTerminal", args);
+    QProcess::startDetached("RunInTerminal", args);
 }
