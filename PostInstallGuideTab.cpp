@@ -35,13 +35,13 @@ PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
     // 添加控件到布局
     gridLayout->addWidget(mirrorButton, 0, 0);
     gridLayout->addWidget(pacmanButton, 0, 1);
-    gridLayout->addWidget(collectLogsButton, 0, 2);
+    gridLayout->addWidget(collectLogsButton, 1, 0);
     gridLayout->addWidget(updateButton, 1, 1);
     gridLayout->addWidget(updateAURButton, 2, 0);
-    gridLayout->addWidget(vacuumJournalButton, 1, 0);
-    gridLayout->addWidget(clearTempButton, 1, 2);
-    gridLayout->addWidget(driverConfigButton, 3, 0);
-    gridLayout->addWidget(logButton, 3, 1);
+    gridLayout->addWidget(vacuumJournalButton, 2, 1);
+    gridLayout->addWidget(clearTempButton, 3, 0);
+    gridLayout->addWidget(driverConfigButton, 3, 1);
+    gridLayout->addWidget(logButton, 4, 1);
 
     layout->addWidget(postInstallGuideLabel, 0);
     layout->addLayout(gridLayout);
