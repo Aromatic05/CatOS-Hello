@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# collect-logs
+# 收集系统信息与日志，打包为 tar.zstd 到桌面目录
+# 目标输出: $DESKTOP/catos-logs-YYYYmmdd_HHMMSS.tar.zstd
+
+TMPDIR="$(mktemp -d /tmp/collect-logs.XXXXXX)"
+OUTNAME="catos-logs-$(date +%Y%m%d_%H%M%S).tar.zstd"
+
+get_desktop() {
+    if command -v xdg-user-dir >/dev/null 2>&1; then
+        local d
+        d=$(xdg-user-dir DESKTOP 2>/dev/null || true)
+        [ -n "$d" ] && echo "$d" && return
+    fi
+    echo "$HOME/Desktop"
+}
+
+DESKTOP="$(get_desktop)"
+mkdir -p "$DESKTOP"
+
+cleanup() {
+    rm -rf "$TMPDIR"
+}
+trap cleanup EXIT
+
+log() { printf "[collect-logs] %s\n" "$*" >&2; }
+
+try_cmd() {
+    local outfile="$1"; shift
+    if "$@" >"$TMPDIR/$outfile" 2>&1; then
+        log "OK: $* -> $outfile"
+        return 0
+    fi
+    if command -v sudo >/dev/null 2>&1; then
+        log "Retrying with sudo: $*"
+        if sudo "$@" >"$TMPDIR/$outfile" 2>&1; then
+            log "OK(sudo): $* -> $outfile"
+            return 0
+        fi
+    fi
+    log "FAILED: $* (see $TMPDIR/$outfile)"
+    return 1
+}
+
+log "Creating temporary workspace: $TMPDIR"
+
+mkdir -p "$TMPDIR/var-log"
+
+try_cmd uname.txt uname -a || true
+try_cmd os-release.txt cat /etc/os-release || true
+try_cmd lsb-release.txt lsb_release -a || true
+try_cmd inxi.txt inxi -F || true
+try_cmd lshw.txt lshw -short || true
+try_cmd lsblk.txt lsblk -f || true
+try_cmd df.txt df -h || true
+try_cmd free.txt free -h || true
+try_cmd dmesg.txt dmesg || true
+try_cmd lsmod.txt lsmod || true
+try_cmd modules.txt cat /proc/modules || true
+try_cmd kernel-config.txt zcat /proc/config.gz || true
+try_cmd mount.txt mount || true
+try_cmd systemctl-units.txt systemctl list-units --no-pager || true
+try_cmd pacman-explicit.txt pacman -Qe || true
+try_cmd pacman-all.txt pacman -Q || true
+try_cmd journalctl.txt journalctl -b --no-pager || true
+
+# Collect /var/log (try without sudo, then with sudo)
+if cp -a /var/log/* "$TMPDIR/var-log/" 2>/dev/null; then
+    log "Copied /var/log/"
+else
+    if command -v sudo >/dev/null 2>&1; then
+        log "Attempting sudo copy of /var/log/"
+        sudo cp -a /var/log/* "$TMPDIR/var-log/" || log "sudo copy /var/log failed"
+    else
+        log "/var/log copy skipped (no sudo)"
+    fi
+fi
+
+# Try to include calamares logs (root cache)
+if [ -d /root/.cache/calamares ]; then
+    if cp -r /root/.cache/calamares "$TMPDIR/" 2>/dev/null; then
+        log "Copied calamares cache"
+    elif command -v sudo >/dev/null 2>&1; then
+        sudo cp -r /root/.cache/calamares "$TMPDIR/" || log "failed to copy calamares cache"
+    fi
+fi
+
+# Create a manifest of collected files
+(
+    echo "Collected on: $(date -u)";
+    echo "Host: $(uname -n)";
+    echo "User: $(whoami)";
+    echo "Included files:";
+    find . -maxdepth 3 -type f | sed 's|^\./||' || true;
+) > "$TMPDIR/MANIFEST.txt"
+
+pushd "$TMPDIR" >/dev/null
+if command -v zstd >/dev/null 2>&1; then
+    tar -cf - . | zstd -T0 -q -o "$DESKTOP/$OUTNAME"
+    TARRC=$?
+    if [ $TARRC -eq 0 ]; then
+        log "Archive created: $DESKTOP/$OUTNAME"
+    else
+        log "zstd archive failed (exit $TARRC)"
+    fi
+else
+    ALTNAME="${OUTNAME%.zstd}.tar.gz"
+    tar -czf "$DESKTOP/$ALTNAME" .
+    log "zstd not found; created gzip archive: $DESKTOP/$ALTNAME"
+fi
+popd >/dev/null
+
+log "Done. The archive is on the Desktop (if creation succeeded)."
+
+exit 0
