@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# 帮助信息函数
+show_help() {
+    cat <<EOF
+RunInTerminal - 在独立终端中运行指定命令
+
+使用方式:
+  $0 [选项] <命令>
+
+选项:
+  -p, --prompt <提示信息>   在命令执行前显示提示文字
+  -t, --term-opts <选项>    传递给终端的额外参数
+  -w, --wait <策略>         设置等待策略：
+                            sleep=N 执行后等待N秒
+                            (默认等待用户回车)
+  -E, --no-enter-wait       执行后不等待直接关闭终端
+  -h, --help                显示本帮助信息
+
+示例:
+  # 显示系统信息并等待
+  $0 --prompt "系统信息" "neofetch"
+
+  # 执行命令后等待5秒
+  $0 --wait sleep=5 "make build"
+
+  # 使用特定终端参数
+  $0 --term-opts "--geometry=120x40" "htop"
+
+  # 直接运行不等待
+  $0 -E "npm start"
+EOF
+}
+
+# 查找可用终端程序
+find_terminal() {
+    local terminals=(
+        ghostty xfce4-terminal konsole gnome-terminal mate-terminal
+        lxterminal deepin-terminal terminator qterminal
+        alacritty tilix termite xterm kitty terminology sakura
+    )
+
+    for term in "${terminals[@]}"; do
+        if command -v "$term" >/dev/null; then
+            echo "$term"
+            return 0
+        fi
+    done
+
+    echo "ERROR: 未找到可用终端程序" >&2
+    return 1
+}
+
+# 主函数
+main() {
+    # 处理帮助参数优先
+    for arg in "$@"; do
+        if [[ "$arg" == "-h" || "$arg" == "--help" ]]; then
+            show_help
+            exit 0
+        fi
+    done
+
+    local term_opts prompt wait_opt cmd
+    local term=$(find_terminal) || exit 1
+
+    OPTS=$(getopt -o hp:t:w:E --long help,prompt:,term-opts:,wait:,no-enter-wait -n "$0" -- "$@") || exit 1
+    eval set -- "$OPTS"
+
+    while true; do
+        case "$1" in
+            -h|--help)    show_help; exit 0 ;;
+            -p|--prompt)  prompt="$2"; shift 2 ;;
+            -t|--term-opts) term_opts="$2"; shift 2 ;;
+            -w|--wait)    wait_opt="$2"; shift 2 ;;
+            -E|--no-enter-wait) wait_opt="--no-enter-wait"; shift ;;
+            --) shift; break ;;
+            *) echo "参数错误" >&2; exit 1 ;;
+        esac
+    done
+    cmd="$*"
+
+    # 创建临时脚本
+    local tmpfile=$(mktemp -p "$HOME/.cache" -t runinterminal.XXXXXX)
+    trap "rm -f '$tmpfile'" EXIT
+
+    # 构建脚本内容
+    {
+        echo "#!/bin/bash"
+        [ -n "$prompt" ] && echo "echo -e '\\n\033[1;32m$prompt\033[0m\\n'" 
+        echo "$cmd"
+        
+        # 等待逻辑处理
+        case "$wait_opt" in
+            --no-enter-wait) ;;
+            sleep=*) echo "sleep ${wait_opt#*=}" ;;
+            *) [ "$term" != deepin-terminal ] && echo 'read -p "Press Enter to close terminal..."' ;;
+        esac
+        
+        echo "rm -f '$tmpfile'"
+    } > "$tmpfile"
+
+    chmod +x "$tmpfile"
+
+    # 执行终端程序
+    case "$(basename "$term")" in
+        gnome-terminal) "$term" $term_opts --wait -- bash "$tmpfile" ;;
+        xfce4-terminal) "$term" --disable-server $term_opts -x bash "$tmpfile" ;;
+        konsole)        "$term" $term_opts -e bash "$tmpfile" ;;
+        *)              "$term" $term_opts -e bash "$tmpfile" ;;
+    esac
+}
+
+main "$@"
