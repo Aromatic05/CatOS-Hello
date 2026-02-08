@@ -25,7 +25,7 @@ Run the following command in an English locale to force user directories to Engl
 
 <p><b>Recommended reading</b></p>
 <ul>
-    <li><a href="https://wiki.archlinuxcn.org/wiki/建议阅读/给新用户的关于如何不去歪斜_Arch_Linux_系统的建议">New user advice</a></li>
+    <li><a href="https://wiki.archlinuxcn.org/wiki/建议阅读/给新用户的关于如何不去弄坏_Arch_Linux_系统的建议">New user advice</a></li>
     <li><a href="https://wiki.archlinuxcn.org/wiki/建议阅读">Recommended reading</a></li>
     <li><a href="https://wiki.archlinuxcn.org/wiki/Pacman/提示和技巧">Pacman tips</a></li>
 </ul>
