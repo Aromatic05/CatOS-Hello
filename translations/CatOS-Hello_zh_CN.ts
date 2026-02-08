@@ -412,19 +412,19 @@ sudo pacman -S rate-mirrors</source>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="22"/>
-        <location filename="../PostInstallGuideTab.cpp" line="84"/>
+        <location filename="../PostInstallGuideTab.cpp" line="85"/>
         <source>Collect Logs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="23"/>
-        <location filename="../PostInstallGuideTab.cpp" line="95"/>
+        <location filename="../PostInstallGuideTab.cpp" line="97"/>
         <source>Vacuum Journal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="24"/>
-        <location filename="../PostInstallGuideTab.cpp" line="123"/>
+        <location filename="../PostInstallGuideTab.cpp" line="125"/>
         <source>Clear Temporary Files</source>
         <translation type="unfinished"></translation>
     </message>
@@ -435,9 +435,9 @@ sudo pacman -S rate-mirrors</source>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="77"/>
-        <location filename="../PostInstallGuideTab.cpp" line="86"/>
-        <location filename="../PostInstallGuideTab.cpp" line="104"/>
-        <location filename="../PostInstallGuideTab.cpp" line="114"/>
+        <location filename="../PostInstallGuideTab.cpp" line="87"/>
+        <location filename="../PostInstallGuideTab.cpp" line="106"/>
+        <location filename="../PostInstallGuideTab.cpp" line="116"/>
         <source>Error</source>
         <translation type="unfinished">错误</translation>
     </message>
@@ -447,68 +447,68 @@ sudo pacman -S rate-mirrors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="84"/>
-        <source>collect-logs started. It will place an archive on your Desktop when finished.</source>
+        <location filename="../PostInstallGuideTab.cpp" line="85"/>
+        <source>collect-logs started with elevated privileges. It will place an archive on your Desktop when finished.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="86"/>
-        <source>Failed to start collect-logs.</source>
+        <location filename="../PostInstallGuideTab.cpp" line="87"/>
+        <source>Failed to start collect-logs with pkexec.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="95"/>
+        <location filename="../PostInstallGuideTab.cpp" line="97"/>
         <source>Enter vacuum time (e.g. 2weeks, 30days):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="104"/>
+        <location filename="../PostInstallGuideTab.cpp" line="106"/>
         <source>pkexec failed to run journalctl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="110"/>
-        <location filename="../PostInstallGuideTab.cpp" line="147"/>
+        <location filename="../PostInstallGuideTab.cpp" line="112"/>
+        <location filename="../PostInstallGuideTab.cpp" line="149"/>
         <source>Success</source>
         <translation type="unfinished">成功</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="110"/>
+        <location filename="../PostInstallGuideTab.cpp" line="112"/>
         <source>journalctl vacuum completed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="114"/>
+        <location filename="../PostInstallGuideTab.cpp" line="116"/>
         <source>journalctl vacuum failed: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="124"/>
+        <location filename="../PostInstallGuideTab.cpp" line="126"/>
         <source>This will clear your ~/.cache and attempt to clear /tmp and /var/tmp. Continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="142"/>
+        <location filename="../PostInstallGuideTab.cpp" line="144"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="142"/>
+        <location filename="../PostInstallGuideTab.cpp" line="144"/>
         <source>Failed to run pkexec to clear /tmp. It may require manual cleanup.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="147"/>
+        <location filename="../PostInstallGuideTab.cpp" line="149"/>
         <source>Temporary files cleared.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="151"/>
+        <location filename="../PostInstallGuideTab.cpp" line="153"/>
         <source>Partial Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="151"/>
+        <location filename="../PostInstallGuideTab.cpp" line="153"/>
         <source>User cache cleared; system tmp cleanup reported: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -667,8 +667,32 @@ sudo pacman -S rate-mirrors</source>
 <context>
     <name>TipsTab</name>
     <message>
-        <location filename="../TipsTab.cpp" line="8"/>
-        <source>Useful tips for better experience.</source>
+        <location filename="../TipsTab.cpp" line="11"/>
+        <source>
+&lt;h3&gt;Useful tips and links&lt;/h3&gt;
+&lt;p&gt;&lt;b&gt;Change common user directories to English&lt;/b&gt;&lt;br&gt;
+Run the following command in an English locale to force user directories to English:&lt;/p&gt;
+&lt;pre&gt;env LANG=en_US.UTF8 xdg-user-dirs-update --force&lt;/pre&gt;
+
+&lt;p&gt;&lt;b&gt;Input method troubleshooting&lt;/b&gt;&lt;br&gt;
+https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki/中文输入法&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;fcitx official Wayland documentation&lt;/b&gt;&lt;br&gt;
+https://fcitx-im.org/wiki/Special:MyLanguage/Using_Fcitx_5_on_Wayland&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Community guide&lt;/b&gt;&lt;br&gt;
+https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Recommended reading&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/建议阅读/给新用户的关于如何不去歪斜_Arch_Linux_系统的建议&quot;&gt;New user advice&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/建议阅读&quot;&gt;Recommended reading&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/Pacman/提示和技巧&quot;&gt;Pacman tips&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;b&gt;My advice&lt;/b&gt;&lt;br&gt;
+Every Arch Linux user should take responsibility for the stability of their rolling-release system. Complaining about breakage is unproductive; upstream changes are not the responsibility of Arch developers.&lt;/p&gt;
+</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

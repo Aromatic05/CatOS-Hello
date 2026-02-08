@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QTextBrowser>
 #include <QVBoxLayout>
 
 class TipsTab : public QWidget
@@ -13,7 +14,7 @@ public:
     explicit TipsTab(QWidget *parent = nullptr);
 
 private:
-    QLabel *tipsLabel;
+    QTextBrowser *tipsBrowser;
     QVBoxLayout *layout;
 };
 

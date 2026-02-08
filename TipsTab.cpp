@@ -5,10 +5,40 @@ TipsTab::TipsTab(QWidget *parent)
 {
     // 创建布局和控件
     layout = new QVBoxLayout(this);
-    tipsLabel = new QLabel(tr("Useful tips for better experience."), this);
+    tipsBrowser = new QTextBrowser(this);
+
+    // HTML content with English links and short instructions
+        const QString html = tr(R"HTML(
+<h3>Useful tips and links</h3>
+<p><b>Change common user directories to English</b><br>
+Run the following command in an English locale to force user directories to English:</p>
+<pre>env LANG=en_US.UTF8 xdg-user-dirs-update --force</pre>
+
+<p><b>Input method troubleshooting</b><br>
+<a href="https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki/中文输入法">https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki/中文输入法</a></p>
+
+<p><b>fcitx official Wayland documentation</b><br>
+<a href="https://fcitx-im.org/wiki/Special:MyLanguage/Using_Fcitx_5_on_Wayland">https://fcitx-im.org/wiki/Special:MyLanguage/Using_Fcitx_5_on_Wayland</a></p>
+
+<p><b>Community guide</b><br>
+<a href="https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki">https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki</a></p>
+
+<p><b>Recommended reading</b></p>
+<ul>
+    <li><a href="https://wiki.archlinuxcn.org/wiki/建议阅读/给新用户的关于如何不去歪斜_Arch_Linux_系统的建议">New user advice</a></li>
+    <li><a href="https://wiki.archlinuxcn.org/wiki/建议阅读">Recommended reading</a></li>
+    <li><a href="https://wiki.archlinuxcn.org/wiki/Pacman/提示和技巧">Pacman tips</a></li>
+</ul>
+
+<p><b>My advice</b><br>
+Every Arch Linux user should take responsibility for the stability of their rolling-release system. Complaining about breakage is unproductive; upstream changes are not the responsibility of Arch developers.</p>
+)HTML");
+
+    tipsBrowser->setHtml(html);
+    tipsBrowser->setOpenExternalLinks(true);
 
     // 添加控件到布局
-    layout->addWidget(tipsLabel);
+    layout->addWidget(tipsBrowser);
 
     // 设置布局
     setLayout(layout);
