@@ -36,6 +36,7 @@ MirrorListWindow::MirrorListWindow(QWidget *parent)
 
 void MirrorListWindow::loadMirrorList()
 {
+    qInfo() << "MirrorListWindow: load mirror list";
     manager = new QNetworkAccessManager(this);
     connect(manager, &QNetworkAccessManager::finished, this, &MirrorListWindow::onMirrorListLoaded);
 
@@ -49,6 +50,7 @@ void MirrorListWindow::onMirrorListLoaded(QNetworkReply *reply)
 {
     if (reply->error() == QNetworkReply::NoError)
     {
+        qInfo() << "MirrorListWindow: mirror list loaded";
         QByteArray data = reply->readAll();
         QString mirrorList = QString::fromUtf8(data);
 
@@ -112,6 +114,7 @@ void MirrorListWindow::onMirrorListLoaded(QNetworkReply *reply)
     }
     else
     {
+        qWarning() << "MirrorListWindow: failed to load mirror list" << reply->errorString();
         loadingLabel->setText(tr("Failed to load mirror list. Click to retry."));
         loadingLabel->setCursor(Qt::PointingHandCursor);
         loadingLabel->setStyleSheet("QLabel { font-size: 14pt; color: red; }");
@@ -132,6 +135,7 @@ void MirrorListWindow::onMirrorListLoaded(QNetworkReply *reply)
 
 void MirrorListWindow::showMirrorsForCountry(const QString &country)
 {
+    qInfo() << "MirrorListWindow: show mirrors" << country;
     // 检查 rate-mirrors 是否安装
     if (!checkRateMirrorsInstalled()) {
         QMessageBox::warning(this, tr("Missing Tool"), 
@@ -173,9 +177,11 @@ void MirrorListWindow::showMirrorsForCountry(const QString &country)
 
 void MirrorListWindow::runRateMirrors(const QStringList &mirrors, QPlainTextEdit *textEdit, QDialog *parentDialog)
 {
+    qInfo() << "MirrorListWindow: run rate-mirrors" << mirrors.size();
     QTemporaryFile *tempFile = new QTemporaryFile(parentDialog);
     if (!tempFile->open())
     {
+        qWarning() << "MirrorListWindow: failed to create temp file";
         QMessageBox::critical(this, tr("Error"), tr("Failed to create temporary file."));
         return;
     }
@@ -228,6 +234,7 @@ void MirrorListWindow::runRateMirrors(const QStringList &mirrors, QPlainTextEdit
 
     if (!process->waitForStarted())
     {
+        qWarning() << "MirrorListWindow: failed to start rate-mirrors";
         QMessageBox::critical(parentDialog, tr("Error"), tr("Failed to start rate-mirrors command."));
         return;
     }
@@ -235,11 +242,13 @@ void MirrorListWindow::runRateMirrors(const QStringList &mirrors, QPlainTextEdit
 
 void MirrorListWindow::onCountryButtonClicked(const QString &country)
 {
+    qInfo() << "MirrorListWindow: country selected" << country;
     showMirrorsForCountry(country);
 }
 
 void MirrorListWindow::onSaveButtonClicked()
 {
+    qInfo() << "MirrorListWindow: save mirror list";
     QPushButton *button = qobject_cast<QPushButton *>(sender());
     if (!button) return;
 
@@ -248,6 +257,7 @@ void MirrorListWindow::onSaveButtonClicked()
 
     if (!mirrorText)
     {
+        qWarning() << "MirrorListWindow: missing mirror text";
         QMessageBox::critical(this, tr("Error"), tr("Failed to find mirror text."));
         return;
     }
@@ -267,6 +277,7 @@ void MirrorListWindow::onSaveButtonClicked()
 
     if (validLines.isEmpty())
     {
+        qWarning() << "MirrorListWindow: no valid mirror servers";
         QMessageBox::warning(this, tr("Warning"), tr("No valid mirror servers found."));
         return;
     }
@@ -280,6 +291,7 @@ void MirrorListWindow::onSaveButtonClicked()
     QTemporaryFile tempFile;
     if (!tempFile.open())
     {
+        qWarning() << "MirrorListWindow: failed to create temp file";
         QMessageBox::critical(this, tr("Error"), tr("Failed to create temporary file."));
         return;
     }
@@ -297,17 +309,20 @@ void MirrorListWindow::onSaveButtonClicked()
 
     if (!process.waitForFinished())
     {
+        qWarning() << "MirrorListWindow: pkexec copy did not finish";
         QMessageBox::critical(this, tr("Error"), tr("Failed to run pkexec command."));
         return;
     }
 
     if (process.exitCode() != 0)
     {
+        qWarning() << "MirrorListWindow: failed to update mirror list" << process.exitCode();
         QString errorMsg = process.readAllStandardError();
         QMessageBox::critical(this, tr("Error"), tr("Failed to update mirror list: ") + errorMsg);
         return;
     }
 
+    qInfo() << "MirrorListWindow: mirror list updated" << validLines.size();
     QMessageBox::information(this, tr("Success"), 
                             tr("Mirror list updated successfully with %1 mirrors.").arg(validLines.size()));
     
@@ -320,5 +335,7 @@ bool MirrorListWindow::checkRateMirrorsInstalled()
     QProcess process;
     process.start("which", {"rate-mirrors"});
     process.waitForFinished();
-    return process.exitCode() == 0;
+    const bool installed = process.exitCode() == 0;
+    qInfo() << "MirrorListWindow: rate-mirrors installed" << installed;
+    return installed;
 }

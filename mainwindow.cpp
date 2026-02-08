@@ -10,6 +10,7 @@
 #include <QUrl>
 #include <QSettings>
 #include <QMessageBox>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -75,16 +76,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::onSoftwareNewsButtonClicked()
 {
+    qInfo() << "MainWindow: open software news";
     QDesktopServices::openUrl(QUrl("https://www.catos.info/log"));
 }
 
 void MainWindow::onViewLogsButtonClicked()
 {
+    qInfo() << "MainWindow: open update logs";
     QDesktopServices::openUrl(QUrl("https://www.catos.info/log"));
 }
 
 void MainWindow::onNoShowButtonClicked()
 {
+    qInfo() << "MainWindow: disable startup display";
     QSettings settings("CatOS-Hello", "General");
     settings.setValue("show_on_startup", false);
     QMessageBox::information(this, tr("Success"), tr("This window will no longer be displayed at startup. You can run catos-hello in the terminal to open it again."));
@@ -92,5 +96,6 @@ void MainWindow::onNoShowButtonClicked()
 
 void MainWindow::onExitButtonClicked()
 {
+    qInfo() << "MainWindow: exit";
     QApplication::quit();
 }

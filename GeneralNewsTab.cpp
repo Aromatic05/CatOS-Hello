@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QFile>
+#include <QDebug>
 
 GeneralNewsTab::GeneralNewsTab(QWidget *parent)
     : QWidget(parent)
@@ -73,6 +74,7 @@ GeneralNewsTab::GeneralNewsTab(QWidget *parent)
 
 void GeneralNewsTab::loadLanguages()
 {
+    qInfo() << "GeneralNewsTab: loadLanguages start";
     // 定义语言列表，包括地区信息
     QList<QLocale> locales = {
         QLocale(QLocale::English), QLocale(QLocale::Chinese, QLocale::China),
@@ -93,20 +95,25 @@ void GeneralNewsTab::loadLanguages()
     if (currentIndex != -1) {
         languageComboBox->setCurrentIndex(currentIndex);
     }
+    qInfo() << "GeneralNewsTab: loadLanguages done";
 }
 
 void GeneralNewsTab::applyLanguageChange(const QString &langCode)
 {
+    qInfo() << "GeneralNewsTab: applyLanguageChange" << langCode;
     restartApplication(langCode);
 }
 
 bool GeneralNewsTab::isLiveCd() const
 {
-    return QFile::exists("/bin/calamares");
+    const bool liveCd = QFile::exists("/bin/calamares");
+    qInfo() << "GeneralNewsTab: isLiveCd" << liveCd;
+    return liveCd;
 }
 
 void GeneralNewsTab::restartApplication(const QString &langCode)
 {
+    qInfo() << "GeneralNewsTab: restartApplication" << langCode;
     QString program = qApp->arguments().first();
     QStringList arguments;
     arguments << langCode;
@@ -117,36 +124,43 @@ void GeneralNewsTab::restartApplication(const QString &langCode)
 void GeneralNewsTab::onApplyButtonClicked()
 {
     QString langCode = languageComboBox->currentData().toString();
+    qInfo() << "GeneralNewsTab: onApplyButtonClicked" << langCode;
     applyLanguageChange(langCode);
 }
 
 void GeneralNewsTab::onWebsiteButtonClicked()
 {
+    qInfo() << "GeneralNewsTab: open website";
     QDesktopServices::openUrl(QUrl("https://www.catos.info/"));
 }
 
 void GeneralNewsTab::onArchWebsiteButtonClicked()
 {
+    qInfo() << "GeneralNewsTab: open ArchLinux website";
     QDesktopServices::openUrl(QUrl("https://archlinux.org/"));
 }
 
 void GeneralNewsTab::onWikiWebsiteButtonClicked()
 {
+    qInfo() << "GeneralNewsTab: open ArchLinux wiki";
     QDesktopServices::openUrl(QUrl("https://wiki.archlinux.org/"));
 }
 
 void GeneralNewsTab::onWikicnWebsiteButtonClicked()
 {
+    qInfo() << "GeneralNewsTab: open ArchLinuxCN wiki";
     QDesktopServices::openUrl(QUrl("https://wiki.archlinuxcn.org/"));
 }
 
 void GeneralNewsTab::onSupportButtonClicked()
 {
+    qInfo() << "GeneralNewsTab: open Distrowatch support";
     QDesktopServices::openUrl(QUrl("https://distrowatch.com/dwres-mobile.php?resource=links#new"));
 }
 
 void GeneralNewsTab::onMirrorButtonClicked()
 {
+    qInfo() << "GeneralNewsTab: open MirrorListWindow";
     // 创建并显示 MirrorListWindow
     QScopedPointer mirrorWindow(new MirrorListWindow(this));
     mirrorWindow->exec();
@@ -154,29 +168,35 @@ void GeneralNewsTab::onMirrorButtonClicked()
 
 void GeneralNewsTab::onRepoButtonClicked()
 {
+    qInfo() << "GeneralNewsTab: open RepoListWindow";
     QScopedPointer repoWindow(new RepoListWindow(this));
     repoWindow->exec();
 }
 
 void GeneralNewsTab::onInstallCatOSButtonClicked()
 {
+    qInfo() << "GeneralNewsTab: start calamares_polkit";
     QProcess::startDetached("calamares_polkit");
 }
 
 void GeneralNewsTab::onInstallCatOSNetButtonClicked()
 {
+    qInfo() << "GeneralNewsTab: start calamares_polkit net install";
     QProcess::startDetached("calamares_polkit", {"--config", "/usr/share/calamares-advanced"});
 }
 
 void GeneralNewsTab::onGetLogButtonClicked()
 {
+    qInfo() << "GeneralNewsTab: get calamares logs";
     const QString destDir = QStringLiteral("/tmp/calamares-log");
     const QString copyCmd = QStringLiteral("rm -rf %1 && cp -r /root/.cache/calamares %1").arg(destDir);
 
     const int copyExit = QProcess::execute("pkexec", {"bash", "-c", copyCmd});
     if (copyExit == 0) {
+        qInfo() << "GeneralNewsTab: calamares logs copied" << destDir;
         QProcess::startDetached("bash", {"-c", QStringLiteral("kate %1/*").arg(destDir)});
     } else {
+        qWarning() << "GeneralNewsTab: failed to copy calamares logs" << copyExit;
         QMessageBox::critical(this, tr("Error"), tr("Failed to copy calamares logs"));
     }
 }

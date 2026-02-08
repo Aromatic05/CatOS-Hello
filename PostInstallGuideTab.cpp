@@ -2,6 +2,7 @@
 
 #include <QDesktopServices>
 #include <QProcess>
+#include <QDebug>
 
 PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
     : QWidget(parent)
@@ -42,11 +43,13 @@ PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
 
 void PostInstallGuideTab::onPacmanButtonClicked()
 {
+    qInfo() << "PostInstallGuideTab: open pacman docs";
     QDesktopServices::openUrl(QUrl("https://wiki.archlinuxcn.org/wiki/Pacman/%E5%90%84%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8%E5%91%BD%E4%BB%A4%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"));
 }
 
 void PostInstallGuideTab::onDriverConfigButtonClicked()
 {
+    qInfo() << "PostInstallGuideTab: start driver configuration";
     QString command = "sudo chwd -a";
     QString prompt = tr("Install and configure drivers");
     QStringList args;

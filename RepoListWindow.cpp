@@ -129,8 +129,10 @@ void RepoListWindow::parseRepoLine(Repo &repo, const QString &line) {
 }
 
 void RepoListWindow::loadConfig() {
+    qInfo() << "RepoListWindow: load config";
     QFile file("/etc/pacman.conf");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning() << "RepoListWindow: failed to open config" << file.errorString();
         QMessageBox::critical(this, tr("Error"), 
             tr("Failed to open configuration file: %1").arg(file.errorString()));
         return;
@@ -237,6 +239,7 @@ bool RepoListWindow::hasChanges() const {
 }
 
 bool RepoListWindow::backupConfigFile() {
+    qInfo() << "RepoListWindow: backup config";
     QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss");
     QString backupFile = QString("/etc/pacman.conf.bak_%1").arg(timestamp);
 
@@ -246,12 +249,15 @@ bool RepoListWindow::backupConfigFile() {
     
     if (success) {
         qDebug() << "Backup created:" << backupFile;
+    } else {
+        qWarning() << "RepoListWindow: backup failed" << backupFile;
     }
     
     return success;
 }
 
 bool RepoListWindow::writeConfigFile() {
+    qInfo() << "RepoListWindow: write config";
     // 先写入临时文件
     QString tempFilePath = "/tmp/pacman.conf.tmp";
     QFile tempFile(tempFilePath);
@@ -315,6 +321,7 @@ bool RepoListWindow::writeConfigFile() {
 }
 
 void RepoListWindow::saveConfig() {
+    qInfo() << "RepoListWindow: save config";
     if (!hasChanges()) {
         QMessageBox::information(this, tr("Note"), tr("No Change to Save"));
         return;
@@ -388,11 +395,13 @@ void RepoListWindow::onSigLevelChanged(int index) {
 }
 
 void RepoListWindow::addRepo() {
+    qInfo() << "RepoListWindow: add repo";
     bool ok;
     QString name = QInputDialog::getText(this, tr("Add Repo"), tr("Enter the Repo name:"), QLineEdit::Normal, "", &ok);
     if (!ok || name.isEmpty()) return;
 
     if (name.contains(' ') || name.contains('[') || name.contains(']')) {
+        qWarning() << "RepoListWindow: invalid repo name" << name;
         QMessageBox::warning(this, tr("Error"), tr("Repo name contains invalid chars"));
         return;
     }
@@ -407,6 +416,7 @@ void RepoListWindow::addRepo() {
 }
 
 void RepoListWindow::deleteRepo() {
+    qInfo() << "RepoListWindow: delete repo";
     int row = repoList->currentRow();
     if (row < 0 || row >= repos.size()) return;
 
@@ -423,6 +433,7 @@ void RepoListWindow::updateWindowTitle() {
     }
 }
 void RepoListWindow::closeEvent(QCloseEvent *event) {
+    qInfo() << "RepoListWindow: close event";
     if (hasChanges()) {
         QMessageBox::StandardButton reply;
         reply = QMessageBox::question(this, tr("Unsaved Changes"),

@@ -1,5 +1,6 @@
 #include "AssistantTab.h"
 #include <QTimer>
+#include <QDebug>
 
 AssistantTab::AssistantTab(QWidget *parent)
     : QWidget(parent)
@@ -63,17 +64,20 @@ AssistantTab::AssistantTab(QWidget *parent)
 
 void AssistantTab::onMirrorButtonClicked()
 {
+    qInfo() << "AssistantTab: open MirrorListWindow";
     QScopedPointer mirrorWindow(new MirrorListWindow(this));
     mirrorWindow->exec();
 }
 
 void AssistantTab::onRepoButtonClicked()
 {
+    qInfo() << "AssistantTab: open RepoListWindow";
     QScopedPointer repoWindow(new RepoListWindow(this));
     repoWindow->exec();
 }
 
 void AssistantTab::onUpdateButtonClicked() {
+    qInfo() << "AssistantTab: update native packages";
     QString command = "sudo pacman -Syu";
     QString prompt = tr("Update Native Packages");
     QStringList args;
@@ -82,6 +86,7 @@ void AssistantTab::onUpdateButtonClicked() {
 }
 
 void AssistantTab::onUpdateAURButtonClicked() {
+    qInfo() << "AssistantTab: update native and AUR packages";
     QString command = "yay";
     QString prompt = tr("Update Native Packages && AUR Packages");
     QStringList args;
@@ -90,11 +95,13 @@ void AssistantTab::onUpdateAURButtonClicked() {
 }
 
 void AssistantTab::onResetButtonClicked() {
+    qInfo() << "AssistantTab: reset Arch keyring";
     // 创建临时脚本文件
     QString scriptFilePath = QDir::tempPath() + "/reset_keyring.sh";
     QFile scriptFile(scriptFilePath);
 
     if (!scriptFile.open(QIODevice::WriteOnly)) {
+        qWarning() << "AssistantTab: failed to create reset script" << scriptFilePath;
         QMessageBox::critical(this, "Error", "Failed to create script file.");
         return;
     }
@@ -118,6 +125,7 @@ void AssistantTab::onResetButtonClicked() {
 }
 
 void AssistantTab::onCleanButtonClicked() {
+    qInfo() << "AssistantTab: clean all package caches";
     QString command = "sudo pacman -Scc";
     QString prompt = tr("Clean up all local packages caches");
     QStringList args;
@@ -126,6 +134,7 @@ void AssistantTab::onCleanButtonClicked() {
 }
 
 void AssistantTab::onReduceButtonClicked() {
+    qInfo() << "AssistantTab: reduce package caches";
     QString command = "sudo paccache -rk3";
     QString prompt = tr("Clean local packages caches, except for the most recent three");
     QStringList args;
@@ -134,6 +143,7 @@ void AssistantTab::onReduceButtonClicked() {
 }
 
 void AssistantTab::onCleanAURButtonClicked() {
+    qInfo() << "AssistantTab: clean package and AUR caches";
     QString command = "yay -Scc";
     QString prompt = tr("Clean up all local packages and AUR caches");
     QStringList args;
@@ -142,6 +152,7 @@ void AssistantTab::onCleanAURButtonClicked() {
 }
 
 void AssistantTab::onUninstallButtonClicked() {
+    qInfo() << "AssistantTab: uninstall unused packages";
     QString command = "sudo pacman -Rns $(pacman -Qtdq)";
     QString prompt = tr("Uninstall unused packages");
     QStringList args;
@@ -150,6 +161,7 @@ void AssistantTab::onUninstallButtonClicked() {
 }
 
 void AssistantTab::onReinstallButtonClicked() {
+    qInfo() << "AssistantTab: reinstall all packages";
     QString command = "pacman -Qqn | sudo pacman --overwrite=* -S -";
     QString prompt = tr("Reinstall all packages");
     QStringList args;
@@ -159,6 +171,7 @@ void AssistantTab::onReinstallButtonClicked() {
 
 void AssistantTab::onUnlockButtonClicked()
 {
+    qInfo() << "AssistantTab: unlock pacman database";
     QString command = "sudo rm /var/lib/pacman/db.lck";
     QString prompt = tr("Unlock pacman database");
     QStringList args;
@@ -168,6 +181,7 @@ void AssistantTab::onUnlockButtonClicked()
 
 void AssistantTab::onListFailedServicesClicked()
 {
+    qInfo() << "AssistantTab: list failed systemd services";
     QString command = "systemctl --failed";
     QString prompt = tr("List failed systemd services");
     QStringList args;
@@ -177,6 +191,7 @@ void AssistantTab::onListFailedServicesClicked()
 
 void AssistantTab::onViewPacmanLogClicked()
 {
+    qInfo() << "AssistantTab: view pacman log";
     QString command = "less /var/log/pacman.log";
     QString prompt = tr("View pacman log");
     QStringList args;
