@@ -135,22 +135,22 @@
     <message>
         <location filename="../GeneralNewsTab.cpp" line="33"/>
         <source>Install CatOS Net Install</source>
-        <translation type="unfinished"></translation>
+        <translation>在线安装CatOS</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="34"/>
         <source>Get Install Log</source>
-        <translation type="unfinished"></translation>
+        <translation>获取安装日志</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="200"/>
         <source>Error</source>
-        <translation type="unfinished">错误</translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="200"/>
         <source>Failed to copy calamares logs</source>
-        <translation type="unfinished"></translation>
+        <translation>复制calamares日志失败</translation>
     </message>
     <message>
         <source>Install CatOS (Online)</source>
@@ -244,7 +244,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>This window will no longer be displayed at startup. You can run catos-hello in the terminal to open it again.</source>
-        <translation>该窗口不会在启动时再次展示，你可以手动运行</translation>
+        <translation>该窗口不会在启动时再次展示，你可以手动运行.</translation>
     </message>
     <message>
         <source>Update Software</source>
@@ -271,12 +271,12 @@
         <location filename="../MirrorListWindow.cpp" line="21"/>
         <location filename="../MirrorListWindow.cpp" line="125"/>
         <source>Loading mirror list...</source>
-        <translation type="unfinished"></translation>
+        <translation>加载镜像列表...</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="118"/>
         <source>Failed to load mirror list. Click to retry.</source>
-        <translation type="unfinished"></translation>
+        <translation>加载镜像列表失败, 点击重试.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="130"/>
@@ -298,14 +298,16 @@
     <message>
         <location filename="../MirrorListWindow.cpp" line="141"/>
         <source>Missing Tool</source>
-        <translation type="unfinished"></translation>
+        <translation>缺少工具</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="142"/>
         <source>rate-mirrors is not installed. Please install it first:
 
 sudo pacman -S rate-mirrors</source>
-        <translation type="unfinished"></translation>
+        <translation>rate-mirrors没有安装. 请先安装:
+
+sudo pacman -S rate-mirrors</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="159"/>
@@ -322,7 +324,8 @@ sudo pacman -S rate-mirrors</source>
         <location filename="../MirrorListWindow.cpp" line="200"/>
         <source>Testing mirror speeds...
 </source>
-        <translation type="unfinished"></translation>
+        <translation>测试镜像速度...
+</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="216"/>
@@ -347,22 +350,22 @@ sudo pacman -S rate-mirrors</source>
     <message>
         <location filename="../MirrorListWindow.cpp" line="261"/>
         <source>Failed to find mirror text.</source>
-        <translation type="unfinished"></translation>
+        <translation>加载镜像列表失败.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="281"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="281"/>
         <source>No valid mirror servers found.</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到合法的镜像服务器.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="327"/>
         <source>Mirror list updated successfully with %1 mirrors.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mirror list updated successfully with %1 mirrors.</translation>
     </message>
     <message>
         <source>Failed to find QPlainTextEdit.</source>
@@ -393,7 +396,7 @@ sudo pacman -S rate-mirrors</source>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="15"/>
         <source>You can get help from these manuals.</source>
-        <translation type="unfinished"></translation>
+        <translation>你可以从下面的内容得到帮助.</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="19"/>
@@ -403,7 +406,7 @@ sudo pacman -S rate-mirrors</source>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="20"/>
         <source>Troubleshooting Log</source>
-        <translation type="unfinished"></translation>
+        <translation>诊断日志</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="21"/>
@@ -414,24 +417,24 @@ sudo pacman -S rate-mirrors</source>
         <location filename="../PostInstallGuideTab.cpp" line="22"/>
         <location filename="../PostInstallGuideTab.cpp" line="85"/>
         <source>Collect Logs</source>
-        <translation type="unfinished"></translation>
+        <translation>收集日志</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="23"/>
         <location filename="../PostInstallGuideTab.cpp" line="97"/>
         <source>Vacuum Journal</source>
-        <translation type="unfinished"></translation>
+        <translation>清理日志</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="24"/>
         <location filename="../PostInstallGuideTab.cpp" line="125"/>
         <source>Clear Temporary Files</source>
-        <translation type="unfinished"></translation>
+        <translation>清理临时文件</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="25"/>
         <source>Update Native &amp; AUR Packages</source>
-        <translation type="unfinished"></translation>
+        <translation>更新本地和AUR的软件包</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="77"/>
@@ -439,17 +442,17 @@ sudo pacman -S rate-mirrors</source>
         <location filename="../PostInstallGuideTab.cpp" line="106"/>
         <location filename="../PostInstallGuideTab.cpp" line="116"/>
         <source>Error</source>
-        <translation type="unfinished">错误</translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="77"/>
         <source>collect-logs not found at /usr/bin/collect-logs.</source>
-        <translation type="unfinished"></translation>
+        <translation>collect-logs not found at /usr/bin/collect-logs.</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="85"/>
         <source>collect-logs started with elevated privileges. It will place an archive on your Desktop when finished.</source>
-        <translation type="unfinished"></translation>
+        <translation>collect-logs started with elevated privileges. It will place an archive on your Desktop when finished.</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="87"/>
@@ -470,7 +473,7 @@ sudo pacman -S rate-mirrors</source>
         <location filename="../PostInstallGuideTab.cpp" line="112"/>
         <location filename="../PostInstallGuideTab.cpp" line="149"/>
         <source>Success</source>
-        <translation type="unfinished">成功</translation>
+        <translation>成功</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="112"/>
@@ -490,7 +493,7 @@ sudo pacman -S rate-mirrors</source>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="144"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="144"/>
@@ -533,7 +536,7 @@ sudo pacman -S rate-mirrors</source>
     <message>
         <location filename="../RepoListWindow.cpp" line="22"/>
         <source>Repository Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">加载配置文件失败</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="38"/>
@@ -675,17 +678,17 @@ Run the following command in an English locale to force user directories to Engl
 &lt;pre&gt;env LANG=en_US.UTF8 xdg-user-dirs-update --force&lt;/pre&gt;
 
 &lt;p&gt;&lt;b&gt;Input method troubleshooting&lt;/b&gt;&lt;br&gt;
-https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki/中文输入法&lt;/p&gt;
+&lt;a href=&quot;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki/中文输入法&quot;&gt;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki/中文输入法&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;fcitx official Wayland documentation&lt;/b&gt;&lt;br&gt;
-https://fcitx-im.org/wiki/Special:MyLanguage/Using_Fcitx_5_on_Wayland&lt;/p&gt;
+&lt;a href=&quot;https://fcitx-im.org/wiki/Special:MyLanguage/Using_Fcitx_5_on_Wayland&quot;&gt;https://fcitx-im.org/wiki/Special:MyLanguage/Using_Fcitx_5_on_Wayland&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Community guide&lt;/b&gt;&lt;br&gt;
-https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki&lt;/p&gt;
+&lt;a href=&quot;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki&quot;&gt;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Recommended reading&lt;/b&gt;&lt;/p&gt;
 &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/建议阅读/给新用户的关于如何不去歪斜_Arch_Linux_系统的建议&quot;&gt;New user advice&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/建议阅读/给新用户的关于如何不去弄坏_Arch_Linux_系统的建议&quot;&gt;New user advice&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/建议阅读&quot;&gt;Recommended reading&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/Pacman/提示和技巧&quot;&gt;Pacman tips&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -693,7 +696,31 @@ https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;My advice&lt;/b&gt;&lt;br&gt;
 Every Arch Linux user should take responsibility for the stability of their rolling-release system. Complaining about breakage is unproductive; upstream changes are not the responsibility of Arch developers.&lt;/p&gt;
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+&lt;h3&gt;实用技巧与链接&lt;/h3&gt;
+&lt;p&gt;&lt;b&gt;将常用用户目录改为英文&lt;/b&gt;&lt;br&gt;
+在英文语言环境中运行以下命令，可将用户目录强制设置为英文：&lt;/p&gt;
+&lt;pre&gt;env LANG=en_US.UTF8 xdg-user-dirs-update --force&lt;/pre&gt;
+
+&lt;p&gt;&lt;b&gt;输入法故障排除&lt;/b&gt;&lt;br&gt;
+&lt;a href=&quot;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki/中文输入法&quot;&gt;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki/中文输入法&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;fcitx官方Wayland文档&lt;/b&gt;&lt;br&gt;
+&lt;a href=&quot;https://fcitx-im.org/wiki/Special:MyLanguage/Using_Fcitx_5_on_Wayland&quot;&gt;https://fcitx-im.org/wiki/Special:MyLanguage/Using_Fcitx_5_on_Wayland&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;社区指南&lt;/b&gt;&lt;br&gt;
+&lt;a href=&quot;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki&quot;&gt;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;推荐阅读&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/建议阅读/给新用户的关于如何不去弄坏_Arch_Linux_系统的建议&quot;&gt;新用户建议&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/建议阅读&quot;&gt;推荐阅读&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/Pacman/提示和技巧&quot;&gt;Pacman使用技巧&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;b&gt;我的建议&lt;/b&gt;&lt;br&gt;
+每位Arch Linux用户都应为自己的滚动发行版系统的稳定性负责。抱怨系统崩溃是无济于事的；上游的变更并非Arch开发者的责任。&lt;/p&gt;
+</translation>
     </message>
 </context>
 </TS>
