@@ -35,8 +35,8 @@ EOF
 # 查找可用终端程序
 find_terminal() {
     local terminals=(
-        ghostty xfce4-terminal konsole gnome-terminal mate-terminal
-        lxterminal deepin-terminal terminator qterminal
+        ghostty xfce4-terminal konsole kgx gnome-terminal mate-terminal
+        lxterminal deepin-terminal terminator qterminal cosmic-term
         alacritty tilix termite xterm kitty terminology sakura
     )
 
