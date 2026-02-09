@@ -84,7 +84,7 @@ void GeneralNewsTab::loadLanguages()
     languageComboBox->addItem(tr("English(US)"), QString());
 
     // 优先从当前目录加载（用于 debug），然后从系统安装目录加载（打包后使用）
-    const QStringList searchPaths = { QDir::currentPath(), QStringLiteral("/usr/share/CatOS-Hello/translations") };
+    const QStringList searchPaths = { QDir::currentPath(), QStringLiteral("/usr/share/catos-hello/translations") };
     QSet<QString> seenLocales;
     for (const QString &path : searchPaths) {
         QDir dir(path);
