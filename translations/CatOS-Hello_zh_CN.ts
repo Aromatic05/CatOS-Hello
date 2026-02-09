@@ -198,56 +198,76 @@
         <translation>主窗口</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="28"/>
+        <location filename="../mainwindow.cpp" line="30"/>
         <source>Welcome to CatOS!</source>
         <translation>欢迎使用CatOS!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="35"/>
+        <location filename="../mainwindow.cpp" line="37"/>
         <source>General News</source>
         <translation>总体</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="36"/>
+        <location filename="../mainwindow.cpp" line="38"/>
         <source>Post-Install Guide</source>
         <translation>安装后指南</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="37"/>
+        <location filename="../mainwindow.cpp" line="39"/>
         <source>Assistant</source>
         <translation>助手</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="38"/>
+        <location filename="../mainwindow.cpp" line="40"/>
         <source>Tips</source>
         <translation>小建议</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="102"/>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="102"/>
+        <source>Failed to remove autostart file: %1</source>
+        <translation>删除autostart文件失败: %1</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="106"/>
+        <source>Note</source>
+        <translation>注意</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="106"/>
+        <source>Autostart file not found.</source>
+        <translation>Autostart文件不存在.</translation>
     </message>
     <message>
         <source>Install More Apps</source>
         <translation type="vanished">安装更多应用程序</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="49"/>
+        <location filename="../mainwindow.cpp" line="51"/>
         <source>Software News</source>
         <translation>软件新闻</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="50"/>
+        <location filename="../mainwindow.cpp" line="52"/>
         <source>View Update Logs</source>
         <translation>更新日志</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="51"/>
+        <location filename="../mainwindow.cpp" line="53"/>
         <source>Stop Showing</source>
         <translation>不再显示此程序</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="94"/>
+        <location filename="../mainwindow.cpp" line="99"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="94"/>
+        <location filename="../mainwindow.cpp" line="99"/>
         <source>This window will no longer be displayed at startup. You can run catos-hello in the terminal to open it again.</source>
         <translation>该窗口不会在启动时再次展示，你可以手动运行.</translation>
     </message>
@@ -260,7 +280,7 @@
         <translation type="vanished">改变主题</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="52"/>
+        <location filename="../mainwindow.cpp" line="54"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -335,7 +355,7 @@ sudo pacman -S rate-mirrors</translation>
     <message>
         <location filename="../MirrorListWindow.cpp" line="216"/>
         <source>Error: rate-mirrors command failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>rate-mirrors执行失败.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="217"/>
@@ -345,7 +365,7 @@ sudo pacman -S rate-mirrors</translation>
     <message>
         <location filename="../MirrorListWindow.cpp" line="219"/>
         <source>Done! Select the fastest mirrors above.</source>
-        <translation type="unfinished"></translation>
+        <translation>OK.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="238"/>
@@ -409,9 +429,8 @@ sudo pacman -S rate-mirrors</translation>
         <translation>各软件包管理器命令对应关系</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="20"/>
         <source>Troubleshooting Log</source>
-        <translation>诊断日志</translation>
+        <translation type="vanished">诊断日志</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="21"/>
@@ -420,19 +439,19 @@ sudo pacman -S rate-mirrors</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="22"/>
-        <location filename="../PostInstallGuideTab.cpp" line="85"/>
+        <location filename="../PostInstallGuideTab.cpp" line="89"/>
         <source>Collect Logs</source>
         <translation>收集日志</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="23"/>
-        <location filename="../PostInstallGuideTab.cpp" line="97"/>
+        <location filename="../PostInstallGuideTab.cpp" line="101"/>
         <source>Vacuum Journal</source>
         <translation>清理日志</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="24"/>
-        <location filename="../PostInstallGuideTab.cpp" line="125"/>
+        <location filename="../PostInstallGuideTab.cpp" line="129"/>
         <source>Clear Temporary Files</source>
         <translation>清理临时文件</translation>
     </message>
@@ -443,9 +462,9 @@ sudo pacman -S rate-mirrors</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="77"/>
-        <location filename="../PostInstallGuideTab.cpp" line="87"/>
-        <location filename="../PostInstallGuideTab.cpp" line="106"/>
-        <location filename="../PostInstallGuideTab.cpp" line="116"/>
+        <location filename="../PostInstallGuideTab.cpp" line="91"/>
+        <location filename="../PostInstallGuideTab.cpp" line="110"/>
+        <location filename="../PostInstallGuideTab.cpp" line="120"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -456,73 +475,73 @@ sudo pacman -S rate-mirrors</translation>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="77"/>
         <source>collect-logs not found at /usr/bin/CollectLogs.</source>
-        <translation type="unfinished"></translation>
+        <translation>collect-logs not found at /usr/bin/CollectLogs.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="85"/>
+        <location filename="../PostInstallGuideTab.cpp" line="89"/>
         <source>collect-logs started with elevated privileges. It will place an archive on your Desktop when finished.</source>
         <translation>collect-logs started with elevated privileges. It will place an archive on your Desktop when finished.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="87"/>
+        <location filename="../PostInstallGuideTab.cpp" line="91"/>
         <source>Failed to start collect-logs with pkexec.</source>
-        <translation type="unfinished"></translation>
+        <translation>Failed to start collect-logs with pkexec.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="97"/>
+        <location filename="../PostInstallGuideTab.cpp" line="101"/>
         <source>Enter vacuum time (e.g. 2weeks, 30days):</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter vacuum time (e.g. 2weeks, 30days):</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="106"/>
+        <location filename="../PostInstallGuideTab.cpp" line="110"/>
         <source>pkexec failed to run journalctl</source>
-        <translation type="unfinished"></translation>
+        <translation>pkexec failed to run journalctl</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="112"/>
-        <location filename="../PostInstallGuideTab.cpp" line="149"/>
+        <location filename="../PostInstallGuideTab.cpp" line="116"/>
+        <location filename="../PostInstallGuideTab.cpp" line="153"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="112"/>
-        <source>journalctl vacuum completed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../PostInstallGuideTab.cpp" line="116"/>
+        <source>journalctl vacuum completed.</source>
+        <translation>journalctl vacuum completed.</translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="120"/>
         <source>journalctl vacuum failed: </source>
-        <translation type="unfinished"></translation>
+        <translation>journalctl vacuum failed: </translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="126"/>
+        <location filename="../PostInstallGuideTab.cpp" line="130"/>
         <source>This will clear your ~/.cache and attempt to clear /tmp and /var/tmp. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>This will clear your ~/.cache and attempt to clear /tmp and /var/tmp. Continue?</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="144"/>
+        <location filename="../PostInstallGuideTab.cpp" line="148"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="144"/>
+        <location filename="../PostInstallGuideTab.cpp" line="148"/>
         <source>Failed to run pkexec to clear /tmp. It may require manual cleanup.</source>
-        <translation type="unfinished"></translation>
+        <translation>Failed to run pkexec to clear /tmp. It may require manual cleanup.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="149"/>
+        <location filename="../PostInstallGuideTab.cpp" line="153"/>
         <source>Temporary files cleared.</source>
-        <translation type="unfinished"></translation>
+        <translation>Temporary files cleared.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="153"/>
+        <location filename="../PostInstallGuideTab.cpp" line="157"/>
         <source>Partial Success</source>
-        <translation type="unfinished"></translation>
+        <translation>Partial Success</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="153"/>
+        <location filename="../PostInstallGuideTab.cpp" line="157"/>
         <source>User cache cleared; system tmp cleanup reported: </source>
-        <translation type="unfinished"></translation>
+        <translation>User cache cleared; system tmp cleanup reported: </translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="26"/>
@@ -545,7 +564,7 @@ sudo pacman -S rate-mirrors</translation>
     <message>
         <location filename="../RepoListWindow.cpp" line="22"/>
         <source>Repository Configuration</source>
-        <translation type="unfinished">加载配置文件失败</translation>
+        <translation>加载配置文件失败</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="38"/>
@@ -594,27 +613,27 @@ sudo pacman -S rate-mirrors</translation>
     <message>
         <location filename="../RepoListWindow.cpp" line="137"/>
         <source>Failed to open configuration file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Failed to open configuration file: %1</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="213"/>
         <source> (empty)</source>
-        <translation type="unfinished"></translation>
+        <translation> (empty)</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="355"/>
         <source>Configuration has been updated. %1 repositories saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration has been updated. %1 repositories saved.</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="439"/>
         <source>Unsaved Changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Unsaved Changes</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="440"/>
         <source>You have unsaved changes. Do you want to save before closing?</source>
-        <translation type="unfinished"></translation>
+        <translation>You have unsaved changes. Do you want to save before closing?</translation>
     </message>
     <message>
         <source>Fail to open configuration file</source>

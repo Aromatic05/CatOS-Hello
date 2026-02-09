@@ -198,57 +198,77 @@
         <translation>Fenêtre Principale</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="28"/>
+        <location filename="../mainwindow.cpp" line="30"/>
         <source>Welcome to CatOS!</source>
         <translation>Bienvenue sur CatOS&#xa0;!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="35"/>
+        <location filename="../mainwindow.cpp" line="37"/>
         <source>General News</source>
         <translation>Actualités générales</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="36"/>
+        <location filename="../mainwindow.cpp" line="38"/>
         <source>Post-Install Guide</source>
         <translation>Guide post-installation</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="37"/>
+        <location filename="../mainwindow.cpp" line="39"/>
         <source>Assistant</source>
         <translation>Assistant</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="38"/>
+        <location filename="../mainwindow.cpp" line="40"/>
         <source>Tips</source>
         <translation>Conseils</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="49"/>
+        <location filename="../mainwindow.cpp" line="51"/>
         <source>Software News</source>
         <translation>Nouvelles des logiciels</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="50"/>
+        <location filename="../mainwindow.cpp" line="52"/>
         <source>View Update Logs</source>
         <translation>Voir les journaux de mise à jour</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="51"/>
+        <location filename="../mainwindow.cpp" line="53"/>
         <source>Stop Showing</source>
         <translation>Ne plus afficher</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="94"/>
+        <location filename="../mainwindow.cpp" line="99"/>
         <source>Success</source>
         <translation>Succès</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="94"/>
+        <location filename="../mainwindow.cpp" line="99"/>
         <source>This window will no longer be displayed at startup. You can run catos-hello in the terminal to open it again.</source>
         <translation>Cette fenêtre ne sera plus affichée au démarrage. Vous pouvez lancer catos-hello dans un terminal pour l&apos;ouvrir à nouveau.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="52"/>
+        <location filename="../mainwindow.cpp" line="102"/>
+        <source>Error</source>
+        <translation type="unfinished">Erreur</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="102"/>
+        <source>Failed to remove autostart file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="106"/>
+        <source>Note</source>
+        <translation type="unfinished">Remarque</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="106"/>
+        <source>Autostart file not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="54"/>
         <source>Exit</source>
         <translation>Quitter</translation>
     </message>
@@ -389,9 +409,8 @@ sudo pacman -S rate-mirrors</translation>
         <translation>Correspondance entre gestionnaires de paquets</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="20"/>
         <source>Troubleshooting Log</source>
-        <translation>Journal de dépannage</translation>
+        <translation type="vanished">Journal de dépannage</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="21"/>
@@ -400,19 +419,19 @@ sudo pacman -S rate-mirrors</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="22"/>
-        <location filename="../PostInstallGuideTab.cpp" line="85"/>
+        <location filename="../PostInstallGuideTab.cpp" line="89"/>
         <source>Collect Logs</source>
         <translation>Collecter les journaux</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="23"/>
-        <location filename="../PostInstallGuideTab.cpp" line="97"/>
+        <location filename="../PostInstallGuideTab.cpp" line="101"/>
         <source>Vacuum Journal</source>
         <translation>Compacter le journal</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="24"/>
-        <location filename="../PostInstallGuideTab.cpp" line="125"/>
+        <location filename="../PostInstallGuideTab.cpp" line="129"/>
         <source>Clear Temporary Files</source>
         <translation>Effacer les fichiers temporaires</translation>
     </message>
@@ -438,9 +457,9 @@ sudo pacman -S rate-mirrors</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="77"/>
-        <location filename="../PostInstallGuideTab.cpp" line="87"/>
-        <location filename="../PostInstallGuideTab.cpp" line="106"/>
-        <location filename="../PostInstallGuideTab.cpp" line="116"/>
+        <location filename="../PostInstallGuideTab.cpp" line="91"/>
+        <location filename="../PostInstallGuideTab.cpp" line="110"/>
+        <location filename="../PostInstallGuideTab.cpp" line="120"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -450,68 +469,68 @@ sudo pacman -S rate-mirrors</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="85"/>
+        <location filename="../PostInstallGuideTab.cpp" line="89"/>
         <source>collect-logs started with elevated privileges. It will place an archive on your Desktop when finished.</source>
         <translation>collect-logs démarré avec privilèges élevés. Il placera une archive sur votre Bureau une fois terminé.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="87"/>
+        <location filename="../PostInstallGuideTab.cpp" line="91"/>
         <source>Failed to start collect-logs with pkexec.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="97"/>
+        <location filename="../PostInstallGuideTab.cpp" line="101"/>
         <source>Enter vacuum time (e.g. 2weeks, 30days):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="106"/>
+        <location filename="../PostInstallGuideTab.cpp" line="110"/>
         <source>pkexec failed to run journalctl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="112"/>
-        <location filename="../PostInstallGuideTab.cpp" line="149"/>
+        <location filename="../PostInstallGuideTab.cpp" line="116"/>
+        <location filename="../PostInstallGuideTab.cpp" line="153"/>
         <source>Success</source>
         <translation>Succès</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="112"/>
+        <location filename="../PostInstallGuideTab.cpp" line="116"/>
         <source>journalctl vacuum completed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="116"/>
+        <location filename="../PostInstallGuideTab.cpp" line="120"/>
         <source>journalctl vacuum failed: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="126"/>
+        <location filename="../PostInstallGuideTab.cpp" line="130"/>
         <source>This will clear your ~/.cache and attempt to clear /tmp and /var/tmp. Continue?</source>
         <translation>Ceci effacera votre ~/.cache et tentera d&apos;effacer /tmp et /var/tmp. Continuer ?</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="144"/>
+        <location filename="../PostInstallGuideTab.cpp" line="148"/>
         <source>Warning</source>
         <translation type="unfinished">Attention</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="144"/>
+        <location filename="../PostInstallGuideTab.cpp" line="148"/>
         <source>Failed to run pkexec to clear /tmp. It may require manual cleanup.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="149"/>
+        <location filename="../PostInstallGuideTab.cpp" line="153"/>
         <source>Temporary files cleared.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="153"/>
+        <location filename="../PostInstallGuideTab.cpp" line="157"/>
         <source>Partial Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="153"/>
+        <location filename="../PostInstallGuideTab.cpp" line="157"/>
         <source>User cache cleared; system tmp cleanup reported: </source>
         <translation type="unfinished"></translation>
     </message>
