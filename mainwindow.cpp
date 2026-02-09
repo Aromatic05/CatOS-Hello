@@ -11,6 +11,8 @@
 #include <QSettings>
 #include <QMessageBox>
 #include <QDebug>
+#include <QDir>
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -83,15 +85,26 @@ void MainWindow::onSoftwareNewsButtonClicked()
 void MainWindow::onViewLogsButtonClicked()
 {
     qInfo() << "MainWindow: open update logs";
-    QDesktopServices::openUrl(QUrl("https://www.catos.info/log"));
+    QDesktopServices::openUrl(QUrl("https://github.com/CatOS-Home/CatOS/commits/main/"));
 }
 
 void MainWindow::onNoShowButtonClicked()
 {
     qInfo() << "MainWindow: disable startup display";
-    QSettings settings("CatOS-Hello", "General");
-    settings.setValue("show_on_startup", false);
-    QMessageBox::information(this, tr("Success"), tr("This window will no longer be displayed at startup. You can run catos-hello in the terminal to open it again."));
+    // 删除 autostart 桌面文件以禁用自动启动
+    const QString autostartPath = QDir::homePath() + "/.config/autostart/catos-hello.desktop";
+    if (QFile::exists(autostartPath)) {
+        if (QFile::remove(autostartPath)) {
+            qInfo() << "MainWindow: removed autostart file" << autostartPath;
+            QMessageBox::information(this, tr("Success"), tr("This window will no longer be displayed at startup. You can run catos-hello in the terminal to open it again."));
+        } else {
+            qWarning() << "MainWindow: failed to remove autostart file" << autostartPath;
+            QMessageBox::warning(this, tr("Error"), tr("Failed to remove autostart file: %1").arg(autostartPath));
+        }
+    } else {
+        qInfo() << "MainWindow: autostart file not found:" << autostartPath;
+        QMessageBox::information(this, tr("Note"), tr("Autostart file not found."));
+    }
 }
 
 void MainWindow::onExitButtonClicked()
