@@ -17,7 +17,7 @@ PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
 
     gridLayout = new QGridLayout;
     pacmanButton = new QPushButton(tr("Correspondence between package managers"), this);
-    logButton = new QPushButton(tr("Troubleshooting Log"), this);
+    // logButton = new QPushButton(tr("Troubleshooting Log"), this);
     mirrorButton = new QPushButton(tr("Modify Mirror List"), this);
     collectLogsButton = new QPushButton(tr("Collect Logs"), this);
     vacuumJournalButton = new QPushButton(tr("Vacuum Journal"), this);
@@ -41,7 +41,7 @@ PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
     gridLayout->addWidget(vacuumJournalButton, 2, 1);
     gridLayout->addWidget(clearTempButton, 3, 0);
     gridLayout->addWidget(driverConfigButton, 3, 1);
-    gridLayout->addWidget(logButton, 4, 1);
+    // gridLayout->addWidget(logButton, 4, 1);
 
     layout->addWidget(postInstallGuideLabel, 0);
     layout->addLayout(gridLayout);
@@ -80,7 +80,11 @@ void PostInstallGuideTab::onCollectLogsClicked()
     }
 
     // Run via pkexec to get root privileges for collecting protected logs
-    bool started = QProcess::startDetached("pkexec", {program});
+    QString user = QString::fromLocal8Bit(qgetenv("USER"));
+    if (user.isEmpty()) {
+        user = QString::fromLocal8Bit(qgetenv("SUDO_USER"));
+    }
+    bool started = QProcess::startDetached("pkexec", QStringList() << program << user);
     if (started) {
         QMessageBox::information(this, tr("Collect Logs"), tr("collect-logs started with elevated privileges. It will place an archive on your Desktop when finished."));
     } else {

@@ -8,6 +8,21 @@ set -euo pipefail
 TMPDIR="$(mktemp -d /tmp/collect-logs.XXXXXX)"
 OUTNAME="catos-logs-$(date +%Y%m%d_%H%M%S).tar.zstd"
 
+# Optional: accept a target username as first argument. When run via pkexec,
+# this lets the script place the archive on the invoking user's Desktop and
+# fix ownership so the file isn't owned by root.
+TARGET_USER="${1:-}"
+
+get_home_for_user() {
+    local u="$1"
+    local home
+    home=$(getent passwd "$u" | cut -d: -f6 2>/dev/null || true)
+    if [ -z "$home" ]; then
+        home="/home/$u"
+    fi
+    echo "$home"
+}
+
 get_desktop() {
     if command -v xdg-user-dir >/dev/null 2>&1; then
         local d
@@ -17,8 +32,14 @@ get_desktop() {
     echo "$HOME/Desktop"
 }
 
-DESKTOP="$(get_desktop)"
-mkdir -p "$DESKTOP"
+if [ -n "$TARGET_USER" ]; then
+    HOME_DIR="$(get_home_for_user "$TARGET_USER")"
+    DESKTOP="$HOME_DIR/Desktop"
+    mkdir -p "$DESKTOP"
+else
+    DESKTOP="$(get_desktop)"
+    mkdir -p "$DESKTOP"
+fi
 
 cleanup() {
     rm -rf "$TMPDIR"
@@ -45,6 +66,7 @@ try_cmd() {
 }
 
 log "Creating temporary workspace: $TMPDIR"
+log "TARGET_USER: ${TARGET_USER:-<none>}"
 
 try_cmd uname.txt uname -a || true
 try_cmd os-release.txt cat /etc/os-release || true
@@ -99,6 +121,18 @@ else
     tar -czf "$DESKTOP/$ALTNAME" .
     log "zstd not found; created gzip archive: $DESKTOP/$ALTNAME"
 fi
+    # If a target user was specified, ensure the created archive is owned by that user.
+    if [ -n "$TARGET_USER" ]; then
+        if [ -e "$DESKTOP/$OUTNAME" ]; then
+            chown "$TARGET_USER":"$TARGET_USER" "$DESKTOP/$OUTNAME" 2>/dev/null || log "chown failed for $DESKTOP/$OUTNAME"
+        else
+            ALT="${OUTNAME%.zstd}.tar.gz"
+            if [ -e "$DESKTOP/$ALT" ]; then
+                chown "$TARGET_USER":"$TARGET_USER" "$DESKTOP/$ALT" 2>/dev/null || log "chown failed for $DESKTOP/$ALT"
+            fi
+        fi
+    fi
+
 popd >/dev/null
 
 log "Done. The archive is on the Desktop (if creation succeeded)."

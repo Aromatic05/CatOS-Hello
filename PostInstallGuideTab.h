@@ -19,7 +19,7 @@ private:
     QVBoxLayout *layout;
     QGridLayout *gridLayout;
     QPushButton *pacmanButton;
-    QPushButton *logButton;
+    // QPushButton *logButton;
     QPushButton *mirrorButton;
     QPushButton *collectLogsButton;
     QPushButton *vacuumJournalButton;
