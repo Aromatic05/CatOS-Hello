@@ -37,6 +37,8 @@ endif()
 # 定义 .ts 文件
 set(TS_FILES
     ${CMAKE_SOURCE_DIR}/translations/CatOS-Hello_zh_CN.ts
+    ${CMAKE_SOURCE_DIR}/translations/CatOS-Hello_fr.ts
+    ${CMAKE_SOURCE_DIR}/translations/CatOS-Hello_de.ts
 )
 
 # 添加 lupdate 作为构建前的目标
@@ -59,6 +61,8 @@ file(WRITE ${CMAKE_BINARY_DIR}/translations.qrc
 [[<RCC>
     <qresource prefix="/translations">
         <file>CatOS-Hello_zh_CN.qm</file>
+        <file>CatOS-Hello_fr.qm</file>
+        <file>CatOS-Hello_de.qm</file>
     </qresource>
 </RCC>]])
 

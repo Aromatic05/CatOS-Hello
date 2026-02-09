@@ -1,103 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN" sourcelanguage="en_US">
+<TS version="2.1" language="fr_FR" sourcelanguage="en_US">
 <context>
     <name>AssistantTab</name>
     <message>
         <location filename="../AssistantTab.cpp" line="10"/>
         <source>Get help from the assistant.</source>
-        <translation></translation>
+        <translation>Obtenez de l&apos;aide via l&apos;assistant.</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="14"/>
         <source>Modify Mirror List</source>
-        <translation>编辑镜像列表</translation>
+        <translation>Modifier la liste des miroirs</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="15"/>
         <source>Modify Repo List</source>
-        <translation>编辑仓库列表</translation>
+        <translation>Modifier la liste des dépôts</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="16"/>
         <location filename="../AssistantTab.cpp" line="82"/>
         <source>Update Native Packages</source>
-        <translation>更新软件包</translation>
+        <translation>Mettre à jour les paquets natifs</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="17"/>
         <location filename="../AssistantTab.cpp" line="91"/>
         <source>Update Native Packages &amp;&amp; AUR Packages</source>
-        <translation>更新软件包和AUR软件</translation>
+        <translation>Mettre à jour paquets natifs et AUR</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="18"/>
         <source>Reset Arch GPG keys</source>
-        <translation>重置ArchGPG keys</translation>
+        <translation>Réinitialiser les clés GPG d&apos;Arch</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="19"/>
         <location filename="../AssistantTab.cpp" line="130"/>
         <source>Clean up all local packages caches</source>
-        <translation>清除所有软件包缓存</translation>
+        <translation>Nettoyer tous les caches de paquets locaux</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="20"/>
         <source>Clean local caches, except for the most recent three</source>
-        <translation>清除软件包缓存, 保留最近3个版本</translation>
+        <translation>Nettoyer les caches locaux sauf les trois plus récents</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="21"/>
         <location filename="../AssistantTab.cpp" line="148"/>
         <source>Clean up all local packages and AUR caches</source>
-        <translation>清除所有软件包和AUR缓存</translation>
+        <translation>Nettoyer tous les caches de paquets et AUR</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="22"/>
         <location filename="../AssistantTab.cpp" line="157"/>
         <source>Uninstall unused packages</source>
-        <translation>卸载无用软件包</translation>
+        <translation>Désinstaller les paquets inutilisés</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="23"/>
         <location filename="../AssistantTab.cpp" line="166"/>
         <source>Reinstall all packages</source>
-        <translation>重新安装所有包</translation>
+        <translation>Réinstaller tous les paquets</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="24"/>
         <location filename="../AssistantTab.cpp" line="176"/>
         <source>Unlock pacman database</source>
-        <translation>解锁数据库</translation>
+        <translation>Déverrouiller la base de données pacman</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="25"/>
         <location filename="../AssistantTab.cpp" line="186"/>
         <source>List failed systemd services</source>
-        <translation>列出失败的服务</translation>
+        <translation>Lister les services systemd échoués</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="26"/>
         <location filename="../AssistantTab.cpp" line="196"/>
         <source>View pacman log</source>
-        <translation>查看pacman日志</translation>
+        <translation>Voir le journal pacman</translation>
     </message>
     <message>
         <location filename="../AssistantTab.cpp" line="139"/>
         <source>Clean local packages caches, except for the most recent three</source>
-        <translation>清除软件包缓存, 保留最近3个版本</translation>
+        <translation>Nettoyer les caches locaux sauf les trois plus récents</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="obsolete">错误</translation>
+        <translation type="obsolete">Erreur</translation>
     </message>
     <message>
         <source>Fail to Create Temp File</source>
-        <translation type="obsolete">创建临时文件失败</translation>
+        <translation type="obsolete">Échec de création du fichier temporaire</translation>
     </message>
     <message>
         <source>Official Website</source>
-        <translation type="vanished">官网</translation>
+        <translation type="vanished">Site officiel</translation>
     </message>
 </context>
 <context>
@@ -105,42 +105,42 @@
     <message>
         <location filename="../GeneralNewsTab.cpp" line="19"/>
         <source>General News</source>
-        <translation>总体</translation>
+        <translation>Actualités générales</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="24"/>
         <source>Visit Website</source>
-        <translation>访问官网</translation>
+        <translation>Visiter le site</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="25"/>
         <source>Visit ArchLinux Website</source>
-        <translation>访问ArchLinux官网</translation>
+        <translation>Visiter le site ArchLinux</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="26"/>
         <source>Visit ArchLinux Wiki</source>
-        <translation>访问Arch Wiki</translation>
+        <translation>Visiter le Wiki ArchLinux</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="28"/>
         <source>Support us on Distrowatch.com</source>
-        <translation>在Distrowatch.com支持我们</translation>
+        <translation>Soutenez-nous sur Distrowatch.com</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="35"/>
         <source>Install CatOS</source>
-        <translation>安装CatOS</translation>
+        <translation>Installer CatOS</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="36"/>
         <source>Install CatOS Net Install</source>
-        <translation>在线安装CatOS</translation>
+        <translation>Installation réseau de CatOS</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="37"/>
         <source>Get Install Log</source>
-        <translation>获取安装日志</translation>
+        <translation>Obtenir le journal d&apos;installation</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="84"/>
@@ -148,38 +148,38 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>English</source>
+        <translation type="vanished">Anglais</translation>
+    </message>
+    <message>
         <location filename="../GeneralNewsTab.cpp" line="255"/>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation>Erreur</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="255"/>
         <source>Failed to copy calamares logs</source>
-        <translation>复制calamares日志失败</translation>
-    </message>
-    <message>
-        <source>Install CatOS (Online)</source>
-        <translation type="vanished">安装CatOS(联网)</translation>
+        <translation>Échec de la copie des journaux calamares</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="27"/>
         <source>Visit ArchLinuxCN Wiki</source>
-        <translation>访问Arch中文Wiki</translation>
+        <translation>Visiter le Wiki ArchLinuxCN</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="30"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation>Appliquer</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="31"/>
         <source>Modify Mirror List</source>
-        <translation>编辑镜像列表</translation>
+        <translation>Modifier la liste des miroirs</translation>
     </message>
     <message>
         <location filename="../GeneralNewsTab.cpp" line="32"/>
         <source>Modify Repo List</source>
-        <translation>编辑仓库列表</translation>
+        <translation>Modifier la liste des dépôts</translation>
     </message>
 </context>
 <context>
@@ -187,7 +187,7 @@
     <message>
         <location filename="../InstallAppsTab.cpp" line="8"/>
         <source>Expand your software collection.</source>
-        <translation></translation>
+        <translation>Élargissez votre collection de logiciels.</translation>
     </message>
 </context>
 <context>
@@ -195,74 +195,62 @@
     <message>
         <location filename="../mainwindow.ui" line="13"/>
         <source>MainWindow</source>
-        <translation>主窗口</translation>
+        <translation>Fenêtre Principale</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="28"/>
         <source>Welcome to CatOS!</source>
-        <translation>欢迎使用CatOS!</translation>
+        <translation>Bienvenue sur CatOS&#xa0;!</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="35"/>
         <source>General News</source>
-        <translation>总体</translation>
+        <translation>Actualités générales</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="36"/>
         <source>Post-Install Guide</source>
-        <translation>安装后指南</translation>
+        <translation>Guide post-installation</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="37"/>
         <source>Assistant</source>
-        <translation>助手</translation>
+        <translation>Assistant</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="38"/>
         <source>Tips</source>
-        <translation>小建议</translation>
-    </message>
-    <message>
-        <source>Install More Apps</source>
-        <translation type="vanished">安装更多应用程序</translation>
+        <translation>Conseils</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="49"/>
         <source>Software News</source>
-        <translation>软件新闻</translation>
+        <translation>Nouvelles des logiciels</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="50"/>
         <source>View Update Logs</source>
-        <translation>更新日志</translation>
+        <translation>Voir les journaux de mise à jour</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="51"/>
         <source>Stop Showing</source>
-        <translation>不再显示此程序</translation>
+        <translation>Ne plus afficher</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>Success</source>
-        <translation>成功</translation>
+        <translation>Succès</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>This window will no longer be displayed at startup. You can run catos-hello in the terminal to open it again.</source>
-        <translation>该窗口不会在启动时再次展示，你可以手动运行.</translation>
-    </message>
-    <message>
-        <source>Update Software</source>
-        <translation type="vanished">更新软件</translation>
-    </message>
-    <message>
-        <source>Change Theme</source>
-        <translation type="vanished">改变主题</translation>
+        <translation>Cette fenêtre ne sera plus affichée au démarrage. Vous pouvez lancer catos-hello dans un terminal pour l&apos;ouvrir à nouveau.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="52"/>
         <source>Exit</source>
-        <translation>退出</translation>
+        <translation>Quitter</translation>
     </message>
 </context>
 <context>
@@ -270,18 +258,18 @@
     <message>
         <location filename="../MirrorListWindow.cpp" line="14"/>
         <source>Mirror List</source>
-        <translation>镜像列表</translation>
+        <translation>Liste des miroirs</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="21"/>
         <location filename="../MirrorListWindow.cpp" line="125"/>
         <source>Loading mirror list...</source>
-        <translation>加载镜像列表...</translation>
+        <translation>Chargement de la liste des miroirs...</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="118"/>
         <source>Failed to load mirror list. Click to retry.</source>
-        <translation>加载镜像列表失败, 点击重试.</translation>
+        <translation>Échec du chargement de la liste des miroirs. Cliquez pour réessayer.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="130"/>
@@ -293,107 +281,99 @@
         <location filename="../MirrorListWindow.cpp" line="313"/>
         <location filename="../MirrorListWindow.cpp" line="321"/>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation>Erreur</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="130"/>
         <source>Failed to load mirror list: </source>
-        <translation>镜像列表加载失败: </translation>
+        <translation>Échec du chargement de la liste des miroirs : </translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="141"/>
         <source>Missing Tool</source>
-        <translation>缺少工具</translation>
+        <translation>Outil manquant</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="142"/>
         <source>rate-mirrors is not installed. Please install it first:
 
 sudo pacman -S rate-mirrors</source>
-        <translation>rate-mirrors没有安装. 请先安装:
+        <translation>rate-mirrors n&apos;est pas installé. Veuillez l&apos;installer d&apos;abord :
 
 sudo pacman -S rate-mirrors</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="159"/>
         <source>Save to &quot;/etc/pacman.d/mirrorlist&quot;</source>
-        <translation>保存到&quot;/etc/pacman.d/mirrorlist&quot;</translation>
+        <translation>Enregistrer dans &quot;/etc/pacman.d/mirrorlist&quot;</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="185"/>
         <location filename="../MirrorListWindow.cpp" line="295"/>
         <source>Failed to create temporary file.</source>
-        <translation>创建临时文件失败.</translation>
+        <translation>Échec de création du fichier temporaire.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="200"/>
         <source>Testing mirror speeds...
 </source>
-        <translation>测试镜像速度...
+        <translation>Test des vitesses des miroirs...
 </translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="216"/>
         <source>Error: rate-mirrors command failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur : la commande rate-mirrors a échoué.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="217"/>
         <source>rate-mirrors command failed.</source>
-        <translation>rate-mirrors运行失败.</translation>
+        <translation>La commande rate-mirrors a échoué.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="219"/>
         <source>Done! Select the fastest mirrors above.</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminé ! Sélectionnez les miroirs les plus rapides ci-dessus.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="238"/>
         <source>Failed to start rate-mirrors command.</source>
-        <translation>rate-mirrors运行失败.</translation>
+        <translation>Échec du démarrage de la commande rate-mirrors.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="261"/>
         <source>Failed to find mirror text.</source>
-        <translation>加载镜像列表失败.</translation>
+        <translation>Impossible de trouver le texte des miroirs.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="281"/>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation>Attention</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="281"/>
         <source>No valid mirror servers found.</source>
-        <translation>没有找到合法的镜像服务器.</translation>
+        <translation>Aucun serveur miroir valide trouvé.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="327"/>
         <source>Mirror list updated successfully with %1 mirrors.</source>
-        <translation>Mirror list updated successfully with %1 mirrors.</translation>
-    </message>
-    <message>
-        <source>Failed to find QPlainTextEdit.</source>
-        <translation type="vanished">QPlainTextEdit没有找到.</translation>
+        <translation>La liste des miroirs a été mise à jour avec %1 miroirs.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="313"/>
         <source>Failed to run pkexec command.</source>
-        <translation>pkexec运行失败.</translation>
+        <translation>Échec de l&apos;exécution de la commande pkexec.</translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="321"/>
         <source>Failed to update mirror list: </source>
-        <translation>更新镜像列表失败: </translation>
+        <translation>Échec de la mise à jour de la liste des miroirs : </translation>
     </message>
     <message>
         <location filename="../MirrorListWindow.cpp" line="326"/>
         <source>Success</source>
-        <translation>成功</translation>
-    </message>
-    <message>
-        <source>Mirror list updated successfully.</source>
-        <translation type="vanished">镜像列表更新成功.</translation>
+        <translation>Succès</translation>
     </message>
 </context>
 <context>
@@ -401,45 +381,60 @@ sudo pacman -S rate-mirrors</translation>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="15"/>
         <source>You can get help from these manuals.</source>
-        <translation>你可以从下面的内容得到帮助.</translation>
+        <translation>Vous pouvez obtenir de l&apos;aide à partir de ces manuels.</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="19"/>
         <source>Correspondence between package managers</source>
-        <translation>各软件包管理器命令对应关系</translation>
+        <translation>Correspondance entre gestionnaires de paquets</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="20"/>
         <source>Troubleshooting Log</source>
-        <translation>诊断日志</translation>
+        <translation>Journal de dépannage</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="21"/>
         <source>Modify Mirror List</source>
-        <translation>编辑镜像列表</translation>
+        <translation>Modifier la liste des miroirs</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="22"/>
         <location filename="../PostInstallGuideTab.cpp" line="85"/>
         <source>Collect Logs</source>
-        <translation>收集日志</translation>
+        <translation>Collecter les journaux</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="23"/>
         <location filename="../PostInstallGuideTab.cpp" line="97"/>
         <source>Vacuum Journal</source>
-        <translation>清理日志</translation>
+        <translation>Compacter le journal</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="24"/>
         <location filename="../PostInstallGuideTab.cpp" line="125"/>
         <source>Clear Temporary Files</source>
-        <translation>清理临时文件</translation>
+        <translation>Effacer les fichiers temporaires</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="25"/>
         <source>Update Native &amp; AUR Packages</source>
-        <translation>更新本地和AUR的软件包</translation>
+        <translation>Mettre à jour paquets natifs et AUR</translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="26"/>
+        <source>Update Native Packages</source>
+        <translation type="unfinished">Mettre à jour les paquets natifs</translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="27"/>
+        <source>Driver Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="64"/>
+        <source>Install and configure drivers</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="77"/>
@@ -447,11 +442,7 @@ sudo pacman -S rate-mirrors</translation>
         <location filename="../PostInstallGuideTab.cpp" line="106"/>
         <location filename="../PostInstallGuideTab.cpp" line="116"/>
         <source>Error</source>
-        <translation>错误</translation>
-    </message>
-    <message>
-        <source>collect-logs not found at /usr/bin/collect-logs.</source>
-        <translation type="vanished">collect-logs not found at /usr/bin/collect-logs.</translation>
+        <translation>Erreur</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="77"/>
@@ -461,7 +452,7 @@ sudo pacman -S rate-mirrors</translation>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="85"/>
         <source>collect-logs started with elevated privileges. It will place an archive on your Desktop when finished.</source>
-        <translation>collect-logs started with elevated privileges. It will place an archive on your Desktop when finished.</translation>
+        <translation>collect-logs démarré avec privilèges élevés. Il placera une archive sur votre Bureau une fois terminé.</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="87"/>
@@ -482,7 +473,7 @@ sudo pacman -S rate-mirrors</translation>
         <location filename="../PostInstallGuideTab.cpp" line="112"/>
         <location filename="../PostInstallGuideTab.cpp" line="149"/>
         <source>Success</source>
-        <translation>成功</translation>
+        <translation>Succès</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="112"/>
@@ -497,12 +488,12 @@ sudo pacman -S rate-mirrors</translation>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="126"/>
         <source>This will clear your ~/.cache and attempt to clear /tmp and /var/tmp. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ceci effacera votre ~/.cache et tentera d&apos;effacer /tmp et /var/tmp. Continuer ?</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="144"/>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation type="unfinished">Attention</translation>
     </message>
     <message>
         <location filename="../PostInstallGuideTab.cpp" line="144"/>
@@ -524,64 +515,49 @@ sudo pacman -S rate-mirrors</translation>
         <source>User cache cleared; system tmp cleanup reported: </source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../PostInstallGuideTab.cpp" line="26"/>
-        <source>Update Native Packages</source>
-        <translation>更新软件包</translation>
-    </message>
-    <message>
-        <location filename="../PostInstallGuideTab.cpp" line="27"/>
-        <source>Driver Configuration</source>
-        <translation>驱动安装配置</translation>
-    </message>
-    <message>
-        <location filename="../PostInstallGuideTab.cpp" line="64"/>
-        <source>Install and configure drivers</source>
-        <translation>驱动安装配置</translation>
-    </message>
 </context>
 <context>
     <name>RepoListWindow</name>
     <message>
         <location filename="../RepoListWindow.cpp" line="22"/>
         <source>Repository Configuration</source>
-        <translation type="unfinished">加载配置文件失败</translation>
+        <translation>Configuration des dépôts</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="38"/>
         <location filename="../RepoListWindow.cpp" line="400"/>
         <source>Add Repo</source>
-        <translation>添加仓库</translation>
+        <translation>Ajouter un dépôt</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="39"/>
         <source>Delete Repo</source>
-        <translation>删除仓库</translation>
+        <translation>Supprimer le dépôt</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="40"/>
         <source>Save</source>
-        <translation>保存</translation>
+        <translation>Enregistrer</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="54"/>
         <source>Repo Name:</source>
-        <translation>仓库名称：</translation>
+        <translation>Nom du dépôt :</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="55"/>
         <source>Include Path:</source>
-        <translation>Include路径：</translation>
+        <translation>Chemin Include :</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="56"/>
         <source>Mirror Server:</source>
-        <translation>镜像服务器：</translation>
+        <translation>Serveur miroir :</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="57"/>
         <source>SigLevel:</source>
-        <translation>签名等级：</translation>
+        <translation>Niveau Sig :</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="136"/>
@@ -589,7 +565,7 @@ sudo pacman -S rate-mirrors</translation>
         <location filename="../RepoListWindow.cpp" line="338"/>
         <location filename="../RepoListWindow.cpp" line="405"/>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation>Erreur</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="137"/>
@@ -602,9 +578,44 @@ sudo pacman -S rate-mirrors</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../RepoListWindow.cpp" line="326"/>
+        <source>Note</source>
+        <translation>Remarque</translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="326"/>
+        <source>No Change to Save</source>
+        <translation>Aucun changement à enregistrer</translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="332"/>
+        <source>Failed to create backup file</source>
+        <translation>Échec de la création du fichier de sauvegarde</translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="338"/>
+        <source>Failed to save configuration file</source>
+        <translation>Échec de l&apos;enregistrement du fichier de configuration</translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="354"/>
+        <source>Success</source>
+        <translation>Succès</translation>
+    </message>
+    <message>
         <location filename="../RepoListWindow.cpp" line="355"/>
         <source>Configuration has been updated. %1 repositories saved.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="400"/>
+        <source>Enter the Repo name:</source>
+        <translation>Entrez le nom du dépôt :</translation>
+    </message>
+    <message>
+        <location filename="../RepoListWindow.cpp" line="405"/>
+        <source>Repo name contains invalid chars</source>
+        <translation>Le nom du dépôt contient des caractères invalides</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="439"/>
@@ -616,68 +627,19 @@ sudo pacman -S rate-mirrors</translation>
         <source>You have unsaved changes. Do you want to save before closing?</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Fail to open configuration file</source>
-        <translation type="vanished">加载配置文件失败</translation>
-    </message>
-    <message>
-        <location filename="../RepoListWindow.cpp" line="326"/>
-        <source>Note</source>
-        <translation>注意</translation>
-    </message>
-    <message>
-        <location filename="../RepoListWindow.cpp" line="326"/>
-        <source>No Change to Save</source>
-        <translation>没有需要保存的更改</translation>
-    </message>
-    <message>
-        <location filename="../RepoListWindow.cpp" line="332"/>
-        <source>Failed to create backup file</source>
-        <translation>创建备份文件失败</translation>
-    </message>
-    <message>
-        <location filename="../RepoListWindow.cpp" line="338"/>
-        <source>Failed to save configuration file</source>
-        <translation>保存配置文件失败</translation>
-    </message>
-    <message>
-        <location filename="../RepoListWindow.cpp" line="354"/>
-        <source>Success</source>
-        <translation>成功</translation>
-    </message>
-    <message>
-        <source>Fail to Create Temp File</source>
-        <translation type="vanished">创建临时文件失败</translation>
-    </message>
-    <message>
-        <source>Sucess</source>
-        <translation type="vanished">成功</translation>
-    </message>
-    <message>
-        <source>Configuration has been updated</source>
-        <translation type="vanished">配置文件已更新</translation>
-    </message>
-    <message>
-        <source>Fail to save:</source>
-        <translation type="vanished">保存失败：</translation>
-    </message>
-    <message>
-        <location filename="../RepoListWindow.cpp" line="400"/>
-        <source>Enter the Repo name:</source>
-        <translation>输入仓库名称：</translation>
-    </message>
-    <message>
-        <location filename="../RepoListWindow.cpp" line="405"/>
-        <source>Repo name contains invalid chars</source>
-        <translation>仓库名称含有非法字符</translation>
-    </message>
-    <message>
-        <source>Repo has been changed, please save the change.</source>
-        <translation type="vanished">仓库已删除，请保存更改.</translation>
-    </message>
 </context>
 <context>
     <name>TipsTab</name>
+    <message>
+        <source>
+&lt;h3&gt;Useful tips and links&lt;/h3&gt;
+... (omitted long HTML content) ...
+</source>
+        <translation type="vanished">
+&lt;h3&gt;Conseils utiles et liens&lt;/h3&gt;
+... (contenu HTML long omis) ...
+</translation>
+    </message>
     <message>
         <location filename="../TipsTab.cpp" line="11"/>
         <source>
@@ -705,31 +667,7 @@ Run the following command in an English locale to force user directories to Engl
 &lt;p&gt;&lt;b&gt;My advice&lt;/b&gt;&lt;br&gt;
 Every Arch Linux user should take responsibility for the stability of their rolling-release system. Complaining about breakage is unproductive; upstream changes are not the responsibility of Arch developers.&lt;/p&gt;
 </source>
-        <translation>
-&lt;h3&gt;实用技巧与链接&lt;/h3&gt;
-&lt;p&gt;&lt;b&gt;将常用用户目录改为英文&lt;/b&gt;&lt;br&gt;
-在英文语言环境中运行以下命令，可将用户目录强制设置为英文：&lt;/p&gt;
-&lt;pre&gt;env LANG=en_US.UTF8 xdg-user-dirs-update --force&lt;/pre&gt;
-
-&lt;p&gt;&lt;b&gt;输入法故障排除&lt;/b&gt;&lt;br&gt;
-&lt;a href=&quot;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki/中文输入法&quot;&gt;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki/中文输入法&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;fcitx官方Wayland文档&lt;/b&gt;&lt;br&gt;
-&lt;a href=&quot;https://fcitx-im.org/wiki/Special:MyLanguage/Using_Fcitx_5_on_Wayland&quot;&gt;https://fcitx-im.org/wiki/Special:MyLanguage/Using_Fcitx_5_on_Wayland&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;社区指南&lt;/b&gt;&lt;br&gt;
-&lt;a href=&quot;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki&quot;&gt;https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide/wiki&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;推荐阅读&lt;/b&gt;&lt;/p&gt;
-&lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/建议阅读/给新用户的关于如何不去弄坏_Arch_Linux_系统的建议&quot;&gt;新用户建议&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/建议阅读&quot;&gt;推荐阅读&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/Pacman/提示和技巧&quot;&gt;Pacman使用技巧&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;b&gt;我的建议&lt;/b&gt;&lt;br&gt;
-每位Arch Linux用户都应为自己的滚动发行版系统的稳定性负责。抱怨系统崩溃是无济于事的；上游的变更并非Arch开发者的责任。&lt;/p&gt;
-</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
