@@ -7,6 +7,9 @@
 #include <QSettings>
 #include <QFile>
 #include <QDebug>
+#include <QDir>
+#include <QFileInfo>
+#include <QSet>
 
 GeneralNewsTab::GeneralNewsTab(QWidget *parent)
     : QWidget(parent)
@@ -75,19 +78,67 @@ GeneralNewsTab::GeneralNewsTab(QWidget *parent)
 void GeneralNewsTab::loadLanguages()
 {
     qInfo() << "GeneralNewsTab: loadLanguages start";
-    // 定义语言列表，包括地区信息
-    QList<QLocale> locales = {
-        QLocale(QLocale::English), QLocale(QLocale::Chinese, QLocale::China),
-        QLocale(QLocale::Spanish), QLocale(QLocale::French),
-    };
+    languageComboBox->clear();
 
-    // 向下拉框中添加语言
-    for (const QLocale &locale : locales) {
-        QString nativeName = locale.nativeLanguageName();
-        QString countryName = locale.nativeTerritoryName();
-        QString languageCode = locale.name();
-        QString displayText = nativeName + " (" + countryName + ")";
-        languageComboBox->addItem(displayText, languageCode);
+    // 添加一个表示不加载语言包的 English 选项（放在最前面）
+    languageComboBox->addItem(tr("English(US)"), QString());
+
+    // 优先从当前目录加载（用于 debug），然后从系统安装目录加载（打包后使用）
+    const QStringList searchPaths = { QDir::currentPath(), QStringLiteral("/usr/share/CatOS-Hello/translations") };
+    QSet<QString> seenLocales;
+    for (const QString &path : searchPaths) {
+        QDir dir(path);
+        if (!dir.exists()) {
+            qInfo() << "GeneralNewsTab: translations dir not exists:" << path;
+            continue;
+        }
+        const QFileInfoList files = dir.entryInfoList(QStringList() << "*.qm", QDir::Files, QDir::Name);
+        for (const QFileInfo &fi : files) {
+            const QString base = fi.baseName(); // e.g. CatOS-Hello_zh_CN or zh_CN or en or app_en
+            QString localeCode;
+            const QStringList parts = base.split('_');
+            if (parts.size() >= 3) {
+                // e.g. CatOS-Hello_zh_CN -> take last two parts -> zh_CN
+                localeCode = parts.mid(parts.size() - 2).join('_');
+            } else if (parts.size() == 2) {
+                // e.g. zh_CN or app_en -> take the last part (en or CN)
+                localeCode = parts.last();
+                // if it's like zh_CN (two parts), parts.size()==2 and last() would be CN,
+                // but zh_CN files usually appear as single base like zh_CN (parts==2),
+                // handling for zh_CN with both parts should be covered by parts.size()>=3 case above
+            } else {
+                localeCode = base;
+            }
+            if (localeCode.isEmpty())
+                continue;
+            if (seenLocales.contains(localeCode))
+                continue;
+            seenLocales.insert(localeCode);
+
+            QLocale locale(localeCode);
+            QString nativeName = locale.nativeLanguageName();
+            QString countryName = locale.nativeTerritoryName();
+            QString displayText = nativeName;
+            if (!countryName.isEmpty())
+                displayText += " (" + countryName + ")";
+            languageComboBox->addItem(displayText, localeCode);
+            qInfo() << "GeneralNewsTab: added language" << localeCode << "from" << path;
+        }
+    }
+
+    // 如果没有找到任何 .qm 文件，回退到内置的静态列表
+    if (languageComboBox->count() == 0) {
+        QList<QLocale> locales = {
+            QLocale(QLocale::English), QLocale(QLocale::Chinese, QLocale::China),
+            QLocale(QLocale::Spanish), QLocale(QLocale::French),
+        };
+        for (const QLocale &locale : locales) {
+            QString nativeName = locale.nativeLanguageName();
+            QString countryName = locale.nativeTerritoryName();
+            QString languageCode = locale.name();
+            QString displayText = nativeName + " (" + countryName + ")";
+            languageComboBox->addItem(displayText, languageCode);
+        }
     }
 
     // 设置默认值为当前语言
@@ -116,8 +167,12 @@ void GeneralNewsTab::restartApplication(const QString &langCode)
     qInfo() << "GeneralNewsTab: restartApplication" << langCode;
     QString program = qApp->arguments().first();
     QStringList arguments;
-    arguments << langCode;
-    QProcess::startDetached(program, arguments);
+    if (!langCode.isEmpty()) {
+        arguments << langCode;
+        QProcess::startDetached(program, arguments);
+    } else {
+        QProcess::startDetached(program);
+    }
     QApplication::quit();
 }
 
