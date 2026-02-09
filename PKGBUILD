@@ -1,10 +1,10 @@
-# Maintainer: you <you@example.com>
+# Maintainer: Aromatic <symwww@outlook.com>
 pkgname=catos-hello
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="CatOS Hello - welcome application"
 arch=('x86_64')
-url="https://github.com/Aromatic05/CatOS-Hello.git"
+url="https://github.com/Aromatic05/CatOS-Hello"
 license=('GPL')
 depends=('qt6-base')
 makedepends=('cmake' 'gcc' 'make' 'qt6-tools')
@@ -12,6 +12,7 @@ source=("${pkgname}::git+$url.git")
 sha256sums=('SKIP')
 
 build() {
+    cd catos-hello
     cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
     make -C build
 }
@@ -19,6 +20,9 @@ build() {
 package() {
     install -d "$pkgdir/usr/bin"
     # 安装主程序（假定可执行文件输出为 build/CatOS-Hello）
+    cd catos-hello
+    install -Dm755 scripts/CollectLogs "$pkgdir/usr/bin/CollectLogs"
+    install -Dm755 scripts/RunInTerminal "$pkgdir/usr/bin/RunInTerminal"
     if [ -f build/CatOS-Hello ]; then
         install -Dm755 build/CatOS-Hello "$pkgdir/usr/bin/$pkgname"
     fi
@@ -43,6 +47,6 @@ package() {
 
     # 将 autostart 桌面文件放到 /etc/skel/.config/autostart，便于新用户使用
     # 使用你提供的路径和模式（注意：PKGBUILD 在项目根目录时 ../$pkgname.desktop 路径请根据实际放置调整）
-    install -Dvm644 ../$pkgname.desktop \
+    install -Dvm644 $pkgname.desktop \
         "$pkgdir/etc/skel/.config/autostart/$pkgname.desktop"
 }
