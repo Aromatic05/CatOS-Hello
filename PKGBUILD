@@ -6,8 +6,8 @@ pkgdesc="CatOS Hello - welcome application"
 arch=('x86_64')
 url="https://github.com/Aromatic05/CatOS-Hello"
 license=('GPL')
-depends=('qt6-base')
-makedepends=('cmake' 'gcc' 'make' 'qt6-tools')
+depends=('qt6-base' 'rate-mirrors' 'lshw' 'inxi' 'lsb-release')
+makedepends=('cmake' 'gcc' 'make' 'qt6-tools' 'qt5-translations')
 source=("${pkgname}::git+$url.git")
 sha256sums=('SKIP')
 
