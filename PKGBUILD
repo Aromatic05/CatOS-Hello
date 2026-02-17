@@ -23,6 +23,7 @@ package() {
     cd catos-hello
     install -Dm755 scripts/CollectLogs "$pkgdir/usr/bin/CollectLogs"
     install -Dm755 scripts/RunInTerminal "$pkgdir/usr/bin/RunInTerminal"
+    install -Dm755 scripts/ResetKeyring "$pkgdir/usr/bin/ResetKeyring"
     if [ -f build/CatOS-Hello ]; then
         install -Dm755 build/CatOS-Hello "$pkgdir/usr/bin/$pkgname"
     fi

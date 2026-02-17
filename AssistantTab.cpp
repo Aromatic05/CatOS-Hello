@@ -1,6 +1,11 @@
 #include "AssistantTab.h"
 #include <QTimer>
 #include <QDebug>
+#include <QDir>
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
+#include <QProcess>
 
 AssistantTab::AssistantTab(QWidget *parent)
     : QWidget(parent)
@@ -96,41 +101,18 @@ void AssistantTab::onUpdateAURButtonClicked() {
 
 void AssistantTab::onResetButtonClicked() {
     qInfo() << "AssistantTab: reset Arch keyring";
-    // 创建临时脚本文件
-    QString scriptFilePath = QDir::tempPath() + "/reset_keyring.sh";
-    QFile scriptFile(scriptFilePath);
+    const QString installedPath = "/usr/bin/ResetKeyring";
 
-    if (!scriptFile.open(QIODevice::WriteOnly)) {
-        qWarning() << "AssistantTab: failed to create reset script" << scriptFilePath;
-        QMessageBox::critical(this, "Error", "Failed to create script file.");
+    if (QFile::exists(installedPath)) {
+        qInfo() << "AssistantTab: using installed ResetKeyring at" << installedPath;
+        QStringList args;
+        args << "--prompt" << "Reset Arch Keyring" << installedPath;
+        QProcess::startDetached("RunInTerminal", args);
         return;
     }
 
-    // 写入脚本内容
-        QTextStream stream(&scriptFile);
-        stream << "#!/bin/bash\n";
-        stream << "set -e\n";
-        stream << "echo 'Resetting Arch Linux keyring...'\n";
-        stream << "sudo rm -rf /etc/pacman.d/gnupg || true\n";
-        stream << "sudo pacman-key --init || true\n";
-        stream << "# Update cachyos-keyring first since archlinux-keyring may be sourced from cachyos\n";
-        stream << "# Try multiple attempts to work around unsynced mirrors.\n";
-        stream << "sudo pacman-key --recv-keys 3A9917BF0DED5C13F69AC68FABEC0A1208037BE9 || true\n";
-        stream << "sudo pacman-key --lsign-key 3A9917BF0DED5C13F69AC68FABEC0A1208037BE9 || true\n";
-        stream << "sudo pacman-key --recv-keys 7931B6D628C8D3BA || true\n";
-        stream << "sudo pacman-key --lsign-key 7931B6D628C8D3BA || true\n";
-        stream << "for i in 0 1 2 3 4; do sudo pacman -Sy --noconfirm --needed archlinux-keyring && break || true; done\n";
-        stream << "for i in 0 1 2 3 4; do sudo pacman -Sy --noconfirm --needed archlinuxcn-keyring && break || true; done\n";
-        stream << "sudo pacman-key --populate || true\n";
-        stream << "echo 'Keyring reset and population completed.'\n";
-    stream.flush();
-    scriptFile.close();
-
-    QFile::setPermissions(scriptFile.fileName(), QFile::ExeUser | QFile::ReadUser | QFile::WriteUser);
-    QStringList args;
-    args << "--prompt" << "Reset Arch Keyring" << scriptFilePath;
-
-    QProcess::startDetached("RunInTerminal", args);
+    qWarning() << "AssistantTab: ResetKeyring not found at" << installedPath;
+    QMessageBox::critical(this, tr("Error"), tr("ResetKeyring not found. Please install the package 'catos-hello' so /usr/bin/ResetKeyring is available."));
 }
 
 void AssistantTab::onCleanButtonClicked() {

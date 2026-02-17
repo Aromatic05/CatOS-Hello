@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+# Initialize keyring
+pacman-key --init
+
+pacman-key --recv-keys 3A9917BF0DED5C13F69AC68FABEC0A1208037BE9 || true
+pacman-key --lsign-key 3A9917BF0DED5C13F69AC68FABEC0A1208037BE9 || true
+pacman-key --recv-keys 7931B6D628C8D3BA || true
+pacman-key --lsign-key 7931B6D628C8D3BA || true
+for i in 0 1 2 3 4; do pacman -Sy --noconfirm --needed archlinux-keyring && break || true; done
+for i in 0 1 2 3 4; do pacman -Sy --noconfirm --needed archlinuxcn-keyring && break || true; done
+pacman-key --populate
+
+echo "Keyring reset and population completed."
