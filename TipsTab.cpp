@@ -10,6 +10,8 @@ TipsTab::TipsTab(QWidget *parent)
     // HTML content with English links and short instructions
         const QString html = tr(R"HTML(
 <h3>Useful tips and links</h3>
+When finished offline install tasks, you should click the "Offline Post-install: Refresh Keys& Update" button to ensure your system is up to date and has the latest keys. After that, here are some tips and links to help you get started with CatOS:
+
 <p><b>Change common user directories to English</b><br>
 Run the following command in an English locale to force user directories to English:</p>
 <pre>env LANG=en_US.UTF8 xdg-user-dirs-update --force</pre>

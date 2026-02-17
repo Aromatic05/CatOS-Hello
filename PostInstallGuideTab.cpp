@@ -26,12 +26,14 @@ PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
     updateAURButton = new QPushButton(tr("Update Native & AUR Packages"), this);
     updateButton = new QPushButton(tr("Update Native Packages"), this);
     driverConfigButton = new QPushButton(tr("Driver Configuration"), this);
+    offlinePostInstallButton = new QPushButton(tr("Offline Post-install: Refresh Keys & Update"), this);
 
     connect(pacmanButton, SIGNAL(clicked()), this, SLOT(onPacmanButtonClicked()));
     connect(driverConfigButton, SIGNAL(clicked()), this, SLOT(onDriverConfigButtonClicked()));
     connect(mirrorButton, SIGNAL(clicked()), this, SLOT(onMirrorButtonClicked()));
     connect(updateButton, SIGNAL(clicked()), this, SLOT(onUpdateButtonClicked()));
     connect(updateAURButton, SIGNAL(clicked()), this, SLOT(onUpdateAURButtonClicked()));
+    connect(offlinePostInstallButton, SIGNAL(clicked()), this, SLOT(onOfflinePostInstallClicked()));
     connect(collectLogsButton, &QPushButton::clicked, this, &PostInstallGuideTab::onCollectLogsClicked);
     connect(vacuumJournalButton, &QPushButton::clicked, this, &PostInstallGuideTab::onVacuumJournalClicked);
     connect(clearTempButton, &QPushButton::clicked, this, &PostInstallGuideTab::onClearTempClicked);
@@ -42,6 +44,7 @@ PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
     gridLayout->addWidget(collectLogsButton, 1, 0);
     gridLayout->addWidget(updateButton, 1, 1);
     gridLayout->addWidget(updateAURButton, 2, 0);
+    gridLayout->addWidget(offlinePostInstallButton, 3, 0);
     gridLayout->addWidget(vacuumJournalButton, 2, 1);
     gridLayout->addWidget(clearTempButton, 3, 0);
     gridLayout->addWidget(driverConfigButton, 3, 1);
@@ -91,8 +94,25 @@ void PostInstallGuideTab::onUpdateButtonClicked()
 void PostInstallGuideTab::onUpdateAURButtonClicked()
 {
     qInfo() << "PostInstallGuideTab: update native and AUR packages";
-    QString command = "yay";
+    QString command = "paru";
     QString prompt = tr("Update Native & AUR Packages");
+    QStringList args;
+    args << "--prompt" << prompt << command;
+    QProcess::startDetached("RunInTerminal", args);
+}
+
+void PostInstallGuideTab::onOfflinePostInstallClicked()
+{
+    qInfo() << "PostInstallGuideTab: run offline post-install tasks (ResetKeyring + paru)";
+    const QString resetPath = "/usr/bin/ResetKeyring";
+    if (!QFile::exists(resetPath)) {
+        QMessageBox::critical(this, tr("Error"), tr("ResetKeyring not found at %1. Please install catos-hello package.").arg(resetPath));
+        qWarning() << "PostInstallGuideTab: ResetKeyring not found at" << resetPath;
+        return;
+    }
+
+    QString command = QString("sudo %1 && paru -Syu").arg(resetPath);
+    QString prompt = tr("Offline Post-install: Refresh Keys & Update");
     QStringList args;
     args << "--prompt" << prompt << command;
     QProcess::startDetached("RunInTerminal", args);

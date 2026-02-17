@@ -29,6 +29,7 @@ private:
     QPushButton *packageCleanButton;
     QPushButton *updateButton;
     QPushButton *driverConfigButton;
+    QPushButton *offlinePostInstallButton;
 
 private slots:
     void onPacmanButtonClicked();
@@ -36,6 +37,7 @@ private slots:
     void onMirrorButtonClicked();
     void onUpdateButtonClicked();
     void onUpdateAURButtonClicked();
+    void onOfflinePostInstallClicked();
     void onCollectLogsClicked();
     void onVacuumJournalClicked();
     void onClearTempClicked();

@@ -4,86 +4,96 @@
 <context>
     <name>AssistantTab</name>
     <message>
-        <location filename="../AssistantTab.cpp" line="10"/>
+        <location filename="../AssistantTab.cpp" line="15"/>
         <source>Get help from the assistant.</source>
         <translation>Hilfe vom Assistenten erhalten.</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="14"/>
+        <location filename="../AssistantTab.cpp" line="19"/>
         <source>Modify Mirror List</source>
         <translation>Spiegelliste bearbeiten</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="15"/>
+        <location filename="../AssistantTab.cpp" line="20"/>
         <source>Modify Repo List</source>
         <translation>Repository-Liste bearbeiten</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="16"/>
-        <location filename="../AssistantTab.cpp" line="82"/>
+        <location filename="../AssistantTab.cpp" line="21"/>
+        <location filename="../AssistantTab.cpp" line="87"/>
         <source>Update Native Packages</source>
         <translation>Native Pakete aktualisieren</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="17"/>
-        <location filename="../AssistantTab.cpp" line="91"/>
+        <location filename="../AssistantTab.cpp" line="22"/>
+        <location filename="../AssistantTab.cpp" line="96"/>
         <source>Update Native Packages &amp;&amp; AUR Packages</source>
         <translation>Native Pakete und AUR-Pakete aktualisieren</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="18"/>
+        <location filename="../AssistantTab.cpp" line="23"/>
         <source>Reset Arch GPG keys</source>
         <translation>Arch GPG-Schlüssel zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="19"/>
-        <location filename="../AssistantTab.cpp" line="130"/>
+        <location filename="../AssistantTab.cpp" line="24"/>
+        <location filename="../AssistantTab.cpp" line="121"/>
         <source>Clean up all local packages caches</source>
         <translation>Alle lokalen Paket-Caches bereinigen</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="20"/>
+        <location filename="../AssistantTab.cpp" line="25"/>
         <source>Clean local caches, except for the most recent three</source>
         <translation>Lokale Caches bereinigen, außer die drei neuesten</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="21"/>
-        <location filename="../AssistantTab.cpp" line="148"/>
+        <location filename="../AssistantTab.cpp" line="26"/>
+        <location filename="../AssistantTab.cpp" line="139"/>
         <source>Clean up all local packages and AUR caches</source>
         <translation>Alle lokalen Paket- und AUR-Caches bereinigen</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="22"/>
-        <location filename="../AssistantTab.cpp" line="157"/>
+        <location filename="../AssistantTab.cpp" line="27"/>
+        <location filename="../AssistantTab.cpp" line="148"/>
         <source>Uninstall unused packages</source>
         <translation>Unbenutzte Pakete deinstallieren</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="23"/>
-        <location filename="../AssistantTab.cpp" line="166"/>
+        <location filename="../AssistantTab.cpp" line="28"/>
+        <location filename="../AssistantTab.cpp" line="157"/>
         <source>Reinstall all packages</source>
         <translation>Alle Pakete neu installieren</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="24"/>
-        <location filename="../AssistantTab.cpp" line="176"/>
+        <location filename="../AssistantTab.cpp" line="29"/>
+        <location filename="../AssistantTab.cpp" line="167"/>
         <source>Unlock pacman database</source>
         <translation>Pacman-Datenbank entsperren</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="25"/>
-        <location filename="../AssistantTab.cpp" line="186"/>
+        <location filename="../AssistantTab.cpp" line="30"/>
+        <location filename="../AssistantTab.cpp" line="177"/>
         <source>List failed systemd services</source>
         <translation>Fehlgeschlagene systemd-Dienste auflisten</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="26"/>
-        <location filename="../AssistantTab.cpp" line="196"/>
+        <location filename="../AssistantTab.cpp" line="31"/>
+        <location filename="../AssistantTab.cpp" line="187"/>
         <source>View pacman log</source>
         <translation>Pacman-Log anzeigen</translation>
     </message>
     <message>
-        <location filename="../AssistantTab.cpp" line="139"/>
+        <location filename="../AssistantTab.cpp" line="115"/>
+        <source>Error</source>
+        <translation type="unfinished">Fehler</translation>
+    </message>
+    <message>
+        <location filename="../AssistantTab.cpp" line="115"/>
+        <source>ResetKeyring not found. Please install the package &apos;catos-hello&apos; so /usr/bin/ResetKeyring is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AssistantTab.cpp" line="130"/>
         <source>Clean local packages caches, except for the most recent three</source>
         <translation>Lokale Paket-Caches bereinigen, außer die drei neuesten</translation>
     </message>
@@ -387,12 +397,12 @@ sudo pacman -S rate-mirrors</translation>
 <context>
     <name>PostInstallGuideTab</name>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="15"/>
+        <location filename="../PostInstallGuideTab.cpp" line="16"/>
         <source>You can get help from these manuals.</source>
         <translation>Sie können Hilfe aus diesen Handbüchern erhalten.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="19"/>
+        <location filename="../PostInstallGuideTab.cpp" line="20"/>
         <source>Correspondence between package managers</source>
         <translation>Entsprechung zwischen Paketmanagern</translation>
     </message>
@@ -401,126 +411,140 @@ sudo pacman -S rate-mirrors</translation>
         <translation type="vanished">Fehlerbehebungsprotokoll</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="21"/>
+        <location filename="../PostInstallGuideTab.cpp" line="22"/>
         <source>Modify Mirror List</source>
         <translation>Spiegelliste bearbeiten</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="22"/>
-        <location filename="../PostInstallGuideTab.cpp" line="89"/>
+        <location filename="../PostInstallGuideTab.cpp" line="23"/>
+        <location filename="../PostInstallGuideTab.cpp" line="140"/>
         <source>Collect Logs</source>
         <translation>Protokolle sammeln</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="23"/>
-        <location filename="../PostInstallGuideTab.cpp" line="101"/>
+        <location filename="../PostInstallGuideTab.cpp" line="24"/>
+        <location filename="../PostInstallGuideTab.cpp" line="152"/>
         <source>Vacuum Journal</source>
         <translation>Journal bereinigen</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="24"/>
-        <location filename="../PostInstallGuideTab.cpp" line="129"/>
+        <location filename="../PostInstallGuideTab.cpp" line="25"/>
+        <location filename="../PostInstallGuideTab.cpp" line="180"/>
         <source>Clear Temporary Files</source>
         <translation>Temporäre Dateien löschen</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="25"/>
+        <location filename="../PostInstallGuideTab.cpp" line="26"/>
+        <location filename="../PostInstallGuideTab.cpp" line="98"/>
         <source>Update Native &amp; AUR Packages</source>
         <translation>Native &amp; AUR-Pakete aktualisieren</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="26"/>
+        <location filename="../PostInstallGuideTab.cpp" line="27"/>
+        <location filename="../PostInstallGuideTab.cpp" line="88"/>
         <source>Update Native Packages</source>
         <translation type="unfinished">Native Pakete aktualisieren</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="27"/>
+        <location filename="../PostInstallGuideTab.cpp" line="28"/>
         <source>Driver Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="64"/>
-        <source>Install and configure drivers</source>
-        <translation type="unfinished"></translation>
+        <location filename="../PostInstallGuideTab.cpp" line="29"/>
+        <location filename="../PostInstallGuideTab.cpp" line="115"/>
+        <source>Offline Post-install: Refresh Keys &amp; Update</source>
+        <translation>Offline-Nachinstallation: Schlüssel aktualisieren &amp; Update</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="77"/>
-        <location filename="../PostInstallGuideTab.cpp" line="91"/>
-        <location filename="../PostInstallGuideTab.cpp" line="110"/>
-        <location filename="../PostInstallGuideTab.cpp" line="120"/>
+        <location filename="../PostInstallGuideTab.cpp" line="71"/>
+        <source>Install and configure drivers</source>
+        <translation>Treiber installieren und konfigurieren</translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="109"/>
+        <location filename="../PostInstallGuideTab.cpp" line="128"/>
+        <location filename="../PostInstallGuideTab.cpp" line="142"/>
+        <location filename="../PostInstallGuideTab.cpp" line="161"/>
+        <location filename="../PostInstallGuideTab.cpp" line="171"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="77"/>
-        <source>collect-logs not found at /usr/bin/CollectLogs.</source>
-        <translation type="unfinished"></translation>
+        <location filename="../PostInstallGuideTab.cpp" line="109"/>
+        <source>ResetKeyring not found at %1. Please install catos-hello package.</source>
+        <translation>ResetKeyring nicht gefunden unter %1. Bitte installieren Sie das Paket catos-hello.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="89"/>
+        <location filename="../PostInstallGuideTab.cpp" line="128"/>
+        <source>collect-logs not found at /usr/bin/CollectLogs.</source>
+        <translation>collect-logs nicht gefunden unter /usr/bin/CollectLogs.</translation>
+    </message>
+    <message>
+        <location filename="../PostInstallGuideTab.cpp" line="140"/>
         <source>collect-logs started with elevated privileges. It will place an archive on your Desktop when finished.</source>
         <translation>collect-logs mit erhöhten Rechten gestartet. Es legt nach Abschluss ein Archiv auf Ihrem Desktop ab.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="91"/>
+        <location filename="../PostInstallGuideTab.cpp" line="142"/>
         <source>Failed to start collect-logs with pkexec.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler beim Starten von collect-logs mit pkexec.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="101"/>
+        <location filename="../PostInstallGuideTab.cpp" line="152"/>
         <source>Enter vacuum time (e.g. 2weeks, 30days):</source>
-        <translation type="unfinished"></translation>
+        <translation>Leeren Zeit eingeben (z.B. 2 Wochen, 30 Tage):</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="110"/>
+        <location filename="../PostInstallGuideTab.cpp" line="161"/>
         <source>pkexec failed to run journalctl</source>
-        <translation type="unfinished"></translation>
+        <translation>pkexec konnte journalctl nicht ausführen</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="116"/>
-        <location filename="../PostInstallGuideTab.cpp" line="153"/>
+        <location filename="../PostInstallGuideTab.cpp" line="167"/>
+        <location filename="../PostInstallGuideTab.cpp" line="204"/>
         <source>Success</source>
         <translation>Erfolg</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="116"/>
+        <location filename="../PostInstallGuideTab.cpp" line="167"/>
         <source>journalctl vacuum completed.</source>
-        <translation type="unfinished"></translation>
+        <translation>journalctl Leeren abgeschlossen.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="120"/>
+        <location filename="../PostInstallGuideTab.cpp" line="171"/>
         <source>journalctl vacuum failed: </source>
-        <translation type="unfinished"></translation>
+        <translation>journalctl Leeren fehlgeschlagen: </translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="130"/>
+        <location filename="../PostInstallGuideTab.cpp" line="181"/>
         <source>This will clear your ~/.cache and attempt to clear /tmp and /var/tmp. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Dies wird Ihren ~/.cache löschen und versuchen, /tmp und /var/tmp zu leeren. Fortfahren?</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="148"/>
+        <location filename="../PostInstallGuideTab.cpp" line="199"/>
         <source>Warning</source>
-        <translation type="unfinished">Warnung</translation>
+        <translation>Warnung</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="148"/>
+        <location filename="../PostInstallGuideTab.cpp" line="199"/>
         <source>Failed to run pkexec to clear /tmp. It may require manual cleanup.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler beim Ausführen von pkexec zum Leeren von /tmp. Es kann manuelle Bereinigung erfordern.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="153"/>
+        <location filename="../PostInstallGuideTab.cpp" line="204"/>
         <source>Temporary files cleared.</source>
-        <translation type="unfinished"></translation>
+        <translation>Temporäre Dateien geleert.</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="157"/>
+        <location filename="../PostInstallGuideTab.cpp" line="208"/>
         <source>Partial Success</source>
-        <translation type="unfinished"></translation>
+        <translation>Teilweiser Erfolg</translation>
     </message>
     <message>
-        <location filename="../PostInstallGuideTab.cpp" line="157"/>
+        <location filename="../PostInstallGuideTab.cpp" line="208"/>
         <source>User cache cleared; system tmp cleanup reported: </source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzer-Cache geleert; System-Tmp-Bereinigung gemeldet: </translation>
     </message>
 </context>
 <context>
@@ -577,12 +601,12 @@ sudo pacman -S rate-mirrors</translation>
     <message>
         <location filename="../RepoListWindow.cpp" line="137"/>
         <source>Failed to open configuration file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler beim Öffnen der Konfigurationsdatei: %1</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="213"/>
         <source> (empty)</source>
-        <translation type="unfinished"></translation>
+        <translation> (leer)</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="326"/>
@@ -612,7 +636,7 @@ sudo pacman -S rate-mirrors</translation>
     <message>
         <location filename="../RepoListWindow.cpp" line="355"/>
         <source>Configuration has been updated. %1 repositories saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfiguration wurde aktualisiert. %1 Repositories gespeichert.</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="400"/>
@@ -627,12 +651,12 @@ sudo pacman -S rate-mirrors</translation>
     <message>
         <location filename="../RepoListWindow.cpp" line="439"/>
         <source>Unsaved Changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungespeicherte Änderungen</translation>
     </message>
     <message>
         <location filename="../RepoListWindow.cpp" line="440"/>
         <source>You have unsaved changes. Do you want to save before closing?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie haben ungespeicherte Änderungen. Möchten Sie diese vor dem Schließen speichern?</translation>
     </message>
 </context>
 <context>
@@ -651,6 +675,8 @@ sudo pacman -S rate-mirrors</translation>
         <location filename="../TipsTab.cpp" line="11"/>
         <source>
 &lt;h3&gt;Useful tips and links&lt;/h3&gt;
+When finished offline install tasks, you should click the &quot;Offline Post-install: Refresh Keys&amp; Update&quot; button to ensure your system is up to date and has the latest keys. After that, here are some tips and links to help you get started with CatOS:
+
 &lt;p&gt;&lt;b&gt;Change common user directories to English&lt;/b&gt;&lt;br&gt;
 Run the following command in an English locale to force user directories to English:&lt;/p&gt;
 &lt;pre&gt;env LANG=en_US.UTF8 xdg-user-dirs-update --force&lt;/pre&gt;
