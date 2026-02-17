@@ -1,4 +1,5 @@
 #include "PostInstallGuideTab.h"
+#include "MirrorListWindow.h"
 
 #include <QDesktopServices>
 #include <QProcess>
@@ -28,6 +29,9 @@ PostInstallGuideTab::PostInstallGuideTab(QWidget *parent)
 
     connect(pacmanButton, SIGNAL(clicked()), this, SLOT(onPacmanButtonClicked()));
     connect(driverConfigButton, SIGNAL(clicked()), this, SLOT(onDriverConfigButtonClicked()));
+    connect(mirrorButton, SIGNAL(clicked()), this, SLOT(onMirrorButtonClicked()));
+    connect(updateButton, SIGNAL(clicked()), this, SLOT(onUpdateButtonClicked()));
+    connect(updateAURButton, SIGNAL(clicked()), this, SLOT(onUpdateAURButtonClicked()));
     connect(collectLogsButton, &QPushButton::clicked, this, &PostInstallGuideTab::onCollectLogsClicked);
     connect(vacuumJournalButton, &QPushButton::clicked, this, &PostInstallGuideTab::onVacuumJournalClicked);
     connect(clearTempButton, &QPushButton::clicked, this, &PostInstallGuideTab::onClearTempClicked);
@@ -62,6 +66,33 @@ void PostInstallGuideTab::onDriverConfigButtonClicked()
     qInfo() << "PostInstallGuideTab: start driver configuration";
     QString command = "sudo chwd -a";
     QString prompt = tr("Install and configure drivers");
+    QStringList args;
+    args << "--prompt" << prompt << command;
+    QProcess::startDetached("RunInTerminal", args);
+}
+
+void PostInstallGuideTab::onMirrorButtonClicked()
+{
+    qInfo() << "PostInstallGuideTab: open MirrorListWindow";
+    QScopedPointer<MirrorListWindow> mirrorWindow(new MirrorListWindow(this));
+    mirrorWindow->exec();
+}
+
+void PostInstallGuideTab::onUpdateButtonClicked()
+{
+    qInfo() << "PostInstallGuideTab: update native packages";
+    QString command = "sudo pacman -Syu";
+    QString prompt = tr("Update Native Packages");
+    QStringList args;
+    args << "--prompt" << prompt << command;
+    QProcess::startDetached("RunInTerminal", args);
+}
+
+void PostInstallGuideTab::onUpdateAURButtonClicked()
+{
+    qInfo() << "PostInstallGuideTab: update native and AUR packages";
+    QString command = "yay";
+    QString prompt = tr("Update Native & AUR Packages");
     QStringList args;
     args << "--prompt" << prompt << command;
     QProcess::startDetached("RunInTerminal", args);

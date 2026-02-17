@@ -33,6 +33,9 @@ private:
 private slots:
     void onPacmanButtonClicked();
     void onDriverConfigButtonClicked();
+    void onMirrorButtonClicked();
+    void onUpdateButtonClicked();
+    void onUpdateAURButtonClicked();
     void onCollectLogsClicked();
     void onVacuumJournalClicked();
     void onClearTempClicked();

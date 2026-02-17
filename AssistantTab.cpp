@@ -87,7 +87,7 @@ void AssistantTab::onUpdateButtonClicked() {
 
 void AssistantTab::onUpdateAURButtonClicked() {
     qInfo() << "AssistantTab: update native and AUR packages";
-    QString command = "yay";
+    QString command = "paru";
     QString prompt = tr("Update Native Packages && AUR Packages");
     QStringList args;
     args << "--prompt" << prompt << command;
@@ -107,13 +107,22 @@ void AssistantTab::onResetButtonClicked() {
     }
 
     // 写入脚本内容
-    QTextStream stream(&scriptFile);
-    stream << "#!/bin/bash\n";
-    stream << "echo 'Resetting Arch Linux keyring...'\n";
-    stream << "sudo rm -rf /etc/pacman.d/gnupg\n";
-    stream << "sudo pacman-key --init\n";
-    stream << "sudo pacman-key --populate archlinux\n";
-    stream << "echo 'Keyring reset completed.'\n";
+        QTextStream stream(&scriptFile);
+        stream << "#!/bin/bash\n";
+        stream << "set -e\n";
+        stream << "echo 'Resetting Arch Linux keyring...'\n";
+        stream << "sudo rm -rf /etc/pacman.d/gnupg || true\n";
+        stream << "sudo pacman-key --init || true\n";
+        stream << "# Update cachyos-keyring first since archlinux-keyring may be sourced from cachyos\n";
+        stream << "# Try multiple attempts to work around unsynced mirrors.\n";
+        stream << "sudo pacman-key --recv-keys 3A9917BF0DED5C13F69AC68FABEC0A1208037BE9 || true\n";
+        stream << "sudo pacman-key --lsign-key 3A9917BF0DED5C13F69AC68FABEC0A1208037BE9 || true\n";
+        stream << "sudo pacman-key --recv-keys 7931B6D628C8D3BA || true\n";
+        stream << "sudo pacman-key --lsign-key 7931B6D628C8D3BA || true\n";
+        stream << "for i in 0 1 2 3 4; do sudo pacman -Sy --noconfirm --needed archlinux-keyring && break || true; done\n";
+        stream << "for i in 0 1 2 3 4; do sudo pacman -Sy --noconfirm --needed archlinuxcn-keyring && break || true; done\n";
+        stream << "sudo pacman-key --populate || true\n";
+        stream << "echo 'Keyring reset and population completed.'\n";
     stream.flush();
     scriptFile.close();
 
@@ -144,7 +153,7 @@ void AssistantTab::onReduceButtonClicked() {
 
 void AssistantTab::onCleanAURButtonClicked() {
     qInfo() << "AssistantTab: clean package and AUR caches";
-    QString command = "yay -Scc";
+    QString command = "paru -Scc";
     QString prompt = tr("Clean up all local packages and AUR caches");
     QStringList args;
     args << "--prompt" << prompt << command;
